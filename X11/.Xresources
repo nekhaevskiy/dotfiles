@@ -27,7 +27,7 @@
 *.color7: #e4e4e4
 *.color15: #ffffff
 
-URxvt*font: xft:DejaVuSansMono:size=12:antialias=true
+URxvt*font: xft:FiraCode Nerd Font Mono:style=Medium,Regular:size=14:pixelsize=16:antialias=true
 Urxvt*letterSpace: -1
 URxvt*borderLess: false
 URxvt*externalBorder: 0
