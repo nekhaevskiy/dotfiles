@@ -83,10 +83,10 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-bindsym $mod+Ctrl+h split h
+bindsym $mod+Ctrl+v split v
 
 # split in vertical orientation
-bindsym $mod+Ctrl+v split v
+bindsym $mod+Ctrl+h split h
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
@@ -150,8 +150,8 @@ workspace_auto_back_and_forth yes
 
 # open applications in a specific workspace
 assign [class="Zathura" instance="org.pwmt.zathura"] $ws1
-assign [class="URxvt" instance="urxvt"] $ws2
-assign [class="firefox" instance="Navigator"] $ws3
+# assign [class="URxvt" instance="urxvt"] $ws2
+# assign [class="firefox" instance="Navigator"] $ws3
 
 # disable focus windows with mouse
 focus_follows_mouse no
@@ -274,7 +274,7 @@ client.urgent           $red1   $red1       $white2     $red1       $red1
 client.placeholder      #000000 #0c0c0c     $white2     #000000     0c0c0c
 
 # remove borders for terminal windows
-for_window [class="URxvt*"] border pixel 1
+# for_window [class="URxvt*"] border pixel 1
 
 # terminal scratchpad
 for_window [instance="urxvt_scratchpad"] move to scratchpad, border none
