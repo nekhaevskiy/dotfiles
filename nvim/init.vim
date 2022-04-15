@@ -14,7 +14,7 @@ set noswapfile
 
 " save undo trees in files
 set undofile
-set undodir=$HOME/.config/nvim/undo
+set undodir=$XDG_CONFIG_HOME/nvim/undo
 
 " number of undo saved
 set undolevels=10000
