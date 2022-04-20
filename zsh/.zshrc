@@ -57,6 +57,11 @@ fi
 # Custom scripts
 source ~/dotfiles/zsh/scripts.sh
 
+# Clearing the shell is now done with CTRL+g
+bindkey -r '^l'
+bindkey -r '^g'
+bindkey -s '^g' 'clear\n'
+
 # Syntax Highlighting
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 

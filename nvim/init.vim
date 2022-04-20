@@ -3,6 +3,7 @@ call plug#begin("$XDG_CONFIG_HOME/nvim/plugged")
     Plug 'chrisbra/csv.vim'
     Plug 'junegunn/fzf.vim'
     Plug 'simnalamburt/vim-mundo'
+    Plug 'christoomey/vim-tmux-navigator'
     Plug 'simeji/winresizer'
 call plug#end()
 
