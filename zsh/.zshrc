@@ -54,6 +54,9 @@ if [ "$(tty)" = "/dev/tty1" ]; then
     pgrep i3 || exec startx "$XDG_CONFIG_HOME/X11/.xinitrc"
 fi
 
+# NVM
+source /usr/share/nvm/init-nvm.sh
+
 # Custom scripts
 source ~/dotfiles/zsh/scripts.sh
 
