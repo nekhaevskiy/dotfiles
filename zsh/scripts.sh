@@ -1,9 +1,11 @@
 #!/bin/zsh
 
+# compress a directory
 compress() {
     tar cvzf $1.tar.gz $1
 }
 
+# fuzzy find a tmuxp layout config
 ftmuxp() {
     if [[ -n $TMUX ]]; then
         return
@@ -26,5 +28,14 @@ ftmuxp() {
         # Rename the current urxvt tab to session name
         printf '\033]777;tabbedx;set_tab_name;%s\007' "$ID"
         tmuxp load "$ID"
+    fi
+}
+
+# open man page in vim
+vman() {
+    nvim -c "SuperMan $*"
+
+    if [ "$?" != "0" ]; then
+        echo "No manual entry for $*"
     fi
 }

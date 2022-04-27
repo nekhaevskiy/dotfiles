@@ -341,3 +341,6 @@ exec --no-startup-id dunst
 
 # Remap Caps Lock key when external keyboard is plugged
 bindsym $mod+z exec "setxkbmap -option 'caps:ctrl_modifier';xcape -e 'Caps_Lock=Escape' &"
+
+# File type detection for vim
+vim: filetype=i3config
