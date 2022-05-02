@@ -343,4 +343,4 @@ exec --no-startup-id dunst
 bindsym $mod+z exec "setxkbmap -option 'caps:ctrl_modifier';xcape -e 'Caps_Lock=Escape' &"
 
 # File type detection for vim
-vim: filetype=i3config
+# vim: filetype=i3config
