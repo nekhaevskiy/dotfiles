@@ -62,6 +62,16 @@ ln -sf "$DOTFILES/dunst/dunstrc" "$XDG_CONFIG_HOME/dunst/dunstrc"
 mkdir -p "$XDG_CONFIG_HOME/git"
 ln -sf "$DOTFILES/git/config" "$XDG_CONFIG_HOME/git/config"
 
+###############
+# qutebrowser #
+###############
+
+mkdir -p "$XDG_CONFIG_HOME/qutebrowser"
+ln -sf "$DOTFILES/qutebrowser/autoconfig.yml" "$XDG_CONFIG_HOME/qutebrowser"
+ln -sf "$DOTFILES/qutebrowser/quickmarks" "$XDG_CONFIG_HOME/qutebrowser"
+rm -rf "$XDG_CONFIG_HOME/qutebrowser/bookmarks"
+ln -s "$DOTFILES/qutebrowser/bookmarks" "$XDG_CONFIG_HOME/qutebrowser"
+
 ########
 # tmux #
 ########
