@@ -299,12 +299,14 @@ exec urxvtc -name htop_scratchpad -e htop
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-    status_command i3status --config ~/.config/i3/i3status.conf
+    status_command i3status --config $XDG_CONFIG_HOME/i3/i3status.conf
     
     # Disable all tray icons
-    tray_output none
+    # tray_output none
+    tray_output primary
 
-    # tray_output primary
+    # separator_symbol " "
+
     colors {
         background $black2
         statusline $white2
