@@ -1,3 +1,9 @@
+" #######
+" # ale #
+" #######
+
+" let g:ale_disable_lsp = 1
+
 " Plugins
 call plug#begin('$XDG_CONFIG_HOME/nvim/plugged')
   " color scheme
@@ -15,30 +21,31 @@ call plug#begin('$XDG_CONFIG_HOME/nvim/plugged')
   Plug 'junegunn/gv.vim'
   Plug 'airblade/vim-gitgutter'
 
-  " manual pages
-  Plug 'jez/vim-superman'
-
   " linter
+  " Plug 'dense-analysis/ale'
   Plug 'neomake/neomake'
 
   " lsp
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
+  " manual pages
+  Plug 'jez/vim-superman'
+
+  " markdown
+  " Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
+  
   " navigating in open buffers
   Plug 'phaazon/hop.nvim'
-
+  
   " register history
-  " Plug 'svermeulen/vim-yoink'
   Plug 'bfredl/nvim-miniyank'
 
   " snippets
   Plug 'honza/vim-snippets'
 
-  " startup
-  Plug 'mhinz/vim-startify'
-
   " status bar
   Plug 'itchyny/lightline.vim'
+  " Plug 'maximbaz/lightline-ale'
 
   " surrounding
   Plug 'tpope/vim-surround'
@@ -96,9 +103,24 @@ set shiftwidth=2
 " Show substitution
 set inccommand=nosplit
 
-" Mapping leader key
+" Mapping
 nnoremap <space> <nop>
 let mapleader = "\<space>"
+cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
+nnoremap <leader>/ :nohlsearch<cr>
+
+" #######
+" # ale #
+" #######
+" let g:ale_sign_error = ''
+" let g:ale_sign_warning = ''
+" let g:ale_fixers = {
+      " \  'typescript': ['prettier'],
+      " \}
+" let g:ale_fix_on_save = 1
+
+" nnoremap <silent> [a <Plug>(ale_previous_wrap)
+" nnoremap <silent> ]a <Plug>(ale_next_wrap)
 
 " ############
 " # coc.nvim #
@@ -106,11 +128,13 @@ let mapleader = "\<space>"
 
 " coc extensions
 let g:coc_global_extensions = [
+      \ 'coc-angular', 
       \ 'coc-css',
       \ 'coc-html',
       \ 'coc-json',
       \ 'coc-sh',
-      \ 'coc-snippets'
+      \ 'coc-snippets',
+      \ 'coc-tsserver',
       \]
 
 " TextEdit might fail if hidden is not set.
@@ -165,6 +189,51 @@ endfunction
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
       \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
+" use `[g` and `]g` to navigate diagnostics
+" use `:cocdiagnostics` to get all diagnostics of current buffer in location list.
+nmap <silent> [g <plug>(coc-diagnostic-prev)
+nmap <silent> ]g <plug>(coc-diagnostic-next)
+
+" goto code navigation.
+nmap <silent> gd <plug>(coc-definition)
+" nmap <silent> gy <plug>(coc-type-definition)
+" nmap <silent> gi <plug>(coc-implementation)
+nmap <silent> gr <plug>(coc-references)
+
+" use k to show documentation in preview window.
+nnoremap <silent> k :call <sid>show_documentation()<cr>
+
+function! s:show_documentation()
+  if cocaction('hasprovider', 'hover')
+    call cocactionasync('dohover')
+  else
+    call feedkeys('k', 'in')
+  endif
+endfunction
+
+" highlight the symbol and its references when holding the cursor.
+autocmd cursorhold * silent call cocactionasync('highlight')
+
+" symbol renaming.
+nmap <leader>rn <plug>(coc-rename)
+
+" formatting selected code.
+" xmap <leader>f  <plug>(coc-format-selected)
+" nmap <leader>f  <plug>(coc-format-selected)
+
+augroup mygroup
+  autocmd!
+  " setup formatexpr specified filetype(s).
+  autocmd filetype typescript,json setl formatexpr=cocaction('formatselected')
+  " update signature help on jump placeholder.
+  autocmd user cocjumpplaceholder call cocactionasync('showsignaturehelp')
+augroup end
+
+" remap keys for applying codeaction to the current buffer.
+nmap <leader>ac  <plug>(coc-codeaction)
+" apply autofix to problem on the current line.
+nmap <leader>qf  <plug>(coc-fix-current)
+
 " ###########
 " # csv.vim #
 " ###########
@@ -195,9 +264,39 @@ nnoremap <leader>j :HopWord<cr>
 " # lightline.vim #
 " #################
 
-let g:lightline = {
-      \ 'colorscheme': 'onedark',
-      \ }
+let g:lightline = {}
+let g:lightline.colorscheme = 'onedark'
+
+" let g:lightline.component_expand = {
+"       \   'linter_checking': 'lightline#ale#checking',
+"       \   'linter_infos': 'lightline#ale#infos',
+"       \   'linter_warnings': 'lightline#ale#warnings',
+"       \   'linter_errors': 'lightline#ale#errors',
+"       \   'linter_ok': 'lightline#ale#ok',
+"       \ }
+
+" let g:lightline.component_type = {
+"       \   'linter_checking': 'right',
+"       \   'linter_infos': 'right',
+"       \   'linter_warnings': 'warning',
+"       \   'linter_errors': 'error',
+"       \   'linter_ok': 'right',
+"       \ }
+
+" let g:lightline.active = { 
+"       \   'right': [
+"       \     [ 'lineinfo' ],
+" 	    \     [ 'percent' ],
+" 	    \     [ 'fileformat', 'fileencoding', 'filetype'],
+"       \     [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_infos', 'linter_ok' ],
+"       \   ] 
+"       \ }
+
+" let g:lightline#ale#indicator_checking = "\uf110 "
+" let g:lightline#ale#indicator_infos = "\uf129 "
+" let g:lightline#ale#indicator_warnings = "\uf071 "
+" let g:lightline#ale#indicator_errors = "\uf05e "
+" let g:lightline#ale#indicator_ok = "\uf00c "
 
 " ###########
 " # neomake #
@@ -226,6 +325,12 @@ let g:neomake_vim_enabled_makers = ['vint']
 
 " open neomake list automatically after saving a file
 " let g:neomake_open_list = 2
+
+" #########
+" # netrw #
+" #########
+
+let g:netrw_preview = 1
 
 " #################
 " # nvim-miniyank #
@@ -261,3 +366,15 @@ colorscheme onedark
 " #################
 
 set signcolumn=auto
+
+" #############
+" # vim-mundo #
+" #############
+
+nnoremap <leader>m :MundoToggle<cr>
+
+" ################
+" # vim-polyglot #
+" ################
+
+set nocompatible
