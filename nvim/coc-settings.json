@@ -1,3 +1,14 @@
 {
-    // "diagnostic.displayByAle": true
+  "coc.preferences.formatOnSaveFiletypes": [
+    "css",
+    "json",
+    "jsonc",
+    "javascript",
+    "javascriptreact",
+    "less",
+    "scss",
+    "typescript",
+    "typescriptreact"
+  ],
+  "diagnostic.displayByAle": true
 }

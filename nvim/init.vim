@@ -2,13 +2,16 @@
 " # ale #
 " #######
 
-" let g:ale_disable_lsp = 1
+let g:ale_disable_lsp = 1
 
 " Plugins
 call plug#begin('$XDG_CONFIG_HOME/nvim/plugged')
   " color scheme
   " Plug 'cocopon/iceberg.vim'
   Plug 'joshdick/onedark.vim'
+
+  " copilot
+  Plug 'github/copilot.vim'
 
   " csv
   Plug 'chrisbra/csv.vim'
@@ -22,8 +25,8 @@ call plug#begin('$XDG_CONFIG_HOME/nvim/plugged')
   Plug 'airblade/vim-gitgutter'
 
   " linter
-  " Plug 'dense-analysis/ale'
-  Plug 'neomake/neomake'
+  Plug 'dense-analysis/ale'
+  " Plug 'neomake/neomake'
 
   " lsp
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -71,7 +74,7 @@ call plug#begin('$XDG_CONFIG_HOME/nvim/plugged')
   Plug 'tpope/vim-commentary'
   Plug 'ap/vim-css-color'
   Plug 'tpope/vim-repeat'
-  Plug 'simeji/winresizer'
+  " Plug 'simeji/winresizer'
 call plug#end()
 
 " always use the system clipboard for all operations
@@ -112,15 +115,21 @@ nnoremap <leader>/ :nohlsearch<cr>
 " #######
 " # ale #
 " #######
-" let g:ale_sign_error = ''
-" let g:ale_sign_warning = ''
-" let g:ale_fixers = {
-      " \  'typescript': ['prettier'],
-      " \}
-" let g:ale_fix_on_save = 1
+let g:ale_sign_error = ''
+let g:ale_sign_warning = ''
+let g:ale_fixers = {
+      \  'typescript': ['prettier'],
+      \}
+let g:ale_fix_on_save = 1
 
-" nnoremap <silent> [a <Plug>(ale_previous_wrap)
-" nnoremap <silent> ]a <Plug>(ale_next_wrap)
+nnoremap <silent> [a <Plug>(ale_previous_wrap)
+nnoremap <silent> ]a <Plug>(ale_next_wrap)
+
+" ###########
+" # copilot #
+" ###########
+
+let g:copilot_node_command = '$HOME/.nvm/versions/node/v14.19.3/bin/node'
 
 " ############
 " # coc.nvim #
@@ -132,6 +141,7 @@ let g:coc_global_extensions = [
       \ 'coc-css',
       \ 'coc-html',
       \ 'coc-json',
+      \ 'coc-prettier',
       \ 'coc-sh',
       \ 'coc-snippets',
       \ 'coc-tsserver',
@@ -168,71 +178,137 @@ endif
 " other plugin before putting this into your config.
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
+      \ CheckBackspace() ? "\<TAB>" :
       \ coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
-function! s:check_back_space() abort
+function! CheckBackspace() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
 " Use <c-space> to trigger completion.
-" if has('nvim')
-  " inoremap <silent><expr> <c-space> coc#refresh()
-" else
-  " inoremap <silent><expr> <c-@> coc#refresh()
-" endif
+if has('nvim')
+  inoremap <silent><expr> <c-space> coc#refresh()
+else
+  inoremap <silent><expr> <c-@> coc#refresh()
+endif
 
 " Make <CR> auto-select the first completion item and notify coc.nvim to
 " format on enter, <cr> could be remapped by other vim plugin
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
-      \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
-" use `[g` and `]g` to navigate diagnostics
-" use `:cocdiagnostics` to get all diagnostics of current buffer in location list.
-nmap <silent> [g <plug>(coc-diagnostic-prev)
-nmap <silent> ]g <plug>(coc-diagnostic-next)
+" Use `[g` and `]g` to navigate diagnostics
+" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
-" goto code navigation.
-nmap <silent> gd <plug>(coc-definition)
-" nmap <silent> gy <plug>(coc-type-definition)
-" nmap <silent> gi <plug>(coc-implementation)
-nmap <silent> gr <plug>(coc-references)
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
 
-" use k to show documentation in preview window.
-nnoremap <silent> k :call <sid>show_documentation()<cr>
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call ShowDocumentation()<CR>
 
-function! s:show_documentation()
-  if cocaction('hasprovider', 'hover')
-    call cocactionasync('dohover')
+function! ShowDocumentation()
+  if CocAction('hasProvider', 'hover')
+    call CocActionAsync('doHover')
   else
-    call feedkeys('k', 'in')
+    call feedkeys('K', 'in')
   endif
 endfunction
 
-" highlight the symbol and its references when holding the cursor.
-autocmd cursorhold * silent call cocactionasync('highlight')
+" Highlight the symbol and its references when holding the cursor.
+autocmd CursorHold * silent call CocActionAsync('highlight')
 
-" symbol renaming.
-nmap <leader>rn <plug>(coc-rename)
+" Symbol renaming.
+nmap <leader>rn <Plug>(coc-rename)
 
-" formatting selected code.
-" xmap <leader>f  <plug>(coc-format-selected)
-" nmap <leader>f  <plug>(coc-format-selected)
+" Formatting selected code.
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
 
 augroup mygroup
   autocmd!
-  " setup formatexpr specified filetype(s).
-  autocmd filetype typescript,json setl formatexpr=cocaction('formatselected')
-  " update signature help on jump placeholder.
-  autocmd user cocjumpplaceholder call cocactionasync('showsignaturehelp')
+  " Setup formatexpr specified filetype(s).
+  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+  " Update signature help on jump placeholder.
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
 
-" remap keys for applying codeaction to the current buffer.
-nmap <leader>ac  <plug>(coc-codeaction)
-" apply autofix to problem on the current line.
-nmap <leader>qf  <plug>(coc-fix-current)
+" Applying codeAction to the selected region.
+" Example: `<leader>aap` for current paragraph
+xmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>a  <Plug>(coc-codeaction-selected)
+
+" Remap keys for applying codeAction to the current buffer.
+nmap <leader>ac  <Plug>(coc-codeaction)
+" Apply AutoFix to problem on the current line.
+nmap <leader>qf  <Plug>(coc-fix-current)
+
+" Run the Code Lens action on the current line.
+nmap <leader>cl  <Plug>(coc-codelens-action)
+
+" Map function and class text objects
+" NOTE: Requires 'textDocument.documentSymbol' support from the language server.
+xmap if <Plug>(coc-funcobj-i)
+omap if <Plug>(coc-funcobj-i)
+xmap af <Plug>(coc-funcobj-a)
+omap af <Plug>(coc-funcobj-a)
+xmap ic <Plug>(coc-classobj-i)
+omap ic <Plug>(coc-classobj-i)
+xmap ac <Plug>(coc-classobj-a)
+omap ac <Plug>(coc-classobj-a)
+
+" Remap <C-f> and <C-b> for scroll float windows/popups.
+if has('nvim-0.4.0') || has('patch-8.2.0750')
+  nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+  nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+  inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
+  inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
+  vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+  vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+endif
+
+" Use CTRL-S for selections ranges.
+" Requires 'textDocument/selectionRange' support of language server.
+nmap <silent> <C-s> <Plug>(coc-range-select)
+xmap <silent> <C-s> <Plug>(coc-range-select)
+
+" Add `:Format` command to format current buffer.
+command! -nargs=0 Format :call CocActionAsync('format')
+
+" Add `:Fold` command to fold current buffer.
+command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+
+" Add `:OR` command for organize imports of the current buffer.
+command! -nargs=0 OR   :call     CocActionAsync('runCommand', 'editor.action.organizeImport')
+
+" Add (Neo)Vim's native statusline support.
+" NOTE: Please see `:h coc-status` for integrations with external plugins that
+" provide custom statusline: lightline.vim, vim-airline.
+set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+
+" Mappings for CoCList
+" Show all diagnostics.
+nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
+" Manage extensions.
+nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>
+" Show commands.
+nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
+" Find symbol of current document.
+nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
+" Search workspace symbols.
+nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
+" Do default action for next item.
+nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
+" Do default action for previous item.
+nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
+" Resume latest coc list.
+nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
 " ###########
 " # csv.vim #
@@ -267,61 +343,61 @@ nnoremap <leader>j :HopWord<cr>
 let g:lightline = {}
 let g:lightline.colorscheme = 'onedark'
 
-" let g:lightline.component_expand = {
-"       \   'linter_checking': 'lightline#ale#checking',
-"       \   'linter_infos': 'lightline#ale#infos',
-"       \   'linter_warnings': 'lightline#ale#warnings',
-"       \   'linter_errors': 'lightline#ale#errors',
-"       \   'linter_ok': 'lightline#ale#ok',
-"       \ }
+let g:lightline.component_expand = {
+      \   'linter_checking': 'lightline#ale#checking',
+      \   'linter_infos': 'lightline#ale#infos',
+      \   'linter_warnings': 'lightline#ale#warnings',
+      \   'linter_errors': 'lightline#ale#errors',
+      \   'linter_ok': 'lightline#ale#ok',
+      \ }
 
-" let g:lightline.component_type = {
-"       \   'linter_checking': 'right',
-"       \   'linter_infos': 'right',
-"       \   'linter_warnings': 'warning',
-"       \   'linter_errors': 'error',
-"       \   'linter_ok': 'right',
-"       \ }
+let g:lightline.component_type = {
+      \   'linter_checking': 'right',
+      \   'linter_infos': 'right',
+      \   'linter_warnings': 'warning',
+      \   'linter_errors': 'error',
+      \   'linter_ok': 'right',
+      \ }
 
-" let g:lightline.active = { 
-"       \   'right': [
-"       \     [ 'lineinfo' ],
-" 	    \     [ 'percent' ],
-" 	    \     [ 'fileformat', 'fileencoding', 'filetype'],
-"       \     [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_infos', 'linter_ok' ],
-"       \   ] 
-"       \ }
+let g:lightline.active = { 
+      \   'right': [
+      \     [ 'lineinfo' ],
+	    \     [ 'percent' ],
+	    \     [ 'fileformat', 'fileencoding', 'filetype'],
+      \     [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_infos', 'linter_ok' ],
+      \   ] 
+      \ }
 
-" let g:lightline#ale#indicator_checking = "\uf110 "
-" let g:lightline#ale#indicator_infos = "\uf129 "
-" let g:lightline#ale#indicator_warnings = "\uf071 "
-" let g:lightline#ale#indicator_errors = "\uf05e "
-" let g:lightline#ale#indicator_ok = "\uf00c "
+let g:lightline#ale#indicator_checking = "\uf110 "
+let g:lightline#ale#indicator_infos = "\uf129 "
+let g:lightline#ale#indicator_warnings = "\uf071 "
+let g:lightline#ale#indicator_errors = "\uf05e "
+let g:lightline#ale#indicator_ok = "\uf00c "
 
 " ###########
 " # neomake #
 " ###########
 
 " Neomake signs in the gutter
-let g:neomake_error_sign = {'text': '', 'texthl': 'NeomakeErrorSign'}
-let g:neomake_warning_sign = {
-      \   'text': '',
-      \   'texthl': 'NeomakeWarningSign',
-      \ }
-let g:neomake_message_sign = {
-      \   'text': '',
-      \   'texthl': 'NeomakeWarningSign',
-      \ }
-let g:neomake_info_sign = {'text': 'ℹ', 'texthl': 'NeomakeInfoSign'}
+" let g:neomake_error_sign = {'text': '', 'texthl': 'NeomakeErrorSign'}
+" let g:neomake_warning_sign = {
+      " \   'text': '',
+      " \   'texthl': 'NeomakeWarningSign',
+      " \ }
+" let g:neomake_message_sign = {
+      " \   'text': '',
+      " \   'texthl': 'NeomakeWarningSign',
+      " \ }
+" let g:neomake_info_sign = {'text': 'ℹ', 'texthl': 'NeomakeInfoSign'}
 
 " update neomake when save file
-call neomake#configure#automake('w')
+" call neomake#configure#automake('w')
 
-command! -bang -nargs=* -complete=file Make NeomakeProject <args>
+" command! -bang -nargs=* -complete=file Make NeomakeProject <args>
 
 " Enable linters
-let g:neomake_sh_enabled_makers = ['shellcheck']
-let g:neomake_vim_enabled_makers = ['vint']
+" let g:neomake_sh_enabled_makers = ['shellcheck']
+" let g:neomake_vim_enabled_makers = ['vint']
 
 " open neomake list automatically after saving a file
 " let g:neomake_open_list = 2
