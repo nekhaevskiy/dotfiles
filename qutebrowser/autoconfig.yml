@@ -18,6 +18,7 @@ settings:
   content.notifications.enabled:
     https://meduza.io: false
   content.register_protocol_handler:
+    https://mail.google.com?extsrc=mailto&url=%25s: false
     https://outlook.office365.com?mailtouri=%25s: true
   tabs.position:
     global: left
