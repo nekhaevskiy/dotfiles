@@ -15,6 +15,12 @@ settings:
     https://www.buienradar.nl: true
   content.javascript.can_access_clipboard:
     global: true
+  content.media.audio_capture:
+    https://teams.microsoft.com: true
+  content.media.audio_video_capture:
+    https://teams.microsoft.com: true
+  content.media.video_capture:
+    https://teams.microsoft.com: true
   content.notifications.enabled:
     https://meduza.io: false
   content.register_protocol_handler:
