@@ -160,7 +160,7 @@ bindsym $mod+Shift+0 move container to workspace number $ws10
 workspace_auto_back_and_forth yes
 
 # open applications in a specific workspace
-assign [class="Zathura" instance="org.pwmt.zathura"] $ws1
+# assign [class="Zathura" instance="org.pwmt.zathura"] $ws1
 # assign [class="URxvt" instance="urxvt"] $ws2
 # assign [class="firefox" instance="Navigator"] $ws3
 
@@ -290,9 +290,7 @@ for_window [class="URxvt*"] border pixel 1
 # Terminal scratchpad with tmux and three windows: 1. Terminal | 2.Neovim temp file
 for_window [instance="urxvt_scratchpad"] move to scratchpad, border none
 bindsym $mod+Shift+t [instance="urxvt_scratchpad"] scratchpad show
-exec urxvtc -name urxvt_scratchpad \
--e tmux new-session -d -s scratchpad \; \
-attach-session -d -t scratchpad
+exec urxvtc -name urxvt_scratchpad
 
 # terminal scratchpad
 for_window [instance="htop_scratchpad"] move to scratchpad, border none
