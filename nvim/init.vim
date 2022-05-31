@@ -48,7 +48,7 @@ call plug#begin('$XDG_CONFIG_HOME/nvim/plugged')
 
   " status bar
   Plug 'itchyny/lightline.vim'
-  " Plug 'maximbaz/lightline-ale'
+  Plug 'maximbaz/lightline-ale'
 
   " surrounding
   Plug 'tpope/vim-surround'
