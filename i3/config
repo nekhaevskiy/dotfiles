@@ -325,14 +325,14 @@ bar {
 }
 
 # manage the screen
-set $mode_display Config monitor resolution - Default config (d), MacBook Pro only (m), Samsung only (s)
+set $mode_display Config monitor resolution - Laptop only config (l), Home config (h), Office config (o)
 
 mode "$mode_display" {
-    bindsym d exec --no-startup-id sh "$HOME/.config/X11/monitor-default.sh", \
+    bindsym l exec --no-startup-id sh "$HOME/.config/X11/monitor-laptop.sh", \
     mode "default"
-    bindsym m exec --no-startup-id sh "$HOME/.config/X11/monitor-macbook.sh", \
+    bindsym h exec --no-startup-id sh "$HOME/.config/X11/monitor-home.sh", \
     mode "default"
-    bindsym s exec --no-startup-id sh "$HOME/.config/X11/monitor-samsung.sh", \
+    bindsym o exec --no-startup-id sh "$HOME/.config/X11/monitor-office.sh", \
     mode "default"
 
     # back to normal: Enter or Escape
