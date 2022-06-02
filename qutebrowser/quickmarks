@@ -9,3 +9,5 @@ bb https://bitbucket.brightcomputing.com:8443/dashboard
 ne https://outlook.office365.com/mail/
 bw https://wiki.brightcomputing.com/wiki/index.php/Development_Info_Wiki
 bt https://jira.brightcomputing.com:8443/secure/Tempo.jspa#/my-work/week?type=LIST
+nc https://outlook.office365.com/calendar/view/workweek
+mg https://app.grammarly.com/
