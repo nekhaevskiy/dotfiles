@@ -2,6 +2,7 @@ alias d='dirs -v'
 for index ({1..9}) alias "$index"="cd +${index}"; unset index
 
 alias ga='git add'
+alias gb='git branch'
 alias gc='git commit'
 alias gd='git diff'
 alias gcm='git checkout master'
