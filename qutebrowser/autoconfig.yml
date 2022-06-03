@@ -9,8 +9,8 @@ settings:
   bindings.commands:
     global:
       normal:
-        J: tab-prev
-        K: tab-next
+        ',h': set tabs.show never
+        ',s': set tabs.show always
   content.geolocation:
     https://www.buienradar.nl: true
   content.javascript.can_access_clipboard:
