@@ -406,6 +406,11 @@ let g:lightline#ale#indicator_ok = "\uf00c "
 " # netrw #
 " #########
 
+" when browsing, <cr> will open the file in the previous window
+let g:netrw_browse_split = 4
+" tree style listing
+let g:netrw_liststyle = 3
+" preview window shown in a vertically split window
 let g:netrw_preview = 1
 
 " #################
