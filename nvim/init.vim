@@ -61,6 +61,9 @@ call plug#begin('$XDG_CONFIG_HOME/nvim/plugged')
   " text objects
   Plug 'wellle/targets.vim'
 
+  " tree explorer
+  Plug 'preservim/nerdtree'
+
   " tmux
   Plug 'wellle/tmux-complete.vim'
   Plug 'tmux-plugins/vim-tmux'
