@@ -405,6 +405,12 @@ let g:lightline#ale#indicator_ok = "\uf00c "
 " open neomake list automatically after saving a file
 " let g:neomake_open_list = 2
 
+" ############
+" # nerdtree #
+" ############
+nnoremap <leader>tf :NERDTreeFind<cr>
+nnoremap <leader>tt :NERDTreeToggle<cr>
+
 " #########
 " # netrw #
 " #########
