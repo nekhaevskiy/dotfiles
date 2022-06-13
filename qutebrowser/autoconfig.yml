@@ -13,6 +13,7 @@ settings:
         ',s': set tabs.show always
   content.geolocation:
     https://www.buienradar.nl: true
+    https://www.ns.nl: true
   content.javascript.can_access_clipboard:
     global: true
   content.media.audio_capture:
