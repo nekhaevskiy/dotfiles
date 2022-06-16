@@ -1,4 +1,5 @@
 [user]
 	name = Yury Nekhaevskiy
+	email = yury.nekhaevskiy@gmail.com
 [core]
 	pager = diff-so-fancy | less --tabs=4 -RFX
