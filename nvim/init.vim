@@ -114,6 +114,7 @@ nnoremap <space> <nop>
 let mapleader = "\<space>"
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 nnoremap <leader>/ :nohlsearch<cr>
+nnoremap <leader>sfi :set foldmethod=indent<cr>
 
 " #######
 " # ale #
