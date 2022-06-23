@@ -4,29 +4,33 @@
 
 let g:ale_disable_lsp = 1
 
-" Plugins
+" ###########
+" # PLUGINS #
+" ###########
+
 call plug#begin('$XDG_CONFIG_HOME/nvim/plugged')
   " color scheme
-  " Plug 'cocopon/iceberg.vim'
   Plug 'joshdick/onedark.vim'
 
   " copilot
   Plug 'github/copilot.vim'
 
   " csv
-  Plug 'chrisbra/csv.vim'
+  " Plug 'chrisbra/csv.vim'
 
   " fuzzy finder
   Plug 'junegunn/fzf.vim'
 
   " git
-  Plug 'tpope/vim-fugitive'
+  Plug 'tpope/vim-fugitive'   " required for gv.vim
   Plug 'junegunn/gv.vim'
   Plug 'airblade/vim-gitgutter'
 
+  " keybindings
+  Plug 'liuchengxu/vim-which-key'
+
   " linter
   Plug 'dense-analysis/ale'
-  " Plug 'neomake/neomake'
 
   " lsp
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -41,10 +45,10 @@ call plug#begin('$XDG_CONFIG_HOME/nvim/plugged')
   Plug 'phaazon/hop.nvim'
   
   " register history
-  Plug 'bfredl/nvim-miniyank'
+  " Plug 'bfredl/nvim-miniyank'
 
   " snippets
-  Plug 'honza/vim-snippets'
+  " Plug 'honza/vim-snippets'
 
   " status bar
   Plug 'itchyny/lightline.vim'
@@ -73,11 +77,10 @@ call plug#begin('$XDG_CONFIG_HOME/nvim/plugged')
   Plug 'simnalamburt/vim-mundo'
 
   " misc
-  Plug 'jiangmiao/auto-pairs'
+  " Plug 'jiangmiao/auto-pairs'
   Plug 'tpope/vim-commentary'
   Plug 'ap/vim-css-color'
-  Plug 'tpope/vim-repeat'
-  " Plug 'simeji/winresizer'
+  " Plug 'tpope/vim-repeat'
 call plug#end()
 
 " always use the system clipboard for all operations
@@ -110,24 +113,19 @@ set shiftwidth=2
 set inccommand=nosplit
 
 " Mapping
-nnoremap <space> <nop>
-let mapleader = "\<space>"
-cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
-nnoremap <leader>/ :nohlsearch<cr>
-nnoremap <leader>sfi :set foldmethod=indent<cr>
+let g:mapleader = "\<Space>"
+let g:maplocalleader = ','
 
 " #######
 " # ale #
 " #######
+
 let g:ale_sign_error = ''
 let g:ale_sign_warning = ''
 let g:ale_fixers = {
       \  'typescript': ['prettier'],
       \}
 let g:ale_fix_on_save = 1
-
-nnoremap <silent> [a <Plug>(ale_previous_wrap)
-nnoremap <silent> ]a <Plug>(ale_next_wrap)
 
 " ###########
 " # copilot #
@@ -177,45 +175,10 @@ else
   set signcolumn=yes
 endif
 
-" Use tab for trigger completion with characters ahead and navigate.
-" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
-" other plugin before putting this into your config.
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ CheckBackspace() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
 function! CheckBackspace() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
-
-" Use <c-space> to trigger completion.
-if has('nvim')
-  inoremap <silent><expr> <c-space> coc#refresh()
-else
-  inoremap <silent><expr> <c-@> coc#refresh()
-endif
-
-" Make <CR> auto-select the first completion item and notify coc.nvim to
-" format on enter, <cr> could be remapped by other vim plugin
-inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
-                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-
-" Use `[g` and `]g` to navigate diagnostics
-" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
-
-" GoTo code navigation.
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-
-" Use K to show documentation in preview window.
-nnoremap <silent> K :call ShowDocumentation()<CR>
 
 function! ShowDocumentation()
   if CocAction('hasProvider', 'hover')
@@ -228,13 +191,6 @@ endfunction
 " Highlight the symbol and its references when holding the cursor.
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
-" Symbol renaming.
-nmap <leader>rn <Plug>(coc-rename)
-
-" Formatting selected code.
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
-
 augroup mygroup
   autocmd!
   " Setup formatexpr specified filetype(s).
@@ -242,45 +198,6 @@ augroup mygroup
   " Update signature help on jump placeholder.
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
-
-" Applying codeAction to the selected region.
-" Example: `<leader>aap` for current paragraph
-xmap <leader>a  <Plug>(coc-codeaction-selected)
-nmap <leader>a  <Plug>(coc-codeaction-selected)
-
-" Remap keys for applying codeAction to the current buffer.
-nmap <leader>ac  <Plug>(coc-codeaction)
-" Apply AutoFix to problem on the current line.
-nmap <leader>qf  <Plug>(coc-fix-current)
-
-" Run the Code Lens action on the current line.
-nmap <leader>cl  <Plug>(coc-codelens-action)
-
-" Map function and class text objects
-" NOTE: Requires 'textDocument.documentSymbol' support from the language server.
-xmap if <Plug>(coc-funcobj-i)
-omap if <Plug>(coc-funcobj-i)
-xmap af <Plug>(coc-funcobj-a)
-omap af <Plug>(coc-funcobj-a)
-xmap ic <Plug>(coc-classobj-i)
-omap ic <Plug>(coc-classobj-i)
-xmap ac <Plug>(coc-classobj-a)
-omap ac <Plug>(coc-classobj-a)
-
-" Remap <C-f> and <C-b> for scroll float windows/popups.
-if has('nvim-0.4.0') || has('patch-8.2.0750')
-  nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
-  nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
-  inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
-  inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
-  vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
-  vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
-endif
-
-" Use CTRL-S for selections ranges.
-" Requires 'textDocument/selectionRange' support of language server.
-nmap <silent> <C-s> <Plug>(coc-range-select)
-xmap <silent> <C-s> <Plug>(coc-range-select)
 
 " Add `:Format` command to format current buffer.
 command! -nargs=0 Format :call CocActionAsync('format')
@@ -296,24 +213,6 @@ command! -nargs=0 OR   :call     CocActionAsync('runCommand', 'editor.action.org
 " provide custom statusline: lightline.vim, vim-airline.
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
-" Mappings for CoCList
-" Show all diagnostics.
-nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
-" Manage extensions.
-nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>
-" Show commands.
-nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
-" Find symbol of current document.
-nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
-" Search workspace symbols.
-nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
-" Do default action for next item.
-nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
-" Do default action for previous item.
-nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
-" Resume latest coc list.
-nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
-
 " ###########
 " # csv.vim #
 " ###########
@@ -324,12 +223,6 @@ augroup filetype_csv
   autocmd BufWritePre *.csv :%UnArrangeColumn
 augroup END
 
-" ###########
-" # fzf.vim #
-" ###########
-
-nnoremap <leader>f :Files<cr>
-
 " ############
 " # hop.nvim #
 " ############
@@ -337,8 +230,6 @@ nnoremap <leader>f :Files<cr>
 lua << EOF
   require'hop'.setup()
 EOF
-
-nnoremap <leader>j :HopWord<cr>
 
 " #################
 " # lightline.vim #
@@ -355,6 +246,11 @@ let g:lightline.component_expand = {
       \   'linter_ok': 'lightline#ale#ok',
       \ }
 
+let g:lightline.component_function = {
+      \   'cosstatus': 'coc#status',
+      \   'gitbranch': 'FugitiveHead'
+      \ }
+
 let g:lightline.component_type = {
       \   'linter_checking': 'right',
       \   'linter_infos': 'right',
@@ -364,6 +260,10 @@ let g:lightline.component_type = {
       \ }
 
 let g:lightline.active = { 
+      \   'left': [
+      \     [ 'mode', 'paste' ],
+      \     [ 'cosstatus', 'gitbranch', 'readonly', 'filename', 'modified' ]
+      \   ],
       \   'right': [
       \     [ 'lineinfo' ],
 	    \     [ 'percent' ],
@@ -378,61 +278,16 @@ let g:lightline#ale#indicator_warnings = "\uf071 "
 let g:lightline#ale#indicator_errors = "\uf05e "
 let g:lightline#ale#indicator_ok = "\uf00c "
 
-" ###########
-" # neomake #
-" ###########
-
-" Neomake signs in the gutter
-" let g:neomake_error_sign = {'text': '', 'texthl': 'NeomakeErrorSign'}
-" let g:neomake_warning_sign = {
-      " \   'text': '',
-      " \   'texthl': 'NeomakeWarningSign',
-      " \ }
-" let g:neomake_message_sign = {
-      " \   'text': '',
-      " \   'texthl': 'NeomakeWarningSign',
-      " \ }
-" let g:neomake_info_sign = {'text': 'ℹ', 'texthl': 'NeomakeInfoSign'}
-
-" update neomake when save file
-" call neomake#configure#automake('w')
-
-" command! -bang -nargs=* -complete=file Make NeomakeProject <args>
-
-" Enable linters
-" let g:neomake_sh_enabled_makers = ['shellcheck']
-" let g:neomake_vim_enabled_makers = ['vint']
-
-" open neomake list automatically after saving a file
-" let g:neomake_open_list = 2
-
-" ############
-" # nerdtree #
-" ############
-nnoremap <leader>tf :NERDTreeFind<cr>
-nnoremap <leader>tt :NERDTreeToggle<cr>
-
 " #########
 " # netrw #
 " #########
 
-" when browsing, <cr> will open the file in the previous window
+" when browsing, <CR> will open the file in the previous window
 let g:netrw_browse_split = 4
 " tree style listing
 let g:netrw_liststyle = 3
 " preview window shown in a vertically split window
 let g:netrw_preview = 1
-
-" #################
-" # nvim-miniyank #
-" #################
-
-map p <Plug>(miniyank-autoput)
-map P <Plug>(miniyank-autoPut)
-map <leader>p <Plug>(miniyank-startput)
-map <leader>P <Plug>(miniyank-startPut)
-map <leader>n <Plug>(miniyank-cycle)
-map <leader>N <Plug>(miniyank-cycleback)
 
 " ###############
 " # onedark.vim #
@@ -458,14 +313,223 @@ colorscheme onedark
 
 set signcolumn=auto
 
-" #############
-" # vim-mundo #
-" #############
-
-nnoremap <leader>m :MundoToggle<cr>
-
 " ################
 " # vim-polyglot #
 " ################
 
-set nocompatible
+" set nocompatible
+
+" #################
+" # vim-which-key #
+" #################
+
+call which_key#register('<Space>', 'g:which_key_map')
+let g:which_key_map = {}
+let g:which_key_map.n = { 'name' : '+no' }
+let g:which_key_map.s = { 'name' : '+set' }
+let g:which_key_map.t = { 'name' : '+toggle' }
+
+" ###############
+" # KEYBINDINGS #
+" ###############
+
+cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
+
+" nnoremap <space> <nop>
+nnoremap <leader>nh :nohlsearch<CR>
+
+nnoremap <leader>sf :set foldmethod=indent<CR>
+
+let g:which_key_map.c = { 'name' : '+config' }
+
+nnoremap <leader>ce :e $MYVIMRC<CR>
+let g:which_key_map.c.e = 'edit'
+
+nnoremap <leader>cr :source $MYVIMRC<CR>
+let g:which_key_map.c.r = 'reload'
+
+" #######
+" # ale #
+" #######
+
+nnoremap <silent> [a <Plug>(ale_previous_wrap)
+nnoremap <silent> ]a <Plug>(ale_next_wrap)
+
+" ############
+" # coc.nvim #
+" ############
+
+" Use tab for trigger completion with characters ahead and navigate.
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" other plugin before putting this into your config.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ CheckBackspace() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+" Use <c-space> to trigger completion.
+if has('nvim')
+  inoremap <silent><expr> <c-space> coc#refresh()
+else
+  inoremap <silent><expr> <c-@> coc#refresh()
+endif
+
+" Make <CR> auto-select the first completion item and notify coc.nvim to
+" format on enter, <CR> could be remapped by other vim plugin
+inoremap <silent><expr> <CR> pumvisible() ? coc#_select_confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+" Use `[g` and `]g` to navigate diagnostics
+" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
+nnoremap <silent> [g <Plug>(coc-diagnostic-prev)
+nnoremap <silent> ]g <Plug>(coc-diagnostic-next)
+
+let g:which_key_map.g = { 'name' : '+goto' }
+
+nnoremap <leader>gd <Plug>(coc-definition)
+let g:which_key_map.g.d = 'definition'
+
+nnoremap <leader>gi <Plug>(coc-implementation)
+let g:which_key_map.g.i = 'implementation'
+
+nnoremap <leader>gr <Plug>(coc-references)
+let g:which_key_map.g.r = 'references'
+
+nnoremap <leader>gt <Plug>(coc-type-definition)
+let g:which_key_map.g.t = 'type definition'
+
+let g:which_key_map.l = { 'name' : '+lsp' }
+
+nnoremap <leader>la <Plug>(coc-codeaction)
+let g:which_key_map.l.a = 'codeaction'
+
+nnoremap <leader>lc  :<C-u>CocList commands<CR>
+let g:which_key_map.l.c = 'list commands'
+
+nnoremap <leader>ld  :<C-u>CocList diagnostics<CR>
+let g:which_key_map.l.d = 'list diagnostics'
+
+nnoremap <leader>lf <Plug>(coc-fix-current)
+let g:which_key_map.l.f = 'fix'
+
+nnoremap <leader>lh :call ShowDocumentation()<CR>
+let g:which_key_map.l.h = 'hover documentation'
+
+nnoremap <leader>ll <Plug>(coc-codelens-action)
+let g:which_key_map.l.l = 'run code lens action'
+
+nnoremap <leader>lo  :<C-u>CocList outline<CR>
+let g:which_key_map.l.o = 'outline document symbols'
+
+nnoremap <leader>lr <Plug>(coc-rename)
+let g:which_key_map.l.r = 'rename'
+
+nnoremap <leader>lw  :<C-u>CocList -I symbols<CR>
+let g:which_key_map.l.w = 'search workspace symbols'
+
+" Formatting selected code.
+" xmap <leader>f  <Plug>(coc-format-selected)
+" nmap <leader>f  <Plug>(coc-format-selected)
+
+" Applying codeAction to the selected region.
+" Example: `<leader>aap` for current paragraph
+" xmap <leader>a  <Plug>(coc-codeaction-selected)
+" nmap <leader>a  <Plug>(coc-codeaction-selected)
+
+" Map function and class text objects
+" NOTE: Requires 'textDocument.documentSymbol' support from the language server.
+" xmap if <Plug>(coc-funcobj-i)
+" omap if <Plug>(coc-funcobj-i)
+" xmap af <Plug>(coc-funcobj-a)
+" omap af <Plug>(coc-funcobj-a)
+" xmap ic <Plug>(coc-classobj-i)
+" omap ic <Plug>(coc-classobj-i)
+" xmap ac <Plug>(coc-classobj-a)
+" omap ac <Plug>(coc-classobj-a)
+
+" Remap <C-f> and <C-b> for scroll float windows/popups.
+if has('nvim-0.4.0') || has('patch-8.2.0750')
+  nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+  nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+  inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<CR>" : "\<Right>"
+  inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<CR>" : "\<Left>"
+  vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+  vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+endif
+
+" Use CTRL-S for selections ranges.
+" Requires 'textDocument/selectionRange' support of language server.
+" nmap <silent> <C-s> <Plug>(coc-range-select)
+" xmap <silent> <C-s> <Plug>(coc-range-select)
+
+" Mappings for CoCList
+" Manage extensions.
+" nnoremap <silent><nowait> <leader>e  :<C-u>CocList extensions<CR>
+" Do default action for next item.
+" nnoremap <silent><nowait> <leader>j  :<C-u>CocNext<CR>
+" Do default action for previous item.
+" nnoremap <silent><nowait> <leader>k  :<C-u>CocPrev<CR>
+" Resume latest coc list.
+" nnoremap <silent><nowait> <leader>p  :<C-u>CocListResume<CR>
+
+" ###########
+" # fzf.vim #
+" ###########
+
+nnoremap <leader>f :Files<CR>
+let g:which_key_map.f = 'fzf'
+
+" ############
+" # hop.nvim #
+" ############
+
+nnoremap <leader>j :HopWord<CR>
+let g:which_key_map.j = 'jump'
+
+" ############
+" # nerdtree #
+" ############
+
+nnoremap <leader>e :NERDTreeFind<CR>
+let g:which_key_map.e = 'explorer'
+
+nnoremap <leader>te :NERDTreeToggle<CR>
+let g:which_key_map.t.e = 'explorer'
+
+" #################
+" # nvim-miniyank #
+" #################
+
+" map p <Plug>(miniyank-autoput)
+" map P <Plug>(miniyank-autoPut)
+" map <leader>p <Plug>(miniyank-startput)
+" map <leader>P <Plug>(miniyank-startPut)
+" map <leader>n <Plug>(miniyank-cycle)
+" map <leader>N <Plug>(miniyank-cycleback)
+
+" ##################
+" # vim-git-gutter #
+" ##################
+
+nnoremap ]h <Plug>(GitGutterNextHunk)
+nnoremap [h <Plug>(GitGutterPrevHunk)
+
+let g:which_key_map.h = { 'name' : '+hunk' }
+let g:which_key_map.h.p = 'preview'
+let g:which_key_map.h.s = 'stage'
+let g:which_key_map.h.u = 'undo'
+
+" #############
+" # vim-mundo #
+" #############
+
+nnoremap <leader>tu :MundoToggle<CR>
+let g:which_key_map.t.u = 'undo'
+
+" #################
+" # vim-which-key #
+" #################
+
+nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
+nnoremap <silent> <localleader> :WhickKey ','<CR>
