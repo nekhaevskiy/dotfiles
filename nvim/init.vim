@@ -262,7 +262,7 @@ let g:lightline.component_type = {
 let g:lightline.active = { 
       \   'left': [
       \     [ 'mode', 'paste' ],
-      \     [ 'cosstatus', 'gitbranch', 'readonly', 'filename', 'modified' ]
+      \     [ 'gitbranch', 'readonly', 'filename', 'modified' ]
       \   ],
       \   'right': [
       \     [ 'lineinfo' ],
@@ -477,8 +477,34 @@ endif
 " # fzf.vim #
 " ###########
 
-nnoremap <leader>f :Files<CR>
-let g:which_key_map.f = 'fzf'
+let g:which_key_map.f = { 'name' : '+fzf' }
+
+nnoremap <leader>fb :Buffers<CR>
+let g:which_key_map.f.b = 'buffers'
+
+nnoremap <leader>fc :Commits<CR>
+let g:which_key_map.f.c = 'commits'
+
+nnoremap <leader>fd :History:<CR>
+let g:which_key_map.f.d = 'command history'
+
+nnoremap <leader>ff :Files<CR>
+let g:which_key_map.f.f = 'files'
+
+nnoremap <leader>fg :GFiles?<CR>
+let g:which_key_map.f.g = 'changed files'
+
+nnoremap <leader>fh :History<CR>
+let g:which_key_map.f.h = 'old files'
+
+nnoremap <leader>fm :Marks<CR>
+let g:which_key_map.f.m = 'marks'
+
+nnoremap <leader>fr :Rg 
+let g:which_key_map.f.r = 'rg search'
+
+nnoremap <leader>fs :History/<CR>
+let g:which_key_map.f.s = 'search history'
 
 " ############
 " # hop.nvim #
