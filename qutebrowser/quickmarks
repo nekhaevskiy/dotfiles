@@ -21,3 +21,5 @@ ne https://outlook.office365.com/mail/
 ni https://nvidia.sharepoint.com/sites/nvinfo/
 qc qute://help/img/cheatsheet-big.png
 uc https://app.ultimatecourses.com/
+dr https://rxjs.dev/guide/overview
+dt https://v2.tailwindcss.com/docs
