@@ -1,7 +1,7 @@
-session_name: cm-api-client
-start_directory: $HOME/work/cm-api-client
+session_name: support-tickets
+start_directory: $HOME/personal/support-tickets
 windows:
-  - window_name: cm-api-client
+  - window_name: support-tickets
     layout: main-vertical
     options:
       main-pane-width: 60%

@@ -4,7 +4,7 @@ windows:
   - window_name: frontend
     layout: main-vertical
     options:
-      main-pane-width: 220
+      main-pane-width: 60%
     panes:
       - focus: true
       -
