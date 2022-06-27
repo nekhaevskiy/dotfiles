@@ -1,0 +1,10 @@
+session_name: cm-api-client
+start_directory: $HOME/work/cm-api-client
+windows:
+  - window_name: cm-api-client
+    layout: main-vertical
+    options:
+      main-pane-width: 220
+    panes:
+      - focus: true
+      -

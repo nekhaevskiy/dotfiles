@@ -1,0 +1,11 @@
+session_name: frontend
+start_directory: $HOME/work/frontend
+windows:
+  - window_name: frontend
+    layout: main-vertical
+    options:
+      main-pane-width: 220
+    panes:
+      - focus: true
+      -
+      -

@@ -1,0 +1,7 @@
+session_name: dropbox
+start_directory: $HOME/Dropbox/iA Writer
+windows:
+  - window_name: nvim
+    layout: tiled
+    panes:
+      - nvim +FZF

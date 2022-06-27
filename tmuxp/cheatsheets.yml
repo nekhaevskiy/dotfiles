@@ -1,0 +1,6 @@
+session_name: cheatsheets
+start_directory: $HOME/personal/cheatsheets
+windows:
+  - window_name: cheatsheets
+    panes:
+      -
