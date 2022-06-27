@@ -5,7 +5,10 @@ bt https://jira.brightcomputing.com:8443/secure/Tempo.jspa#/my-work/week?type=LI
 bw https://wiki.brightcomputing.com/wiki/index.php/Development_Info_Wiki
 da https://v12.angular.io/docs
 dam https://v10.material.angular.io/components/categories
+dl https://lodash.com/docs
 dn https://ngrx.io/docs
+dr https://rxjs.dev/guide/overview
+dt https://v2.tailwindcss.com/docs
 fm https://frontendmasters.com/dashboard/
 gs https://github.com/nekhaevskiy?tab=stars
 gt https://translate.google.com/
@@ -21,6 +24,3 @@ ne https://outlook.office365.com/mail/
 ni https://nvidia.sharepoint.com/sites/nvinfo/
 qc qute://help/img/cheatsheet-big.png
 uc https://app.ultimatecourses.com/
-dr https://rxjs.dev/guide/overview
-dt https://v2.tailwindcss.com/docs
-dl https://lodash.com/docs
