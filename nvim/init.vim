@@ -131,7 +131,7 @@ let g:ale_fix_on_save = 1
 " # copilot #
 " ###########
 
-let g:copilot_node_command = '$HOME/.nvm/versions/node/v14.19.3/bin/node'
+let g:copilot_node_command = '$HOME/.nvm/versions/node/v14.15.5/bin/node'
 
 " ############
 " # coc.nvim #
