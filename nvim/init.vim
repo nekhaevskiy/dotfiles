@@ -381,14 +381,14 @@ nnoremap <silent> ]g <Plug>(coc-diagnostic-next)
 
 let g:which_key_map.g = { 'name' : '+goto' }
 
-nnoremap <leader>gd <Plug>(coc-definition)
-let g:which_key_map.g.d = 'definition'
+nnoremap gd <Plug>(coc-definition)
+" let g:which_key_map.g.d = 'definition'
 
 nnoremap <leader>gi <Plug>(coc-implementation)
 let g:which_key_map.g.i = 'implementation'
 
-nnoremap <leader>gr <Plug>(coc-references)
-let g:which_key_map.g.r = 'references'
+nnoremap gr <Plug>(coc-references)
+" let g:which_key_map.g.r = 'references'
 
 nnoremap <leader>gt <Plug>(coc-type-definition)
 let g:which_key_map.g.t = 'type definition'
