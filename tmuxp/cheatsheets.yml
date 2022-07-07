@@ -3,4 +3,4 @@ start_directory: $HOME/personal/cheatsheets
 windows:
   - window_name: cheatsheets
     panes:
-      - gs
+      -

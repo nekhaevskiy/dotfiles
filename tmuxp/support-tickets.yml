@@ -2,9 +2,5 @@ session_name: support-tickets
 start_directory: $HOME/personal/support-tickets
 windows:
   - window_name: support-tickets
-    layout: main-vertical
-    options:
-      main-pane-width: 60%
     panes:
-      - focus: true
       -

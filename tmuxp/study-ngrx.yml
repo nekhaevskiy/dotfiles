@@ -2,9 +2,5 @@ session_name: study-ngrx
 start_directory: $HOME/study/ngrx/ngrx-store-effects-app
 windows:
   - window_name: study-ngrx
-    layout: main-vertical
-    options:
-      main-pane-width: 60%
     panes:
-      - focus: true
       -

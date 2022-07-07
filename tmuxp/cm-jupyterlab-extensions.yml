@@ -2,10 +2,5 @@ session_name: cm-jupyterlab-extensions
 start_directory: $HOME/work/cm-jupyterlab-extensions
 windows:
   - window_name: cm-jupyterlab-extensions
-    layout: main-vertical
-    options:
-      main-pane-width: 60%
     panes:
-      - focus: true
-      -
       -

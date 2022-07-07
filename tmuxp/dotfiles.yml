@@ -3,4 +3,4 @@ start_directory: $HOME/dotfiles
 windows:
   - window_name: dotfiles
     panes:
-      - gs
+      -
