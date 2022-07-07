@@ -470,7 +470,6 @@ endif
 " ###########
 " # fzf.vim #
 " ###########
-
 let g:which_key_map.f = { 'name' : '+fzf' }
 
 nnoremap <leader>fb :Buffers<CR>
@@ -510,12 +509,13 @@ let g:which_key_map.j = 'jump'
 " ############
 " # nerdtree #
 " ############
+let g:which_key_map.e = { 'name' : '+explorer' }
 
-nnoremap <leader>e :NERDTreeFind<CR>
-let g:which_key_map.e = 'explorer'
+nnoremap <leader>ee :NERDTreeToggle<CR>
+let g:which_key_map.e.e = 'toggle'
 
-nnoremap <leader>te :NERDTreeToggle<CR>
-let g:which_key_map.t.e = 'explorer'
+nnoremap <leader>ef :NERDTreeFind<CR>
+let g:which_key_map.e.f = 'find'
 
 " #################
 " # nvim-miniyank #
