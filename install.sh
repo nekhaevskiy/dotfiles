@@ -56,6 +56,13 @@ cp -rf "$DOTFILES/fonts" "$XDG_DATA_HOME/fonts"
 mkdir -p "$XDG_CONFIG_HOME/dunst"
 ln -sf "$DOTFILES/dunst/dunstrc" "$XDG_CONFIG_HOME/dunst/dunstrc"
 
+###########
+# espanso #
+###########
+
+mkdir -p "$XDG_CONFIG_HOME/espanso/match"
+ln -sf "$DOTFILES/espanso/match/base.yml" "$XDG_CONFIG_HOME/espanso/match"
+
 #######
 # git #
 #######
