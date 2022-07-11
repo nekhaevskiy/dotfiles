@@ -379,19 +379,10 @@ inoremap <silent><expr> <CR> pumvisible() ? coc#_select_confirm()
 nnoremap <silent> [g <Plug>(coc-diagnostic-prev)
 nnoremap <silent> ]g <Plug>(coc-diagnostic-next)
 
-let g:which_key_map.g = { 'name' : '+goto' }
-
 nnoremap gd <Plug>(coc-definition)
-" let g:which_key_map.g.d = 'definition'
-
-nnoremap <leader>gi <Plug>(coc-implementation)
-let g:which_key_map.g.i = 'implementation'
-
+nnoremap gi <Plug>(coc-implementation)
 nnoremap gr <Plug>(coc-references)
-" let g:which_key_map.g.r = 'references'
-
-nnoremap <leader>gt <Plug>(coc-type-definition)
-let g:which_key_map.g.t = 'type definition'
+nnoremap gt <Plug>(coc-type-definition)
 
 let g:which_key_map.l = { 'name' : '+lsp' }
 
