@@ -56,13 +56,21 @@ bindsym XF86KbdBrightnessDown exec xbacklight -ctrl smc::kbd_backlight -dec 10
 bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioPrev exec playerctl previous
 bindsym XF86AudioNext exec playerctl next
-bindsym XF86HomePage exec playerctl play-pause
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
 # start a terminal
 bindsym $mod+Return exec urxvtc
+
+# start apps with F1-F12
+bindsym $mod+F1 exec 1password
+bindsym $mod+F2 exec chromium
+bindsym $mod+F3 exec firefox
+bindsym $mod+F4 exec qutebrowser
+bindsym $mod+F5 exec pavucontrol
+bindsym $mod+F6 exec playerctl play-pause
+bindsym $mod+F7 exec shutter
 
 # kill focused window
 bindsym $mod+Shift+q kill
