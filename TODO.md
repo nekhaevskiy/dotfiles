@@ -1,9 +1,13 @@
 # TODO
 
+## alacritty
+
+- remove urxvt
+
 ## i3
 
 - create 6 monitor configs: macbook only, macbook + samsung, samsung only, dell laptop only, dell laptop + dell monitor, dell monitor only 
 
-## nvim
+## install.sh 
 
-- move from `coc.nvim` to the built-in LSP
+- update fonts

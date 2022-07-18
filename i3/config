@@ -61,7 +61,7 @@ bindsym XF86AudioNext exec playerctl next
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec urxvtc
+bindsym $mod+Return exec alacritty
 
 # start apps with F1-F12
 bindsym $mod+F1 exec qutebrowser
@@ -172,7 +172,6 @@ bindsym $mod+Shift+0 move container to workspace number $ws10
 
 # open applications in a specific workspace
 # assign [class="Zathura" instance="org.pwmt.zathura"] $ws1
-# assign [instance="urxvt" class="URxvt"] $ws1
 # assign [instance="Navigator" class="firefox"] $ws1
 # assign [instance="slack" class="Slack"] $ws2
 
@@ -296,18 +295,15 @@ client.unfocused        #333333 #222222     #888888     #292d2e     #222222
 client.urgent           $red1   $red1       $white2     $red1       $red1
 client.placeholder      #000000 #0c0c0c     $white2     #000000     0c0c0c
 
-# remove borders for terminal windows
-for_window [class="URxvt*"] border pixel 1
-
-# Terminal scratchpad with tmux and three windows: 1. Terminal | 2.Neovim temp file
-for_window [instance="urxvt_scratchpad"] move to scratchpad, border none
-bindsym $mod+Shift+t [instance="urxvt_scratchpad"] scratchpad show
-exec urxvtc -name urxvt_scratchpad
-
 # terminal scratchpad
-for_window [instance="htop_scratchpad"] move to scratchpad, border none
+for_window [instance="alacritty_scratchpad"] move to scratchpad
+bindsym $mod+Shift+t [instance="alacritty_scratchpad"] scratchpad show
+exec alacritty --class alacritty_scratchpad
+
+# htop scratchpad
+for_window [instance="htop_scratchpad"] move to scratchpad
 bindsym $mod+Shift+p [instance="htop_scratchpad"] scratchpad show
-exec urxvtc -name htop_scratchpad -e htop
+exec alacritty --class htop_scratchpad -e htop
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
