@@ -13,7 +13,7 @@ call plug#begin('$XDG_CONFIG_HOME/nvim/plugged')
   Plug 'joshdick/onedark.vim'
 
   " copilot
-  Plug 'github/copilot.vim'
+  " Plug 'github/copilot.vim'
 
   " csv
   " Plug 'chrisbra/csv.vim'
@@ -77,7 +77,7 @@ call plug#begin('$XDG_CONFIG_HOME/nvim/plugged')
   Plug 'simnalamburt/vim-mundo'
 
   " misc
-  " Plug 'jiangmiao/auto-pairs'
+  Plug 'jiangmiao/auto-pairs'
   Plug 'tpope/vim-commentary'
   Plug 'ap/vim-css-color'
   " Plug 'tpope/vim-repeat'
