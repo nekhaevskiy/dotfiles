@@ -34,6 +34,7 @@ Win+Shift+p = scratchpad htop
 
 ## Apps
 Win+F1 = QuteBrowser
-Win+F2 = Chromium
-Win+F3 = Firefox
-Win+F7 = Play/Pause
+Win+F2 = Firefox
+Win+F3 = Slack
+Win+F4 = Chromium
+Win+F12 = Play/Pause
