@@ -1,5 +1,4 @@
 xrdb -merge $XDG_CONFIG_HOME/X11/.Xresources
-urxvtd -o -q -f
 
 # automatically mount devices
 udiskie &
