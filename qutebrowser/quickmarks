@@ -1,6 +1,5 @@
 bb https://bitbucket.brightcomputing.com:8443/dashboard
 bci https://jenkins.brightcomputing.com/
-bd https://bright-docs.brightcomputing.com/
 bj https://jira.brightcomputing.com:8443/secure/RapidBoard.jspa?rapidView=62&projectKey=CM&selectedIssue=CM-40950&quickFilter=552
 bt https://jira.brightcomputing.com:8443/secure/Tempo.jspa#/my-work/week?type=LIST
 bw https://wiki.brightcomputing.com/wiki/index.php/Development_Info_Wiki
