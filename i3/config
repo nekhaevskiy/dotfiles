@@ -311,6 +311,8 @@ bindsym $mod+Shift+p [instance="htop_scratchpad"] scratchpad show
 # kill focused window
 bindsym $mod+Shift+q kill
 
+# resize
+bindsym $mod+r mode resize
 # restart i3 (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 
