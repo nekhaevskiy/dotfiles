@@ -18,6 +18,9 @@ set $mod Mod4
 # manage the screen
 set $mode_display Config screen - Home Laptop/Monitor/Both (m/s/h) or Office Laptop/Monitor/Both (x/d/o)
 
+# screenshot
+set $mode_screenshot Screenshot - selection (s), full screen (f), active window (a)
+
 # lock / shutdown / reboot menu
 set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Ctrl+s) shutdown
 
@@ -79,6 +82,17 @@ mode "$mode_display" {
     bindsym Escape mode "default"
 }
 
+# screenshot menu
+mode "$mode_screenshot" {
+    bindsym s exec --no-startup-id shutter --min_at_startup -s, mode "default"
+    bindsym f exec --no-startup-id shutter --min_at_startup -f, mode "default"
+    bindsym a exec --no-startup-id shutter --min_at_startup -a, mode "default"
+
+    # to close the menu: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
 # lock / shutdown / reboot menu
 mode "$mode_system" {
     bindsym l exec --no-startup-id $i3lockwall, mode "default"
@@ -105,12 +119,6 @@ mode "resize" {
         bindsym j resize grow height 10 px or 10 ppt
         bindsym k resize shrink height 10 px or 10 ppt
         bindsym l resize grow width 10 px or 10 ppt
-
-        # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
 
         # back to normal: Enter or Escape or $mod+r
         bindsym Return mode "default"
@@ -159,6 +167,9 @@ bar {
 ###############
 # Keybindings #
 ###############
+
+# screenshot
+bindsym Print mode "$mode_screenshot"
 
 # use pactl to adjust volume in PulseAudio
 set $refresh_i3status killall -SIGUSR1 i3status
