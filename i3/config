@@ -53,7 +53,7 @@ font pango:FiraCode 10
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 # font pango:DejaVu Sans Mono 8
 
-# example of defining a floating window
+# defining a floating window for arandr
 for_window [class="Arandr"] floating enable
 
 # terminal scratchpad
@@ -127,7 +127,7 @@ mode "resize" {
 }
 
 # go back to the last workspace with the same keystroke
-# workspace_auto_back_and_forth yes
+workspace_auto_back_and_forth yes
 
 # terminal scratchpad
 exec alacritty --class alacritty_scratchpad
