@@ -6,31 +6,5 @@
 
 config_version: 2
 settings:
-  bindings.commands:
-    global:
-      normal:
-        ',h': set tabs.show never
-        ',s': set tabs.show always
-  content.geolocation:
-    https://www.buienradar.nl: true
-    https://www.ns.nl: true
   content.javascript.can_access_clipboard:
     global: true
-  content.media.audio_capture:
-    https://teams.microsoft.com: true
-  content.media.audio_video_capture:
-    https://teams.microsoft.com: true
-  content.media.video_capture:
-    https://teams.microsoft.com: true
-  content.notifications.enabled:
-    https://meduza.io: false
-    https://www.reddit.com: false
-    https://www.youtube.com: false
-  content.register_protocol_handler:
-    https://mail.google.com?extsrc=mailto&url=%25s: false
-    https://outlook.office.com?mailtouri=%25s: false
-    https://outlook.office365.com?mailtouri=%25s: false
-  tabs.position:
-    global: left
-  tabs.show:
-    global: never
