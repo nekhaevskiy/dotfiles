@@ -6,5 +6,10 @@
 
 config_version: 2
 settings:
+  bindings.commands:
+    global:
+      normal:
+        H: tab-prev
+        L: tab-next
   content.javascript.can_access_clipboard:
     global: true
