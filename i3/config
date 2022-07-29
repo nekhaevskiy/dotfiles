@@ -246,9 +246,9 @@ bindsym $mod+BackSpace mode "$mode_system"
 
 # start apps with F1-F12
 bindsym $mod+F1 exec qutebrowser
-bindsym $mod+F2 exec firefox
+bindsym $mod+F2 exec chromium
+bindsym $mod+F3 exec firefox
 bindsym $mod+F7 exec slack
-bindsym $mod+F3 exec chromium
 # bindsym $mod+F12 exec playerctl play-pause
 
 # start a terminal
