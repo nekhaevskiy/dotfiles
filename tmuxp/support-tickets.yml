@@ -1,6 +1,0 @@
-session_name: support-tickets
-start_directory: $HOME/personal/support-tickets
-windows:
-  - window_name: support-tickets
-    panes:
-      -

@@ -1,6 +1,0 @@
-session_name: frontend-libraries
-start_directory: $HOME/work/frontend-libraries
-windows:
-  - window_name: frontend-libraries
-    panes:
-      -

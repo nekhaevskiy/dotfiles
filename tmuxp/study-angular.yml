@@ -1,6 +1,0 @@
-session_name: study-angular
-start_directory: $HOME/study/angular/angular-pro-src
-windows:
-  - window_name: study-angular
-    panes:
-      -

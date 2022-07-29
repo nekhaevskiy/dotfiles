@@ -1,6 +1,0 @@
-session_name: cm-jupyterlab-extensions
-start_directory: $HOME/work/cm-jupyterlab-extensions
-windows:
-  - window_name: cm-jupyterlab-extensions
-    panes:
-      -

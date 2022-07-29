@@ -1,6 +1,0 @@
-session_name: study-ngrx
-start_directory: $HOME/study/ngrx/ngrx-store-effects-app
-windows:
-  - window_name: study-ngrx
-    panes:
-      -

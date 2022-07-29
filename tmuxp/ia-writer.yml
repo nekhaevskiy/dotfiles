@@ -1,6 +1,0 @@
-session_name: ia-writer
-start_directory: $HOME/Dropbox/iA Writer
-windows:
-  - window_name: ia-writer
-    panes:
-      -

@@ -1,6 +1,0 @@
-session_name: cm-api-client
-start_directory: $HOME/work/cm-api-client
-windows:
-  - window_name: cm-api-client
-    panes:
-      -

@@ -1,6 +1,0 @@
-session_name: arch-installer
-start_directory: $HOME/personal/arch_installer
-windows:
-  - window_name: arch-installer
-    panes:
-      -

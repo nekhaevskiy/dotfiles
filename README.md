@@ -1,6 +1,42 @@
-# i3 Cheatsheet
+# Dotfiles
 
-## Apps
+## Installation
+
+You will need `git` and GNU `stow`.
+
+Go to your home directory and clone the repo:
+
+```bash
+cd ~ && git clone https://github.com/nekhaevskiy/dotfiles.git
+```
+
+Run `stow` to symlink everything or just select what you want
+
+```bash
+stow */ # Everything (the '/' ignores the README)
+```
+
+```bash
+stow zsh # Just my zsh config
+```
+
+## Packages
+
+An updated list of all the packages I use can be found in the `packages` directory.
+
+## Key bindings
+
+### Alacritty
+
+Ctrl+Shift+Enter = spawn new instance in the same directory
+Ctrl+Shift+Space = toggle Vi mode
+Ctrl+Shift+C = copy without Vi mode
+Ctrl+Shift+V = paste without Vi mode
+Ctrl+Shift+U = hint URLs
+
+### i3
+
+#### Apps
 
 Win+Enter = open new terminal
 Win+F1 = QuteBrowser
@@ -10,63 +46,71 @@ Win+F8 = Chromium
 Win+F12 = Play/Pause
 Win+d = open dmenu launcher
 
-## Configuration
+#### Configuration
 
 Win+Shift+c = reload i3's configuration
 Win+Shift+r = restart i3 (preserves layout/session)
 
-## Containers
+#### Containers
 
 Win+Shift+q = quit the focused container
 Win+[hjkl] = focus container: left (h), down (j), up (k), right (l)
 Win+a = focus parent container
 
-## Display mode
+#### Display mode
 
 Win+x = open display management
 
-## Floating
+#### Floating
 
 Win+Space = chang focus between tiling/floating container
 Win+Shift+Space = toggle tiling/floating
 
-## Layout
+#### Layout
 
 Win+e = switch to split layout (default) and toggle it between horizontal/vertical
 Win+s = switch to stacked layout
 Win+w = switch to tabbed layout
 
-## Lock
+#### Lock
 
 Win+Ctrl+Shift+l = lock the system
 
-## Moving
+#### Moving
 
 Win+Shift+[hjkl] = move container: left (h), down (j), up (k), right (l)
 
-## Resize
+#### Resize
 
 Win+r = resize menu
 
-## Scratchpad
+#### Scratchpad
 
 Win+Shift+t = scratchpad terminal
 Win+Shift+p = scratchpad htop
 
-## Shutdown
+#### Shutdown
 
 Win+Backspace = lock/logout/suspend/hibernate/reboot/shutdown menu
 
-## Split
+#### Split
 
 Win+Ctrl+h = split container horizontally (next container will be open under the current one)
 Win+Ctrl+v = split container vertically (next container will be open next to the current one)
 
-## Utility
+#### Utility
 
 Win+z = remap Caps Lock to Ctrl and Esc
 
-## Workspaces
+#### Workspaces
 
 Win+<number> = switch to workspace number <number>
 Win+Shift+<number> = move container to workspace number <number>
+
+### Zsh
+
+Alt+c = select a sub-directory
+Ctrl+t = search for a file in the current directory and sub-directories
+Ctrl+r = search for an entity in the command history
+bd<Space><Tab> = select a parent directory
+d<Enter> = select a previously visited directory
