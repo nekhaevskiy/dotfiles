@@ -11,5 +11,8 @@ settings:
       normal:
         H: tab-prev
         L: tab-next
+        h: back
+        l: forward
+        q: null
   content.javascript.can_access_clipboard:
     global: true
