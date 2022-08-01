@@ -29,3 +29,6 @@ export SAVEHIST=10000
 # fzf and rigrep
 export FZF_DEFAULT_COMMAND="rg --files --hidden --glob '!.git'"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
+# bright git extensions
+export PATH="$HOME/work/git-helpers/bin:$PATH"
