@@ -16,3 +16,5 @@ settings:
         q: null
   content.javascript.can_access_clipboard:
     global: true
+  content.register_protocol_handler:
+    https://mail.google.com?extsrc=mailto&url=%25s: true
