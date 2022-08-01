@@ -16,7 +16,7 @@ set $i3lockwall sh $XDG_CONFIG_HOME/i3/scripts/lock.sh
 set $mod Mod4
 
 # manage the screen
-set $mode_display Config screen - Home Laptop/Monitor/Both (m/s/h) or Office Laptop/Monitor/Both (x/d/o)
+set $mode_display Config screen layout - laptop (l), monitor (m), both (b)
 
 # screenshot
 set $mode_screenshot Screenshot - selection (s), full screen (f), active window (a)
@@ -70,12 +70,9 @@ for_window [window_role="task_dialog"] floating enable
 
 # manage the screen
 mode "$mode_display" {
-    bindsym m exec --no-startup-id sh "$XDG_CONFIG_HOME/X11/screen/home-laptop.sh", mode "default"
-    bindsym s exec --no-startup-id sh "$XDG_CONFIG_HOME/X11/screen/home-monitor.sh", mode "default"
-    bindsym h exec --no-startup-id sh "$XDG_CONFIG_HOME/X11/screen/home-both.sh", mode "default"
-    bindsym x exec --no-startup-id sh "$XDG_CONFIG_HOME/X11/screen/office-laptop.sh", mode "default"
-    bindsym d exec --no-startup-id sh "$XDG_CONFIG_HOME/X11/screen/office-monitor.sh", mode "default"
-    bindsym o exec --no-startup-id sh "$XDG_CONFIG_HOME/X11/screen/office-both.sh", mode "default"
+    bindsym b exec --no-startup-id sh "$HOME/.screenlayout/both.sh", mode "default"
+    bindsym l exec --no-startup-id sh "$HOME/.screenlayout/laptop.sh", mode "default"
+    bindsym m exec --no-startup-id sh "$HOME/.screenlayout/monitor.sh", mode "default"
 
     # back to normal: Enter or Escape
     bindsym Return mode "default"
