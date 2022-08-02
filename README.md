@@ -107,10 +107,79 @@ Win+z = remap Caps Lock to Ctrl and Esc
 Win+<number> = switch to workspace number <number>
 Win+Shift+<number> = move container to workspace number <number>
 
+### nvim
+
+#### Normal mode
+
+##### Window navigation
+
+Ctrl+h = navigate left
+Ctrl+j = navigate down
+Ctrl+k = navigate up
+Ctrl+l = navigate right
+
+##### Explorer
+
+Space+e = open explorer
+
+##### Resize
+
+Ctrl+Up = increase height
+Ctrl+Down = decrease height
+Ctrl+Right = increase width
+Ctrl+Left = decrease width
+
+##### Buffers
+
+Shift+l = next buffer
+Shift+h = previous buffer
+
+##### LSP
+
+gd = go to definition
+gr = go to references
+gD = go to declaration
+gi = go to implementation
+K = hover
+[d = go to previous diagnostic
+]d = go to next diagnostic
+gl = show line diagnostics
+
+##### Telescope
+
+Space+f+k = keymaps
+? = which key
+
+#### Insert mode
+
+jk = Escape
+
+##### Telescope
+
+Ctrl+/ = which key
+
+##### Completion popup
+
+Ctrl+j = select next item
+Ctrl+k = select previous item
+Ctrl+b = scroll above in the preview window
+Ctrl+f = scroll below in the preview window
+Ctrl+o = open co popup
+Ctrl+e = exit complete popup
+Enter = select
+
+#### Visual mode
+
+< = indent selection left
+
+> = indent selection right
+> Alt+j = move selection down
+> Alt+k = move selection up
+
 ### Zsh
 
-Alt+c = select a sub-directory
-Ctrl+t = search for a file in the current directory and sub-directories
-Ctrl+r = search for an entity in the command history
-bd<Space><Tab> = select a parent directory
-d<Enter> = select a previously visited directory
+- `Ctrl+t` = paste the selected files and directories onto the command-line
+- `Ctrl+r` = paste the selected command from history onto the command-line
+- `Alt+c` = cd into the selected directory
+- `nvim **<Tab>` = fuzzy find files under current directory and open them in nvim
+- `kill **<Tab>` = fuzzy completion for PIDs is provided for kill command
