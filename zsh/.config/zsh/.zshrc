@@ -74,7 +74,7 @@ prompt_context() {}
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(aliases git ng nvm vi-mode z zsh-autosuggestions zsh-syntax-highlighting)
+plugins=(autojump nvm vi-mode zsh-autosuggestions zsh-syntax-highlighting)
 
 # vi-mode
 VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
@@ -127,6 +127,9 @@ if [ $(command -v "fzf") ]; then
     source /usr/share/fzf/completion.zsh
     source /usr/share/fzf/key-bindings.zsh
 fi
+
+# custom aliases
+source "$ZDOTDIR/aliases"
 
 # custom functions
 source "$ZDOTDIR/functions"
