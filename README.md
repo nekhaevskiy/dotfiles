@@ -26,7 +26,7 @@ An updated list of all the packages I use can be found in the `packages` directo
 
 ## Key bindings
 
-### Alacritty
+### alacritty
 
 Ctrl+Shift+Enter = spawn new instance in the same directory
 Ctrl+Shift+Space = toggle Vi mode
@@ -171,7 +171,6 @@ Enter = select
 #### Visual mode
 
 < = indent selection left
-
 > = indent selection right
 > Alt+j = move selection down
 > Alt+k = move selection up
