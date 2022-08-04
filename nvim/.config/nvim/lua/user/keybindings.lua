@@ -36,13 +36,13 @@ keymap("n", "<C-Left>", "<cmd>vertical resize -2<cr>", opts)
 keymap("n", "<C-Right>", "<cmd>vertical resize +2<cr>", opts)
 
 -- navigate buffers
-keymap("n", "<S-l>", "<cmd>bnext<cr>", opts)
-keymap("n", "<S-h>", "<cmd>bprevious<cr>", opts)
+keymap("n", "<A-l>", "<cmd>bnext<cr>", opts)
+keymap("n", "<A-h>", "<cmd>bprevious<cr>", opts)
 keymap("n", "<leader>q", "<cmd>Bdelete<cr>", opts) -- moll/vim-bbye
 
 -- move text up and down
-keymap("n", "<A-j>", "<Esc><cmd>m .+1<cr>==gi", opts)
-keymap("n", "<A-k>", "<Esc><cmd>m .-2<cr>==gi", opts)
+-- keymap("n", "<A-j>", "<Esc><cmd>m .+1<cr>==gi", opts)
+-- keymap("n", "<A-k>", "<Esc><cmd>m .-2<cr>==gi", opts)
 
 -- no highlight
 keymap("n", "<leader>/", "<cmd>nohlsearch<cr>", opts)
@@ -63,8 +63,8 @@ keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
 
 -- move text up and down
-keymap("v", "<A-j>", "<cmd>m .+1<cr>==", opts)
-keymap("v", "<A-k>", "<cmd>m .-2<cr>==", opts)
+-- keymap("v", "<A-j>", "<cmd>m .+1<cr>==", opts)
+-- keymap("v", "<A-k>", "<cmd>m .-2<cr>==", opts)
 keymap("v", "p", '"_dP', opts)
 
 -----------------------
@@ -72,10 +72,10 @@ keymap("v", "p", '"_dP', opts)
 -----------------------
 
 -- move text up and down
-keymap("x", "J", "<cmd>move '>+1<cr>gv-gv", opts)
-keymap("x", "K", "<cmd>move '<-2<cr>gv-gv", opts)
-keymap("x", "<A-j>", "<cmd>move '>+1<cr>gv-gv", opts)
-keymap("x", "<A-k>", "<cmd>move '<-2<cr>gv-gv", opts)
+-- keymap("x", "J", "<cmd>move '>+1<cr>gv-gv", opts)
+-- keymap("x", "K", "<cmd>move '<-2<cr>gv-gv", opts)
+-- keymap("x", "<A-j>", "<cmd>move '>+1<cr>gv-gv", opts)
+-- keymap("x", "<A-k>", "<cmd>move '<-2<cr>gv-gv", opts)
 
 -------------------
 -- Terminal mode --
