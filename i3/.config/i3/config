@@ -10,7 +10,7 @@
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
 # lock the screen
-set $i3lockwall sh $XDG_CONFIG_HOME/i3/scripts/lock.sh
+set $i3lockwall sh $HOME/.config/i3/scripts/lock.sh
 
 # $mod is Win key
 set $mod Mod4
@@ -156,7 +156,7 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
 # start i3bar to display a workspace bar (plus the system information i3status finds out, if available)
 bar {
-    status_command i3status --config $XDG_CONFIG_HOME/i3/i3status.conf
+    status_command i3status --config $HOME/.config/i3/i3status.conf
     
     # tray_output none
     tray_output primary

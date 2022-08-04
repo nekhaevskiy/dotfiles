@@ -1,6 +1,6 @@
-alias enc='nvim $XDG_CONFIG_HOME/nvim/init.lua'
-alias eza='nvim $XDG_CONFIG_HOME/zsh/aliases'
-alias ezc='nvim $XDG_CONFIG_HOME/zsh/.zshrc'
+alias enc='nvim $HOME/.config/nvim/init.lua'
+alias eza='nvim $HOME/.config/zsh/aliases'
+alias ezc='nvim $HOME/.config/zsh/.zshrc'
 
 alias ga='git add'
 alias gb='git branch'

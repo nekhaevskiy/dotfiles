@@ -117,7 +117,7 @@ source $ZSH/oh-my-zsh.sh
 
 # automatically starting i3
 if [ "$(tty)" = "/dev/tty1" ]; then
-    pgrep i3 || exec startx "$XDG_CONFIG_HOME/X11/.xinitrc"
+    pgrep i3 || exec startx "$HOME/.config/X11/.xinitrc"
 fi
 
 # https://github.com/junegunn/fzf
@@ -132,4 +132,4 @@ fi
 source "$ZDOTDIR/aliases"
 
 # custom functions
-source "$ZDOTDIR/functions"
+# source "$ZDOTDIR/functions"

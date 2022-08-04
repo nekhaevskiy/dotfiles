@@ -1,4 +1,4 @@
-#xrdb -merge $XDG_CONFIG_HOME/X11/.Xresources
+#xrdb -merge $HOME/.config/X11/.Xresources
 
 # automatically mount devices
 udiskie &
