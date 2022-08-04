@@ -9,11 +9,8 @@ settings:
   bindings.commands:
     global:
       normal:
-        H: tab-prev
-        L: tab-next
-        h: back
-        l: forward
-        q: null
+        <Alt+h>: tab-prev
+        <Alt+l>: tab-next
   content.javascript.can_access_clipboard:
     global: true
   content.register_protocol_handler:
