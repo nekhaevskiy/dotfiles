@@ -43,7 +43,4 @@ alias ll='ls -lah'
 alias ni='npm i'
 alias ns='npm start'
 
-alias s1='ssh -L 8081:localhost:8081 root@10.3.192.208'
-alias s2='ssh -L 8081:localhost:8081 root@10.3.195.59'
-alias st='ssh -L 8081:localhost:8081 root@10.3.191.172'
-alias sy='ssh yuryn@krusty'
+alias sk='ssh yuryn@krusty'
