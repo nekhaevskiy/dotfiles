@@ -39,11 +39,6 @@ Ctrl+Shift+U = hint URLs
 #### Apps
 
 Win+Enter = open new terminal
-Win+F1 = QuteBrowser
-Win+F2 = Firefox
-Win+F7 = Slack
-Win+F8 = Chromium
-Win+F12 = Play/Pause
 Win+d = open dmenu launcher
 
 #### Configuration
@@ -171,6 +166,7 @@ Enter = select
 #### Visual mode
 
 < = indent selection left
+
 > = indent selection right
 > Alt+j = move selection down
 > Alt+k = move selection up
