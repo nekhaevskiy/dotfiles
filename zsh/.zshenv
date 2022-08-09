@@ -8,6 +8,11 @@ export DOTFILES="$HOME/dotfiles"
 export EDITOR="nvim"
 export VISUAL="nvim"
 
+# IBus (different input methods)
+export GTK_IM_MODULE="ibus"
+export QT_IM_MODULE="ibus"
+export XMODIFIERS="@im=ibus"
+
 # PATH
 export PATH="$HOME/work/git-helpers/bin:$PATH" # Bright Git Extensions
 
