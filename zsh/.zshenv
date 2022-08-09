@@ -1,5 +1,5 @@
 # browser
-export BROWSER="qutebrowser"
+export BROWSER="chromium"
 
 # dotfiles
 export DOTFILES="$HOME/dotfiles"
