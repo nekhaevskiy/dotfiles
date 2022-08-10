@@ -1,6 +1,4 @@
-alias enc='nvim $HOME/.config/nvim/init.lua'
-alias eza='nvim $HOME/.config/zsh/aliases'
-alias ezc='nvim $HOME/.config/zsh/.zshrc'
+alias aliases='nvim $HOME/.config/zsh/aliases'
 
 alias ga='git add'
 alias gb='git branch'
@@ -36,9 +34,12 @@ alias gstp='git stash pop'
 alias gwip='git add -A; git rm $(git ls-files --deleted) 2> /dev/null; git commit --no-verify --no-gpg-sign -m "[WIP]"'
 alias gunwip='git log -n 1 | grep -q -c "[WIP]" && git reset HEAD~1'
 
+alias krusty='ssh yuryn@krusty'
+
 alias ll='ls -lah'
 
 alias ni='npm i'
 alias ns='npm start'
+alias nvimrc='nvim $HOME/.config/nvim/init.lua'
 
-alias sk='ssh yuryn@krusty'
+alias zshrc='nvim $HOME/.config/zsh/.zshrc'
