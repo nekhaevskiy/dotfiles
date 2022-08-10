@@ -80,9 +80,8 @@ plugins=(autojump nvm vi-mode zsh-autosuggestions zsh-syntax-highlighting)
 VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
 
 # zsh-autosuggestions
-bindkey '^l' autosuggest-accept
-bindkey -r '^g'
-bindkey -s '^g' 'clear\n' # clearing the shell is now done with Ctrl+g
+# bindkey -r '^g'
+# bindkey -s '^g' 'clear\n' # clearing the shell is now done with Ctrl+g
 
 # https://github.com/zsh-users/zsh-completions
 # fpath+=${ZSH_CUSTOM}/plugins/zsh-completions/src
