@@ -1,6 +1,3 @@
-# browser
-export BROWSER="chromium"
-
 # dotfiles
 export DOTFILES="$HOME/dotfiles"
 
