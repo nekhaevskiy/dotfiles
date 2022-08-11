@@ -98,7 +98,13 @@ return packer.startup(function(use)
   }
 
   -- man
-  use "jez/vim-superman" -- Read Unix man pages faster than a speeding bullet!
+  -- use "jez/vim-superman" -- Read Unix man pages faster than a speeding bullet!
+  
+  -- markdown
+  use {
+    "iamcco/markdown-preview.nvim",
+    run = function() vim.fn["mkdp#util#install"]() end,
+  }
 
   -- navigation in open buffer
   use {
