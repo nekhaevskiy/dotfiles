@@ -145,6 +145,9 @@ exec --no-startup-id dex --autostart --environment i3
 # desktop notifications
 exec --no-startup-id dunst
 
+# input method framework for changing input languages
+exec --no-startup-id ibus-daemon -drxR
+
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
