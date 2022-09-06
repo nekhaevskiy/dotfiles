@@ -5,4 +5,8 @@ ibus
 python-pygit2
 ripgrep
 stow
+zoxide
 zsh
+zsh-autosuggestions
+zsh-completions
+zsh-syntax-highlighting
