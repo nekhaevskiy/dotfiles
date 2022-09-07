@@ -86,7 +86,6 @@ return packer.startup(function(use)
   -- use "nvim-telescope/telescope-media-files.nvim" -- Telescope extension to preview media files using Ueberzug
 
   -- git
-  use "tpope/vim-fugitive" -- A Git wrapper so awesome, it should be illegal
   use "lewis6991/gitsigns.nvim" -- Git integration for buffers
 
   -- lsp
@@ -99,7 +98,7 @@ return packer.startup(function(use)
 
   -- man
   -- use "jez/vim-superman" -- Read Unix man pages faster than a speeding bullet!
-  
+
   -- markdown
   use {
     "iamcco/markdown-preview.nvim",
@@ -118,12 +117,18 @@ return packer.startup(function(use)
 
   -- statusline
   use {
-    'nvim-lualine/lualine.nvim',
-    requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+    "nvim-lualine/lualine.nvim",
+    requires = { "kyazdani42/nvim-web-devicons", opt = true }
   }
 
   -- surrounding
   use "tpope/vim-surround" -- Delete/change/add parentheses/quotes/XML-tags/much more with ease
+
+  -- terminal
+  use {
+    "akinsho/toggleterm.nvim",
+    tag = "*"
+  }
 
   -- tree explorer
   use {
