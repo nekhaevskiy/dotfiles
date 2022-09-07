@@ -116,6 +116,12 @@ return packer.startup(function(use)
   use "L3MON4D3/LuaSnip" -- Snippet Engine for Neovim written in Lua
   use "rafamadriz/friendly-snippets" -- Set of preconfigured snippets for different languages
 
+  -- statusline
+  use {
+    'nvim-lualine/lualine.nvim',
+    requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+  }
+
   -- surrounding
   use "tpope/vim-surround" -- Delete/change/add parentheses/quotes/XML-tags/much more with ease
 
