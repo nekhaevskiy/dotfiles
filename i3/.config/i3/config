@@ -40,7 +40,7 @@ set $ws10 "10"
 # open applications in a specific workspace
 # assign [class="Alacritty"] $ws7
 # assign [class="Chromium"] $ws8
-assign [class="firefox"] $ws8
+# assign [class="firefox"] $ws8
 # assign [class="Slack"] $ws9
 
 # Use Mouse+$mod to drag floating windows to their wanted position
