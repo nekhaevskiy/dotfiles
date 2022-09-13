@@ -4,8 +4,9 @@ if not status_ok then
 end
 
 nvim_tree.setup {
-  disable_netrw = true,
-  hijack_unnamed_buffer_when_opening = true,
+  view = {
+    width = 50
+  }
 }
 
 local keymap = vim.api.nvim_set_keymap
