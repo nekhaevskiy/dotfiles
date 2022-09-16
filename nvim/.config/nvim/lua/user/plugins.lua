@@ -46,7 +46,7 @@ return packer.startup(function(use)
   -- autopairs
   use "windwp/nvim-autopairs" -- autopairs for neovim written by lua
 
-  -- buffers
+  -- bufferline
   use {
     "akinsho/bufferline.nvim", -- A snazzy bufferline for Neovim
     tag = "v2.*",
@@ -85,8 +85,20 @@ return packer.startup(function(use)
   }
   -- use "nvim-telescope/telescope-media-files.nvim" -- Telescope extension to preview media files using Ueberzug
 
+  -- indentation
+  use "lukas-reineke/indent-blankline.nvim" -- Indent guides for Neovim
+
+  -- jump
+  use {
+    "phaazon/hop.nvim", -- Neovim motions on speed!
+    branch = "v2", -- optional but strongly recommended
+  }
+
   -- git
   use "lewis6991/gitsigns.nvim" -- Git integration for buffers
+
+  -- keybindings
+  use "folke/which-key.nvim" -- displays a popup with possible keybindings of the command you started typing
 
   -- lsp
   use "neovim/nvim-lspconfig" -- Quickstart configs for Nvim LSP
@@ -96,19 +108,10 @@ return packer.startup(function(use)
     requires = { "nvim-lua/plenary.nvim" },
   }
 
-  -- man
-  -- use "jez/vim-superman" -- Read Unix man pages faster than a speeding bullet!
-
   -- markdown
   use {
     "iamcco/markdown-preview.nvim",
     run = function() vim.fn["mkdp#util#install"]() end,
-  }
-
-  -- navigation in open buffer
-  use {
-    "phaazon/hop.nvim", -- Neovim motions on speed!
-    branch = "v2", -- optional but strongly recommended
   }
 
   -- snippets
@@ -152,3 +155,4 @@ return packer.startup(function(use)
     require("packer").sync()
   end
 end)
+
