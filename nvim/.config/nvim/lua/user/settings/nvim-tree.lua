@@ -6,5 +6,8 @@ end
 nvim_tree.setup {
   view = {
     width = 50
+  },
+  git = {
+    ignore = false
   }
 }
