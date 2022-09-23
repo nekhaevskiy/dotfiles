@@ -56,20 +56,16 @@ font pango:FiraCode Nerd Font 10
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 # font pango:DejaVu Sans Mono 8
 
-# defining a floating window for arandr
+# enable floating for specific windows
+for_window [class="1Password"] floating enable
 for_window [class="Arandr"] floating enable
-
-# terminal scratchpad
-for_window [instance="alacritty_scratchpad"] move to scratchpad
-
-# htop scratchpad
-for_window [instance="htop_scratchpad"] move to scratchpad
-
-# floating pop up automatically
+for_window [class="Shutter"] floating enable
 for_window [window_role="pop-up"] floating enable
-
-# floating pop up automatically
 for_window [window_role="task_dialog"] floating enable
+
+# move specific windows to scratchpad
+for_window [instance="alacritty_scratchpad"] move to scratchpad
+for_window [instance="htop_scratchpad"] move to scratchpad
 
 # manage the screen
 mode "$mode_display" {
