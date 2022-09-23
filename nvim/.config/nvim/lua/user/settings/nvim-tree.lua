@@ -9,5 +9,10 @@ nvim_tree.setup {
   },
   git = {
     ignore = false
+  },
+  actions = {
+    open_file = {
+      quit_on_open = true
+    }
   }
 }
