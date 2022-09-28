@@ -39,6 +39,9 @@ keymap("n", "<C-Right>", "<cmd>vertical resize +2<cr>", opts)
 keymap("n", "<A-l>", "<cmd>bnext<cr>", opts)
 keymap("n", "<A-h>", "<cmd>bprevious<cr>", opts)
 
+-- open file/link under cursor in a default app
+keymap("n", "gx", "<cmd>call jobstart(['xdg-open', expand('<cfile>')], {'detach': v:true})<cr>", opts)
+
 -- move text up and down
 -- keymap("n", "<A-j>", "<Esc><cmd>m .+1<cr>==gi", opts)
 -- keymap("n", "<A-k>", "<Esc><cmd>m .-2<cr>==gi", opts)
