@@ -50,7 +50,7 @@ local mappings = {
     l = { "<cmd>lua vim.diagnostic.open_float()<cr>", "Line diagnostics" },
     q = { "<cmd>lua vim.lsp.diagnostic.set_loclist()<cr>", "Quickfix" },
     R = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
-    r = { "<cmd>lua require('telescope.builtin').lsp_references()<cr>", "References" },
+    r = { "<cmd>lua require('telescope.builtin').lsp_references({show_line=false})<cr>", "References" },
     s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document symbols" },
     S = { "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", "Workspace symbols" },
   },
