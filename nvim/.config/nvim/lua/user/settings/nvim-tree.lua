@@ -5,7 +5,7 @@ end
 
 nvim_tree.setup {
   view = {
-    width = "50%",
+    width = 80,
     side = "right"
   },
   git = {
