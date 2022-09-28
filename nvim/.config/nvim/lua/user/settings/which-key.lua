@@ -4,14 +4,25 @@ if not status_ok then
 end
 
 local mappings = {
-  ["/"] = { "<cmd>nohlsearch<cr>", "No Highlight" },
+  ["/"] = { "<cmd>nohlsearch<cr>", "No highlight" },
   ["b"] = { "<cmd>lua require('telescope.builtin').buffers({previewer=false})<cr>", "Buffers", },
   ["e"] = { "<cmd>NvimTreeFindFileToggle<cr>", "Explorer" },
-  ["f"] = { "<cmd>lua require('telescope.builtin').find_files({previewer=false})<cr>", "Find files", },
-  ["F"] = { "<cmd>lua require('telescope.builtin').live_grep()<cr>", "Find text" },
   ["j"] = { "<cmd>lua require 'hop'.hint_words()<cr>", "Jump to word" },
+  ["p"] = { "<cmd>PackerSync<cr>", "Packer sync" },
   ["q"] = { "<cmd>Bdelete<cr>", "Close buffer" },
   ["w"] = { "<cmd>w<cr>", "Write buffer"},
+
+  f = {
+    name = "Find",
+    c = { "<cmd>Telescope commands<cr>", "Commands" },
+    f = { "<cmd>lua require('telescope.builtin').find_files({previewer=false})<cr>", "Files", },
+    g = { "<cmd>lua require('telescope.builtin').live_grep()<cr>", "Grep" },
+    h = { "<cmd>Telescope help_tags<cr>", "Help" },
+    k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
+    m = { "<cmd>Telescope man_pages<cr>", "Man pages" },
+    r = { "<cmd>Telescope registers<cr>", "Registers" },
+    R = { "<cmd>lua require('telescope.builtin').oldfiles({previewer=false})<cr>", "Recent files" },
+  },
 
   g = {
     name = "Git",
@@ -42,22 +53,6 @@ local mappings = {
     r = { "<cmd>lua require('telescope.builtin').lsp_references()<cr>", "References" },
     s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document symbols" },
     S = { "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", "Workspace symbols" },
-  },
-
-  p = {
-    name = "Packer",
-    s = { "<cmd>PackerSync<cr>", "Sync" },
-    u = { "<cmd>PackerUpdate<cr>", "Update" },
-  },
-
-  s = {
-    name = "Search",
-    c = { "<cmd>Telescope commands<cr>", "Commands" },
-    h = { "<cmd>Telescope help_tags<cr>", "Help" },
-    k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
-    m = { "<cmd>Telescope man_pages<cr>", "Man pages" },
-    r = { "<cmd>Telescope registers<cr>", "Registers" },
-    R = { "<cmd>lua require('telescope.builtin').oldfiles({previewer=false})<cr>", "Recent files" },
   },
 }
 
