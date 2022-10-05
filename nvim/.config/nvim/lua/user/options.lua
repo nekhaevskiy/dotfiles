@@ -20,7 +20,7 @@ local options = {
   scrolloff = 1,
   shiftwidth = 2,                                   -- the number of spaces inserted for each indentation
   showmode = false,                                 -- we don't need to see things like -- INSERT -- anymore
-  showtabline = 2,                                  -- always show tabs
+  -- showtabline = 2,                                  -- always show tabs
   sidescrolloff = 8,
   signcolumn = "yes",                               -- always show the sign column, otherwise it would shift the text each time
   smartcase = true,                                 -- smart case
@@ -33,7 +33,7 @@ local options = {
   timeoutlen = 300,                                 -- time to wait for a mapped sequence to complete (in milliseconds)
   undofile = true,                                  -- enable persistent undo
   updatetime = 300,                                 -- faster completion (4000ms default)
-  wrap = false,                                     -- display lines as one long line
+  wrap = true,                                      -- display lines as one long line
   writebackup = false,                              -- if a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited
 }
 

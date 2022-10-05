@@ -47,12 +47,12 @@ return packer.startup(function(use)
   use "windwp/nvim-autopairs" -- autopairs for neovim written by lua
 
   -- bufferline
-  use {
-    "akinsho/bufferline.nvim", -- A snazzy bufferline for Neovim
-    tag = "v2.*",
-    requires = "kyazdani42/nvim-web-devicons"
-  }
-  use "moll/vim-bbye" -- Delete buffers and close files in Vim without closing your windows or messing up your layout
+  -- use {
+  --   "akinsho/bufferline.nvim", -- A snazzy bufferline for Neovim
+  --   tag = "v2.*",
+  --   requires = "kyazdani42/nvim-web-devicons"
+  -- }
+  -- use "moll/vim-bbye" -- Delete buffers and close files in Vim without closing your windows or messing up your layout
 
   -- colorscheme
   use "joshdick/onedark.vim" -- A dark Vim/Neovim color scheme inspired by Atom's One Dark syntax theme

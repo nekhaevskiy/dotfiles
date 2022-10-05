@@ -9,7 +9,7 @@ local mappings = {
   ["e"] = { "<cmd>NvimTreeFindFileToggle<cr>", "Explorer" },
   ["j"] = { "<cmd>lua require 'hop'.hint_words()<cr>", "Jump to word" },
   ["p"] = { "<cmd>PackerSync<cr>", "Packer sync" },
-  ["q"] = { "<cmd>Bdelete<cr>", "Close buffer" },
+  ["q"] = { "<cmd>q<cr>", "Close buffer" },
   ["w"] = { "<cmd>w<cr>", "Write buffer"},
 
   f = {
