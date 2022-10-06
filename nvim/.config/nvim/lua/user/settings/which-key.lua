@@ -12,10 +12,10 @@ local mappings = {
   d = {
     name = "Diagnostics",
     d = { "<cmd>lua require('telescope.builtin').diagnostics()<cr>", "All" },
-    j = { "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", "Next", },
-    k = { "<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>", "Prev" },
+    j = { "<cmd>lua vim.diagnostic.goto_next()<CR>", "Next", },
+    k = { "<cmd>lua vim.diagnostic.goto_prev()<cr>", "Prev" },
     l = { "<cmd>lua vim.diagnostic.open_float()<cr>", "Line" },
-    q = { "<cmd>lua vim.lsp.diagnostic.set_loclist()<cr>", "Quickfix" },
+    q = { "<cmd>lua vim.diagnostic.setloclist()<cr>", "Quickfix" },
   },
 
   f = {
