@@ -48,7 +48,7 @@ local mappings = {
   l = {
     name = "LSP",
     a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code action" },
-    d = { "<cmd>lua require('telescope.builtin').lsp_definitions({jump_type='never'})<cr>", "Definitions" },
+    d = { "<cmd>lua require('telescope.builtin').lsp_definitions({jump_type='never',show_line=false})<cr>", "Definitions" },
     f = { "<cmd>lua vim.lsp.buf.format()<cr>", "Format" },
     i = { "<cmd>LspInfo<cr>", "Info" },
     I = { "<cmd>LspInstallInfo<cr>", "Installer info" },
