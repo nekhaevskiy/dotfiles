@@ -84,6 +84,9 @@ return packer.startup(function(use)
   use {
     "phaazon/hop.nvim", -- Neovim motions on speed!
     branch = "v2", -- optional but strongly recommended
+    config = function()
+      require('hop').setup({})
+    end
   }
 
   -- git

@@ -3,7 +3,6 @@ local which_key = require('which-key')
 local mappings = {
   ["/"] = { "<cmd>nohlsearch<cr>", "No highlight" },
   ["e"] = { "<cmd>NvimTreeFindFileToggle<cr>", "Explorer" },
-  ["j"] = { "<cmd>lua require 'hop'.hint_words()<cr>", "Jump to word" },
   ["p"] = { "<cmd>PackerSync<cr>", "Packer sync" },
 
   d = {
@@ -40,6 +39,12 @@ local mappings = {
     R = { "<cmd>lua require 'gitsigns'.reset_buffer()<cr>", "Reset buffer" },
     s = { "<cmd>lua require 'gitsigns'.stage_hunk()<cr>", "Stage hunk" },
     u = { "<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>", "Undo stage hunk", },
+  },
+  
+  j = {
+    name = "Jump",
+    j = { "<cmd>HopWord<cr>", "Word" },
+    l = { "<cmd>HopLine<cr>", "Line" },
   },
 
   l = {
