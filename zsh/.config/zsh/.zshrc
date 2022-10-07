@@ -18,12 +18,11 @@ source "$ZDOTDIR/aliases"
 # Completion #
 ##############
 
-# zstyle :compinstall filename "$ZDOTDIR/.zshrc"
 zmodload zsh/complist
 bindkey -M menuselect 'h' vi-backward-char
-bindkey -M menuselect 'k' vi-up-line-or-history
+bindkey -M menuselect 'p' vi-up-line-or-history
 bindkey -M menuselect 'l' vi-forward-char
-bindkey -M menuselect 'j' vi-down-line-or-history
+bindkey -M menuselect 'n' vi-down-line-or-history
 autoload -Uz compinit; compinit
 _comp_options+=(globdots) # with hidden files
 zstyle ':completion:*' menu select # allow to select in a menu
@@ -46,14 +45,6 @@ setopt SHARE_HISTORY # both import and export typed commands to the history file
 
 autoload -U promptinit; promptinit
 prompt pure
-# eval spaceship_vi_mode_enable
-
-###########
-# Vi Mode #
-###########
-
-bindkey -v
-KEYTIMEOUT=1
 
 ###########
 # Plugins #
