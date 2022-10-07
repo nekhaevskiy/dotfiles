@@ -1,6 +1,6 @@
 require("user.colorscheme")
 require("user.keybindings")
 require("user.options")
-require("user.plugins")
+require("plugins")
 require("user.lsp")
 require("user.settings")

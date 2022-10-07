@@ -90,7 +90,10 @@ return packer.startup(function(use)
   use "lewis6991/gitsigns.nvim" -- Git integration for buffers
 
   -- keybindings
-  use "folke/which-key.nvim" -- displays a popup with possible keybindings of the command you started typing
+  use {
+    "folke/which-key.nvim",
+    config = [[require('config.which-key')]]
+  }
 
   -- lsp
   use "neovim/nvim-lspconfig" -- Quickstart configs for Nvim LSP
