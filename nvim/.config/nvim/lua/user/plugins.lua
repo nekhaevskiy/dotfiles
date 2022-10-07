@@ -46,14 +46,6 @@ return packer.startup(function(use)
   -- autopairs
   use "windwp/nvim-autopairs" -- autopairs for neovim written by lua
 
-  -- bufferline
-  -- use {
-  --   "akinsho/bufferline.nvim", -- A snazzy bufferline for Neovim
-  --   tag = "v2.*",
-  --   requires = "kyazdani42/nvim-web-devicons"
-  -- }
-  -- use "moll/vim-bbye" -- Delete buffers and close files in Vim without closing your windows or messing up your layout
-
   -- colorscheme
   use "joshdick/onedark.vim" -- A dark Vim/Neovim color scheme inspired by Atom's One Dark syntax theme
   -- use "lunarvim/colorschemes" -- Collection of colorschemes made to be compatible with LunarVim
@@ -121,7 +113,20 @@ return packer.startup(function(use)
   -- statusline
   use {
     "nvim-lualine/lualine.nvim",
-    requires = { "kyazdani42/nvim-web-devicons", opt = true }
+    requires = { "kyazdani42/nvim-web-devicons", opt = true },
+    config = function()
+      require('lualine').setup({
+        options = { theme = 'onedark' },
+        tabline = {
+          lualine_a = { 'buffers' },
+          lualine_b = {},
+          lualine_c = {},
+          lualine_x = {},
+          lualine_y = {},
+          lualine_z = { 'tabs' }
+        }
+      })
+    end
   }
 
   -- surrounding
