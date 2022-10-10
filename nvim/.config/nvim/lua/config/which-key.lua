@@ -8,8 +8,6 @@ local mappings = {
   ["<leader>d"] = {
     name = "Diagnostics",
     d = { "<cmd>lua require('telescope.builtin').diagnostics()<cr>", "All" },
-    j = { "<cmd>lua vim.diagnostic.goto_next()<CR>", "Next", },
-    k = { "<cmd>lua vim.diagnostic.goto_prev()<cr>", "Prev" },
     l = { "<cmd>lua vim.diagnostic.open_float()<cr>", "Line" },
     q = { "<cmd>lua vim.diagnostic.setloclist()<cr>", "Quickfix" },
   },
@@ -19,28 +17,26 @@ local mappings = {
     b = { "<cmd>lua require('telescope.builtin').buffers({previewer=false})<cr>", "Buffers", },
     c = { "<cmd>Telescope commands<cr>", "Commands" },
     f = { "<cmd>lua require('telescope.builtin').find_files({previewer=false})<cr>", "Files", },
-    g = { "<cmd>lua require('telescope.builtin').live_grep()<cr>", "Grep" },
+    g = { "<cmd>Telescope git_status<cr>", "Changed files" },
     h = { "<cmd>Telescope help_tags<cr>", "Help" },
     k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
     m = { "<cmd>Telescope man_pages<cr>", "Man pages" },
     o = { "<cmd>lua require('telescope.builtin').oldfiles({previewer=false})<cr>", "Recent files" },
     r = { "<cmd>Telescope registers<cr>", "Registers" },
+    t = { "<cmd>lua require('telescope.builtin').live_grep()<cr>", "Grep" },
   },
 
   ["<leader>g"] = {
     name = "Git",
     b = { "<cmd>lua require 'gitsigns'.blame_line()<cr>", "Blame" },
-    c = { "<cmd>Telescope git_status<cr>", "Changed files" },
     g = { "<cmd>lua _LAZYGIT_TOGGLE()<CR>", "Lazygit" },
-    j = { "<cmd>lua require 'gitsigns'.next_hunk()<cr>", "Next hunk" },
-    k = { "<cmd>lua require 'gitsigns'.prev_hunk()<cr>", "Prev hunk" },
     p = { "<cmd>lua require 'gitsigns'.preview_hunk()<cr>", "Preview hunk" },
     r = { "<cmd>lua require 'gitsigns'.reset_hunk()<cr>", "Reset hunk" },
     R = { "<cmd>lua require 'gitsigns'.reset_buffer()<cr>", "Reset buffer" },
     s = { "<cmd>lua require 'gitsigns'.stage_hunk()<cr>", "Stage hunk" },
     u = { "<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>", "Undo stage hunk", },
   },
-  
+
   ["<leader>j"] = {
     name = "Jump",
     j = { "<cmd>HopWord<cr>", "Word" },
@@ -60,11 +56,15 @@ local mappings = {
     s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document symbols" },
   },
 
-  ["[b"] = { "<cmd>bprevious<CR>", "Previous Buffer"},
-  ["[B"] = { "<cmd>bfirst<CR>", "First Buffer"},
+  ["[b"] = { "<cmd>bprevious<CR>", "Previous Buffer" },
+  ["[B"] = { "<cmd>bfirst<CR>", "First Buffer" },
+  ["[d"] = { "<cmd>lua vim.diagnostic.goto_prev()<cr>", "Previous Diagnostic" },
+  ["[g"] = { "<cmd>lua require 'gitsigns'.prev_hunk()<cr>", "Prev Git hunk" },
 
-  ["]b"] = { "<cmd>bnext<CR>", "Next Buffer"},
-  ["]B"] = { "<cmd>blast<CR>", "Last Buffer"},
+  ["]b"] = { "<cmd>bnext<CR>", "Next Buffer" },
+  ["]B"] = { "<cmd>blast<CR>", "Last Buffer" },
+  ["]d"] = { "<cmd>lua vim.diagnostic.goto_next()<CR>", "Next Diagnostic", },
+  ["]g"] = { "<cmd>lua require 'gitsigns'.next_hunk()<cr>", "Next Git hunk" },
 }
 
 local opts = { prefix = "" }
