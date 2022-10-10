@@ -1,11 +1,11 @@
 local which_key = require('which-key')
 
 local mappings = {
-  ["/"] = { "<cmd>nohlsearch<cr>", "No highlight" },
-  ["e"] = { "<cmd>NvimTreeFindFileToggle<cr>", "Explorer" },
-  ["p"] = { "<cmd>PackerSync<cr>", "Packer sync" },
+  ["<leader>/"] = { "<cmd>nohlsearch<cr>", "No highlight" },
+  ["<leader>e"] = { "<cmd>NvimTreeFindFileToggle<cr>", "Explorer" },
+  ["<leader>p"] = { "<cmd>PackerSync<cr>", "Packer sync" },
 
-  d = {
+  ["<leader>d"] = {
     name = "Diagnostics",
     d = { "<cmd>lua require('telescope.builtin').diagnostics()<cr>", "All" },
     j = { "<cmd>lua vim.diagnostic.goto_next()<CR>", "Next", },
@@ -14,7 +14,7 @@ local mappings = {
     q = { "<cmd>lua vim.diagnostic.setloclist()<cr>", "Quickfix" },
   },
 
-  f = {
+  ["<leader>f"] = {
     name = "Find",
     b = { "<cmd>lua require('telescope.builtin').buffers({previewer=false})<cr>", "Buffers", },
     c = { "<cmd>Telescope commands<cr>", "Commands" },
@@ -27,7 +27,7 @@ local mappings = {
     r = { "<cmd>Telescope registers<cr>", "Registers" },
   },
 
-  g = {
+  ["<leader>g"] = {
     name = "Git",
     b = { "<cmd>lua require 'gitsigns'.blame_line()<cr>", "Blame" },
     c = { "<cmd>Telescope git_status<cr>", "Changed files" },
@@ -41,13 +41,13 @@ local mappings = {
     u = { "<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>", "Undo stage hunk", },
   },
   
-  j = {
+  ["<leader>j"] = {
     name = "Jump",
     j = { "<cmd>HopWord<cr>", "Word" },
     l = { "<cmd>HopLine<cr>", "Line" },
   },
 
-  l = {
+  ["<leader>l"] = {
     name = "LSP",
     a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code action" },
     d = { "<cmd>lua require('telescope.builtin').lsp_definitions({jump_type='never',show_line=false})<cr>", "Definitions" },
@@ -59,9 +59,15 @@ local mappings = {
     S = { "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", "Workspace symbols" },
     s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document symbols" },
   },
+
+  ["[b"] = { "<cmd>bprevious<CR>", "Previous Buffer"},
+  ["[B"] = { "<cmd>bfirst<CR>", "First Buffer"},
+
+  ["]b"] = { "<cmd>bnext<CR>", "Next Buffer"},
+  ["]B"] = { "<cmd>blast<CR>", "Last Buffer"},
 }
 
-local opts = { prefix = "<leader>" }
+local opts = { prefix = "" }
 
 which_key.setup {}
 which_key.register(mappings, opts)
