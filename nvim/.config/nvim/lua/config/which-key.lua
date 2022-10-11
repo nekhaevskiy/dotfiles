@@ -5,6 +5,13 @@ local mappings = {
   ["<leader>e"] = { "<cmd>NvimTreeFindFileToggle<cr>", "Explorer" },
   ["<leader>p"] = { "<cmd>PackerSync<cr>", "Packer sync" },
 
+  ["<leader>a"] = {
+    name = "Argument list",
+    a = { "<cmd>argadd<cr>", "Add current buffer" },
+    d = { "<cmd>argdelete %<cr>", "Delete current buffer" },
+    l = { "<cmd>args<cr>", "Show the whole list"}
+  },
+
   ["<leader>d"] = {
     name = "Diagnostics",
     d = { "<cmd>lua require('telescope.builtin').diagnostics()<cr>", "All" },
@@ -56,11 +63,15 @@ local mappings = {
     s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document symbols" },
   },
 
+  ["[a"] = { "<cmd>prev<CR>", "Previous Argument" },
+  ["[A"] = { "<cmd>first<CR>", "First Argument" },
   ["[b"] = { "<cmd>bprevious<CR>", "Previous Buffer" },
   ["[B"] = { "<cmd>bfirst<CR>", "First Buffer" },
   ["[d"] = { "<cmd>lua vim.diagnostic.goto_prev()<cr>", "Previous Diagnostic" },
   ["[g"] = { "<cmd>lua require 'gitsigns'.prev_hunk()<cr>", "Prev Git hunk" },
 
+  ["]a"] = { "<cmd>next<CR>", "Next Argument" },
+  ["]A"] = { "<cmd>last<CR>", "Last Argument" },
   ["]b"] = { "<cmd>bnext<CR>", "Next Buffer" },
   ["]B"] = { "<cmd>blast<CR>", "Last Buffer" },
   ["]d"] = { "<cmd>lua vim.diagnostic.goto_next()<CR>", "Next Diagnostic", },
