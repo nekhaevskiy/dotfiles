@@ -134,10 +134,9 @@ return packer.startup(function(use)
 
   -- tree explorer
   use {
-    "kyazdani42/nvim-tree.lua", -- A file explorer tree for neovim written in lua
-    requires = {
-      "kyazdani42/nvim-web-devicons", -- optional, for file icons
-    },
+    "kyazdani42/nvim-tree.lua",
+    requires = { "kyazdani42/nvim-web-devicons", opt = true},
+    config = [[require('config.nvim-tree')]]
   }
 
   -- treesitter
