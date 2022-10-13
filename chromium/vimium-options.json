@@ -7,7 +7,7 @@
   "keyMappings": "# Insert your preferred key mappings here.\nunmap F\nunmap J\nunmap K\nunmap x\nmap F LinkHints.activateModeToOpenInNewForegroundTab\nmap q removeTab\nmap <a-h> previousTab\nmap <a-l> nextTab",
   "linkHintCharacters": "sadfjklewcmpgh",
   "linkHintNumbers": "0123456789",
-  "newTabUrl": "pages/blank.html",
+  "newTabUrl": "about:newtab",
   "nextPatterns": "next,more,newer,>,›,→,»,≫,>>",
   "previousPatterns": "prev,previous,back,older,<,‹,←,«,≪,<<",
   "regexFindMode": false,
