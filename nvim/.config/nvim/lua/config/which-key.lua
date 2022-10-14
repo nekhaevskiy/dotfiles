@@ -53,6 +53,10 @@ local mappings = {
   ["<leader>l"] = {
     name = "LSP",
     a = { "<cmd>lua vim.lsp.buf.code_action()<CR>", "Code action" },
+    d = {
+      "<cmd>lua require('telescope.builtin').lsp_definitions({jump_type='never',show_line=false})<CR>",
+      "Show Definitions"
+    },
     f = { "<cmd>lua vim.lsp.buf.format()<CR>", "Format" },
     h = { "<cmd>lua vim.lsp.buf.hover()<CR>", "Hover info" },
     i = { "<cmd>LspInfo<CR>", "Info" },
@@ -76,8 +80,7 @@ local mappings = {
   ["]d"] = { "<cmd>lua vim.diagnostic.goto_next()<CR>", "Next Diagnostic", },
   ["]g"] = { "<cmd>lua require 'gitsigns'.next_hunk()<CR>", "Next Git hunk" },
 
-  ["gd"] = { "<cmd>lua require('telescope.builtin').lsp_definitions({jump_type='never',show_line=false})<CR>",
-    "Go to Definition" },
+  ["gd"] = { "<cmd>lua require('telescope.builtin').lsp_definitions({show_line=false})<CR>", "Go to Definition" },
   ["gD"] = { "<cmd>lua vim.lsp.buf.declaration()<CR>", "Go to Declaration" },
   ["gi"] = { "<cmd>lua vim.lsp.buf.implementation()<CR>", "Go to Implementation" },
   ["gr"] = { "<cmd>lua require('telescope.builtin').lsp_references({show_line=false})<CR>", "Go to References" },
