@@ -4,7 +4,7 @@
   "filterLinkHints": false,
   "waitForEnterForFilteredHints": true,
   "hideHud": false,
-  "keyMappings": "# Insert your preferred key mappings here.\nunmap F\nunmap J\nunmap K\nunmap x\nmap F LinkHints.activateModeToOpenInNewForegroundTab\nmap q removeTab\nmap <a-h> previousTab\nmap <a-l> nextTab",
+  "keyMappings": "# Insert your preferred key mappings here.\nunmap b\nunmap B\nunmap F\nunmap J\nunmap K\nunmap o\nunmap O\nunmap x\nmap F LinkHints.activateModeToOpenInNewForegroundTab\nmap q removeTab\nmap <a-h> previousTab\nmap <a-l> nextTab",
   "linkHintCharacters": "sadfjklewcmpgh",
   "linkHintNumbers": "0123456789",
   "newTabUrl": "about:newtab",
