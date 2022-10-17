@@ -82,7 +82,7 @@ local mappings = {
 
   ["gd"] = { "<cmd>lua require('telescope.builtin').lsp_definitions({show_line=false})<CR>", "Go to Definition" },
   ["gD"] = { "<cmd>lua vim.lsp.buf.declaration()<CR>", "Go to Declaration" },
-  ["gi"] = { "<cmd>lua vim.lsp.buf.implementation()<CR>", "Go to Implementation" },
+  -- ["gi"] = { "<cmd>lua vim.lsp.buf.implementation()<CR>", "Go to Implementation" },
   ["gr"] = { "<cmd>lua require('telescope.builtin').lsp_references({show_line=false})<CR>", "Go to References" },
 }
 
