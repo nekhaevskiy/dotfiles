@@ -1,7 +1,7 @@
 local which_key = require('which-key')
 
 local mappings = {
-  ["<leader>/"] = { "<cmd>nohlsearch<CR>", "No highlight" },
+  ["<C-l>"] = { "<cmd>nohlsearch<CR>", "No highlight" },
   ["<leader>e"] = { "<cmd>NvimTreeFindFileToggle<CR>", "Explorer" },
   ["<leader>p"] = { "<cmd>PackerSync<CR>", "Packer sync" },
 
