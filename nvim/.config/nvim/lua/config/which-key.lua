@@ -70,6 +70,8 @@ local mappings = {
   ["[A"] = { "<cmd>first<CR>", "First Argument" },
   ["[b"] = { "<cmd>bprevious<CR>", "Previous Buffer" },
   ["[B"] = { "<cmd>bfirst<CR>", "First Buffer" },
+  ["[c"] = { "<cmd>cprevious<CR>", "Previous Quickfix Item" },
+  ["[C"] = { "<cmd>cfirst<CR>", "First Quickfix Item" },
   ["[d"] = { "<cmd>lua vim.diagnostic.goto_prev()<CR>", "Previous Diagnostic" },
   ["[g"] = { "<cmd>lua require 'gitsigns'.prev_hunk()<CR>", "Prev Git hunk" },
 
@@ -77,6 +79,8 @@ local mappings = {
   ["]A"] = { "<cmd>last<CR>", "Last Argument" },
   ["]b"] = { "<cmd>bnext<CR>", "Next Buffer" },
   ["]B"] = { "<cmd>blast<CR>", "Last Buffer" },
+  ["]c"] = { "<cmd>cnext<CR>", "Next Quickfix Item" },
+  ["]C"] = { "<cmd>clast<CR>", "Last Quickfix Item" },
   ["]d"] = { "<cmd>lua vim.diagnostic.goto_next()<CR>", "Next Diagnostic", },
   ["]g"] = { "<cmd>lua require 'gitsigns'.next_hunk()<CR>", "Next Git hunk" },
 
