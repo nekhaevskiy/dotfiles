@@ -9,7 +9,7 @@ require("user.keybindings")
 local options = {
   backup = false,                                   -- creates a backup file
   clipboard = "unnamedplus",                        -- allows neovim to access the system clipboard
-  cmdheight = 2,                                    -- more space in the neovim command line for displaying messages
+  -- cmdheight = 2,                                    -- more space in the neovim command line for displaying messages
   completeopt = { "menu", "menuone", "noselect" },  -- mostly just for cmp
   conceallevel = 0,                                 -- so that `` is visible in markdown files
   cursorline = true,                                -- highlight the current line
