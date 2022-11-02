@@ -1,8 +1,8 @@
 local which_key = require('which-key')
 
 local mappings = {
-  ["<C-l>"] = { "<cmd>nohlsearch<CR>", "No highlight" },
   ["<leader>e"] = { "<cmd>NvimTreeFindFileToggle<CR>", "Explorer" },
+  ["<leader>h"] = { "<cmd>nohlsearch<CR>", "No highlight" },
   ["<leader>p"] = { "<cmd>PackerSync<CR>", "Packer sync" },
 
   ["<leader>a"] = {
@@ -46,8 +46,10 @@ local mappings = {
 
   ["<leader>j"] = {
     name = "Jump",
+    f = { "<cmd>HopChar1<CR>", "One char" },
     j = { "<cmd>HopWord<CR>", "Word" },
     l = { "<cmd>HopLine<CR>", "Line" },
+    s = { "<cmd>HopChar2<CR>", "Two chars" },
   },
 
   ["<leader>l"] = {
@@ -58,7 +60,6 @@ local mappings = {
       "Show Definitions"
     },
     f = { "<cmd>lua vim.lsp.buf.format()<CR>", "Format" },
-    h = { "<cmd>lua vim.lsp.buf.hover()<CR>", "Hover info" },
     i = { "<cmd>LspInfo<CR>", "Info" },
     I = { "<cmd>LspInstallInfo<CR>", "Installer info" },
     r = { "<cmd>lua vim.lsp.buf.rename()<CR>", "Rename" },
@@ -88,6 +89,7 @@ local mappings = {
   ["gD"] = { "<cmd>lua vim.lsp.buf.declaration()<CR>", "Go to Declaration" },
   -- ["gi"] = { "<cmd>lua vim.lsp.buf.implementation()<CR>", "Go to Implementation" },
   ["gr"] = { "<cmd>lua require('telescope.builtin').lsp_references({show_line=false})<CR>", "Go to References" },
+  ["K"] = { "<cmd>lua vim.lsp.buf.hover()<CR>", "LSP hover info" },
 }
 
 local opts = { prefix = "" }
