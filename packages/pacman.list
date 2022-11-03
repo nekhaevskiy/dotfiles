@@ -6,6 +6,7 @@ lazygit
 python-pygit2
 ripgrep
 stow
+stylua
 ttf-joypixels
 vlc
 zoxide

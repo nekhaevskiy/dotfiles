@@ -1,54 +1,31 @@
--- disable netrw at the very start of your init.lua (strongly advised for nvim-tree)
-vim.g.loaded = 1
-vim.g.loaded_netrwPlugin = 1
-
-require("user.colorscheme")
-require("user.keybindings")
-
 -- :help options
-local options = {
-  backup = false,                                   -- creates a backup file
-  clipboard = "unnamedplus",                        -- allows neovim to access the system clipboard
-  completeopt = { "menu", "menuone", "noselect" },  -- mostly just for cmp
-  conceallevel = 0,                                 -- so that `` is visible in markdown files
-  cursorline = true,                                -- highlight the current line
-  expandtab = true,                                 -- convert tabs to spaces
-  fileencoding = "utf-8",                           -- the encoding written to a file
-  guifont = "monospace:h17",                        -- the font used in graphical neovim applications
-  ignorecase = true,                                -- ignore case in search patterns
-  mouse = "a",                                      -- allow the mouse to be used in neovim
-  number = true,                                    -- set numbered lines
-  numberwidth = 4,                                  -- set number column width to 4
-  pumheight = 10,                                   -- pop up menu height
-  relativenumber = true,                            -- set relative numbered lines
-  scrolloff = 1,
-  shiftwidth = 2,                                   -- the number of spaces inserted for each indentation
-  showmode = false,                                 -- we don't need to see things like -- INSERT -- anymore
-  sidescrolloff = 8,
-  signcolumn = "yes",                               -- always show the sign column, otherwise it would shift the text each time
-  smartcase = true,                                 -- override ignorecase when uppercase character is used in search
-  smartindent = true,                               -- make indenting smarter again
-  splitbelow = true,                                -- force all horizontal splits to go below current window
-  splitright = true,                                -- force all vertical splits to go to the right of current window
-  swapfile = false,                                 -- creates a swapfile
-  tabstop = 2,                                      -- insert 2 spaces for a tab
-  termguicolors = true,                             -- set term gui colors (most terminals support this)
-  timeoutlen = 300,                                 -- time to wait for a mapped sequence to complete (in milliseconds)
-  undofile = true,                                  -- enable persistent undo
-  updatetime = 300,                                 -- faster completion (4000ms default)
-  writebackup = false,                              -- if a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited
-}
+vim.opt.fileencoding = "utf-8"
 
-vim.opt.shortmess:append "c"
+vim.opt.number = true
+vim.opt.relativenumber = true
 
-for k, v in pairs(options) do
-  vim.opt[k] = v
-end
+vim.opt.title = true
+vim.opt.expandtab = true
+vim.opt.scrolloff = 10
+vim.opt.inccommand = "split"
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+vim.opt.breakindent = true
+vim.opt.shiftwidth = 2
+vim.opt.tabstop = 2
+vim.opt.smartindent = true
+vim.opt.path:append({ "**" }) -- Finding files - Search down into subfolders
+vim.opt.wildignore:append({ "*/node_modules/*" })
+vim.opt.splitbelow = true
+vim.opt.splitright = true
 
-vim.cmd "set whichwrap+=<,>,[,],h,l"
-vim.cmd [[set iskeyword+=-]]
-vim.cmd [[set formatoptions-=cro]] -- TODO: this doesn't seem to work
+-- highlight configuration
+vim.opt.cursorline = true
+vim.opt.termguicolors = true
+vim.opt.pumblend = 5
 
+-- clipboard
+vim.opt.clipboard = "unnamedplus"
+
+require("keymap")
 require("plugins")
--- require("user.lsp")
-require("user.settings")

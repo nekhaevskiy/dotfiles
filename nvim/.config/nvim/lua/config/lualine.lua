@@ -1,20 +1,32 @@
-local lualine = require('lualine')
+local status, lualine = pcall(require, "lualine")
+if not status then
+  return
+end
 
 lualine.setup({
   options = {
-    theme = 'onedark',
-    -- globalstatus = true
+    theme = "onedark",
   },
-  -- sections = {
-  --   lualine_b = { 'filename' },
-  --   lualine_c = { 'branch', 'diff', 'diagnostics' },
-  -- },
-  -- tabline = {
-  --   lualine_a = { 'buffers' },
-  --   lualine_b = {},
-  --   lualine_c = {},
-  --   lualine_x = {},
-  --   lualine_y = {},
-  --   lualine_z = { 'tabs' }
-  -- }
+  sections = {
+    lualine_b = { "branch" },
+    lualine_x = {
+      {
+        "diagnostics",
+        sources = { "nvim_diagnostic" },
+        symbols = { error = " ", warn = " ", info = " ", hint = " " },
+      },
+      "encoding",
+      "filetype",
+    },
+  },
+  inactive_sections = {
+    lualine_c = {
+      {
+        "filename",
+        file_status = true,
+        path = 1, -- 1 = relative path
+      },
+    },
+  },
+  extensions = { "fugitive" },
 })
