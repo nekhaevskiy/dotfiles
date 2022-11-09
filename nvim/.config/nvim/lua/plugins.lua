@@ -117,5 +117,5 @@ return packer.startup(function(use)
     end,
   })
   use("tpope/vim-surround")
-  use("justinmk/vim-sneak")
+  -- use("justinmk/vim-sneak")
 end)
