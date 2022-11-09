@@ -20,9 +20,10 @@ vim.opt.smartcase = true
 vim.opt.splitbelow = true
 vim.opt.splitright = true
 
+vim.opt.title = true
+vim.opt.scrolloff = 1
+
 -- vim.opt.fileencoding = "utf-8"
--- vim.opt.title = true
--- vim.opt.scrolloff = 10
 -- vim.opt.inccommand = "split"
 -- vim.opt.breakindent = true
 -- vim.opt.path:append({ "**" }) -- Finding files - Search down into subfolders

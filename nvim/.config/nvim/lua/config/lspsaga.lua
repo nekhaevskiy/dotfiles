@@ -15,7 +15,7 @@ keymap("n", "gd", "<cmd>Lspsaga lsp_finder<CR>", opts)
 keymap("n", "K", "<cmd>Lspsaga hover_doc<CR>", opts)
 
 -- Outline
-keymap("n", "<leader>o", "<cmd>LSoutlineToggle<CR>", opts)
+-- keymap("n", "<leader>o", "<cmd>LSoutlineToggle<CR>", opts)
 
 -- Peek Definition
 -- you can edit the definition file in this flaotwindow

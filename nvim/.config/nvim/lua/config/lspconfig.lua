@@ -13,11 +13,7 @@ local on_attach = function(client, bufnr)
   end
 end
 
-lspconfig.tsserver.setup({
-  on_attach = on_attach,
-  filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
-  cmd = { "typescript-language-server", "--stdio" },
-})
+lspconfig.angularls.setup({})
 
 lspconfig.sumneko_lua.setup({
   on_attach = on_attach,
@@ -34,3 +30,7 @@ lspconfig.sumneko_lua.setup({
     },
   },
 })
+
+lspconfig.tailwindcss.setup({})
+
+lspconfig.tsserver.setup({})
