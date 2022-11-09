@@ -1,6 +1,5 @@
 local telescope = require("telescope")
 local actions = require("telescope.actions")
-local builtin = require("telescope.builtin")
 
 telescope.setup({
 	defaults = {
@@ -41,6 +40,7 @@ local keymap = vim.keymap.set
 local function telescope_buffer_dir()
 	return vim.fn.expand("%:p:h")
 end
+local builtin = require("telescope.builtin")
 
 keymap("n", "<leader>e", function()
 	telescope.extensions.file_browser.file_browser({
@@ -54,27 +54,15 @@ keymap("n", "<leader>e", function()
 		layout_config = { height = 40 },
 	})
 end)
-keymap("n", "<leader>f<leader>", function()
-	builtin.resume()
-end)
-keymap("n", "<leader>fb", function()
-	builtin.buffers()
-end)
-keymap("n", "<leader>fd", function()
-	builtin.diagnostics()
-end)
+keymap("n", "<leader>fb", builtin.buffers)
+keymap("n", "<leader>fc", builtin.git_status)
+keymap("n", "<leader>fd", builtin.diagnostics)
 keymap("n", "<leader>ff", function()
 	builtin.find_files({
 		no_ignore = false,
 		hidden = true,
 	})
 end)
-keymap("n", "<leader>fg", function()
-	builtin.git_status()
-end)
-keymap("n", "<leader>fh", function()
-	builtin.help_tags()
-end)
-keymap("n", "<leader>fl", function()
-	builtin.live_grep()
-end)
+keymap("n", "<leader>fg", builtin.live_grep)
+keymap("n", "<leader>fh", builtin.help_tags)
+keymap("n", "<leader>fr", builtin.resume)
