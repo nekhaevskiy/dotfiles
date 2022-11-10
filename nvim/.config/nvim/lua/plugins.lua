@@ -1,121 +1,80 @@
-local status_ok, packer = pcall(require, "packer")
-if not status_ok then
-  print("Packer is not installed")
-  return
-end
+-- only required if you have packer configured as `opt`
+vim.cmd([[packadd packer.nvim]])
 
-return packer.startup(function(use)
-  use("wbthomason/packer.nvim")
+-- automatically run :PackerSync whenever plugins.lua is updated
+vim.cmd([[
+  augroup packer_user_config
+    autocmd!
+    autocmd BufWritePost plugins.lua source <afile> | PackerSync
+  augroup end
+]])
 
-  use({
-    "navarasu/onedark.nvim",
-    config = function()
-      require("onedark").load()
-    end,
-  })
+return require("packer").startup(function(use)
+	use("wbthomason/packer.nvim")
 
-  use({
-    "nvim-tree/nvim-web-devicons",
-    config = [[require('config.web-devicons')]],
-  })
+	use("navarasu/onedark.nvim")
 
-  use({
-    "nvim-lualine/lualine.nvim",
-    config = [[require('config.lualine')]],
-  })
+	use("nvim-tree/nvim-web-devicons")
 
-  use({
-    "onsails/lspkind-nvim",
-    config = [[require('config.lspkind')]],
-  })
-  use({
-    "glepnir/lspsaga.nvim",
-    branch = "main",
-    config = [[require('config.lspsaga')]],
-  })
-  use("L3MON4D3/LuaSnip")
-  use("hrsh7th/cmp-buffer")
-  use("hrsh7th/cmp-nvim-lsp")
-  use({
-    "hrsh7th/nvim-cmp",
-    config = [[require('config.cmp')]],
-  })
+	use("williamboman/mason.nvim")
+	use("williamboman/mason-lspconfig.nvim")
+	use("neovim/nvim-lspconfig")
 
-  use({
-    "williamboman/mason.nvim",
-    config = function()
-      require("mason").setup()
-    end,
-  })
-  use({
-    "williamboman/mason-lspconfig.nvim",
-    config = function()
-      require("mason-lspconfig").setup()
-    end,
-  })
-  use({
-    "neovim/nvim-lspconfig",
-    config = [[require('config.lspconfig')]],
-  })
+	use({
+		"jose-elias-alvarez/null-ls.nvim",
+		requires = { "nvim-lua/plenary.nvim" },
+	})
 
-  use({
-    "nvim-treesitter/nvim-treesitter",
-    run = ":TSUpdate",
-  })
+	use("onsails/lspkind-nvim")
+	use("L3MON4D3/LuaSnip")
+	use("hrsh7th/cmp-buffer")
+	use("hrsh7th/cmp-nvim-lsp")
+	use("hrsh7th/nvim-cmp")
 
-  use({
-    "jose-elias-alvarez/null-ls.nvim",
-    requires = { "nvim-lua/plenary.nvim" },
-    config = [[require('config.null-ls')]],
-  })
+	use({
+		"nvim-telescope/telescope.nvim",
+		tag = "0.1.0",
+		requires = { "nvim-lua/plenary.nvim" },
+	})
+	use("nvim-telescope/telescope-file-browser.nvim")
 
-  use({
-    "windwp/nvim-autopairs",
-    config = [[require('config.autopairs')]],
-  })
-  use({
-    "windwp/nvim-ts-autotag",
-    config = function()
-      require("nvim-ts-autotag").setup()
-    end,
-  })
+	use({
+		"nvim-treesitter/nvim-treesitter",
+		run = ":TSUpdate",
+	})
 
-  use({
-    "nvim-telescope/telescope.nvim",
-    tag = "0.1.0",
-    requires = { "nvim-lua/plenary.nvim" },
-    config = [[require('config.telescope')]],
-  })
-  use("nvim-telescope/telescope-file-browser.nvim")
+	use("nvim-lualine/lualine.nvim")
 
-  use({
-    "akinsho/bufferline.nvim",
-    tag = "v3.*",
-    config = [[require('config.bufferline')]],
-  })
+	use("windwp/nvim-autopairs")
+	use("windwp/nvim-ts-autotag")
 
-  use({
-    "norcalli/nvim-colorizer.lua",
-    config = function()
-      require("colorizer").setup()
-    end,
-  })
+	use("numToStr/Comment.nvim")
 
-  use({
-    "lewis6991/gitsigns.nvim",
-    config = [[require('config.gitsigns')]],
-  })
-  use({
-    "dinhhuy258/git.nvim",
-    config = [[require('config.git')]],
-  })
+	use("lewis6991/gitsigns.nvim")
 
-  use({
-    "numToStr/Comment.nvim",
-    config = function()
-      require("Comment").setup()
-    end,
-  })
-  use("tpope/vim-surround")
-  -- use("justinmk/vim-sneak")
+	use("tpope/vim-surround")
+
+	-- use({
+	-- 	"akinsho/bufferline.nvim",
+	-- 	tag = "v3.*",
+	-- 	config = [[require('config.bufferline')]],
+	-- })
+
+	-- use({
+	-- 	"norcalli/nvim-colorizer.lua",
+	-- 	config = function()
+	-- 		require("colorizer").setup()
+	-- 	end,
+	-- })
+
+	-- use({
+	-- 	"dinhhuy258/git.nvim",
+	-- 	config = [[require('config.git')]],
+	-- })
+
+	-- use({
+	-- 	"glepnir/lspsaga.nvim",
+	-- 	branch = "main",
+	-- 	config = [[require('config.lspsaga')]],
+	-- })
 end)

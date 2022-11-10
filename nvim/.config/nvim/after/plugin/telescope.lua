@@ -28,6 +28,7 @@ telescope.setup({
 					["/"] = function()
 						vim.cmd("startinsert")
 					end,
+					["o"] = actions.select_default,
 				},
 			},
 		},
@@ -37,9 +38,11 @@ telescope.setup({
 telescope.load_extension("file_browser")
 
 local keymap = vim.keymap.set
+
 local function telescope_buffer_dir()
 	return vim.fn.expand("%:p:h")
 end
+
 local builtin = require("telescope.builtin")
 
 keymap("n", "<leader>e", function()
