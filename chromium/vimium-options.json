@@ -1,10 +1,15 @@
 {
   "settingsVersion": "1.67.2",
-  "exclusionRules": [],
+  "exclusionRules": [
+    {
+      "pattern": "https?://10.3.202.202:6080/*",
+      "passKeys": "r"
+    }
+  ],
   "filterLinkHints": false,
   "waitForEnterForFilteredHints": true,
   "hideHud": false,
-  "keyMappings": "# Insert your preferred key mappings here.\nunmap F\nunmap J\nunmap K\nunmap X\nmap [t previousTab\nmap ]t nextTab\nmap F LinkHints.activateModeToOpenInNewForegroundTab\nmap X closeOtherTabs",
+  "keyMappings": "# Insert your preferred key mappings here.\nunmap F\nunmap gt\nunmap gT\nunmap g0\nunmap g$\nunmap J\nunmap K\nunmap X\nmap [t previousTab\nmap [T firstTab\nmap ]t nextTab\nmap ]T lastTab\nmap F LinkHints.activateModeToOpenInNewForegroundTab\nmap X closeOtherTabs",
   "linkHintCharacters": "sadfjklewcmpgh",
   "linkHintNumbers": "0123456789",
   "newTabUrl": "about:newtab",
