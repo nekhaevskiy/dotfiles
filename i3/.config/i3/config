@@ -13,7 +13,7 @@
 set $i3lockwall sh $HOME/.config/i3/scripts/lock.sh
 
 # $mod is Win key
-set $mod Mod4
+set $mod Mod1
 
 # manage the screen
 set $mode_display Config screen layout - laptop (l), monitor (m), both (b)
