@@ -43,6 +43,11 @@ return require("packer").startup(function(use)
 		run = ":TSUpdate",
 	})
 
+	use({
+		"ThePrimeagen/harpoon",
+		requires = { "nvim-lua/plenary.nvim" },
+	})
+
 	use("nvim-lualine/lualine.nvim")
 
 	use("windwp/nvim-autopairs")
