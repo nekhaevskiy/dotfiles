@@ -21,7 +21,7 @@ vim.opt.splitbelow = true
 vim.opt.splitright = true
 
 vim.opt.title = true
-vim.opt.scrolloff = 1
+vim.opt.scrolloff = 10
 
 -- vim.opt.fileencoding = "utf-8"
 -- vim.opt.inccommand = "split"

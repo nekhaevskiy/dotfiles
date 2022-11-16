@@ -63,7 +63,7 @@ keymap("n", "<leader>fd", builtin.diagnostics)
 keymap("n", "<leader>ff", function()
 	builtin.find_files({
 		no_ignore = false,
-		hidden = true,
+		hidden = false,
 	})
 end)
 keymap("n", "<leader>fg", builtin.live_grep)
