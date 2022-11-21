@@ -44,6 +44,7 @@ local function telescope_buffer_dir()
 end
 
 local builtin = require("telescope.builtin")
+local themes = require("telescope.themes")
 
 keymap("n", "<leader>e", function()
 	telescope.extensions.file_browser.file_browser({
@@ -57,7 +58,9 @@ keymap("n", "<leader>e", function()
 		layout_config = { height = 40 },
 	})
 end)
-keymap("n", "<leader>fb", builtin.buffers)
+keymap("n", "<leader>fb", function()
+	builtin.buffers(themes.get_dropdown({ initial_mode = "normal" }))
+end)
 keymap("n", "<leader>fc", builtin.git_status)
 keymap("n", "<leader>fd", builtin.diagnostics)
 keymap("n", "<leader>ff", function()
