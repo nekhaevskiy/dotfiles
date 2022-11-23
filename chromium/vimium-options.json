@@ -9,7 +9,7 @@
   "filterLinkHints": false,
   "waitForEnterForFilteredHints": true,
   "hideHud": false,
-  "keyMappings": "# Insert your preferred key mappings here.\nunmap F\nunmap gt\nunmap gT\nunmap g0\nunmap g$\nunmap J\nunmap K\nunmap X\nmap <m-[> previousTab\nmap <m-]> nextTab\nmap F LinkHints.activateModeToOpenInNewForegroundTab\nmap X closeOtherTabs",
+  "keyMappings": "# Insert your preferred key mappings here.\nunmap F\nunmap gt\nunmap gT\nunmap g0\nunmap g$\nunmap J\nunmap K\nunmap X\nmap <m-h> previousTab\nmap <m-l> nextTab\nmap F LinkHints.activateModeToOpenInNewForegroundTab\nmap X closeOtherTabs",
   "linkHintCharacters": "sadfjklewcmpgh",
   "linkHintNumbers": "0123456789",
   "newTabUrl": "about:newtab",
