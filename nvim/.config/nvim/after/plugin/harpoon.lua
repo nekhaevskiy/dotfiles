@@ -1,3 +1,11 @@
+local harpoon = require("harpoon")
+
+harpoon.setup({
+	menu = {
+		width = vim.api.nvim_win_get_width(0) - 10,
+	},
+})
+
 local keymap = vim.keymap.set
 local mark = require("harpoon.mark")
 local ui = require("harpoon.ui")
