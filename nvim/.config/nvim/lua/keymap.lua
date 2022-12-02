@@ -9,6 +9,11 @@ vim.g.maplocalleader = " "
 -- open file/link under cursor in a default app
 keymap("n", "gx", "<cmd>call jobstart(['xdg-open', expand('<cfile>')], {'detach': v:true})<CR>", opts)
 
+-- tabs
+keymap("n", "<leader>tt", "<cmd>tabnew<CR>", opts)
+keymap("n", "<leader>tc", "<cmd>tabclose<CR>", opts)
+keymap("n", "<leader>to", "<cmd>tabonly<CR>", opts)
+
 -- vim-unimpaired inspired mapping
 local opts_next_prev = { noremap = true }
 keymap("n", "[a", "<cmd>previous<CR>", opts_next_prev)
