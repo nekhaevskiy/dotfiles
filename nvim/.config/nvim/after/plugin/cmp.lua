@@ -29,6 +29,6 @@ cmp.setup({
 		}),
 	},
 	completion = {
-		keyword_length = 5,
+		keyword_length = 3,
 	},
 })
