@@ -4,6 +4,6 @@
 udiskie &
 
 # remap Caps Lock to CTRL and ESC key
-setxkbmap -option 'caps:ctrl_modifier';xcape -e 'Caps_Lock=Escape'&
+setxkbmap -option 'caps:ctrl_modifier'&
 
 exec i3

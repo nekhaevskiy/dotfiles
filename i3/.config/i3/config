@@ -163,7 +163,7 @@ bindsym $mod+a focus parent
 #bindsym $mod+d focus child
 
 # remap Caps Lock key when external keyboard is plugged
-bindsym $mod+z exec "setxkbmap -option 'caps:ctrl_modifier';xcape -e 'Caps_Lock=Escape' &"
+bindsym $mod+z exec "setxkbmap -option 'caps:ctrl_modifier'&"
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
