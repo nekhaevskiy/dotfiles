@@ -35,7 +35,7 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id nm-applet
 
 # system tray GUI for blueberry (Bluetooth configuration tool)
-# exec --no-startup-id blueberry-tray
+exec --no-startup-id blueberry-tray
 
 # desktop notifications
 exec --no-startup-id dunst
