@@ -254,18 +254,7 @@ mode "$mode_display" {
 bindsym $mod+x mode "$mode_display"
 
 # screenshot
-set $mode_screenshot Screenshot - selection (s), full screen (f), active window (a)
-# screenshot menu
-mode "$mode_screenshot" {
-    bindsym s exec --no-startup-id shutter --min_at_startup -s, mode "default"
-    bindsym f exec --no-startup-id shutter --min_at_startup -f, mode "default"
-    bindsym a exec --no-startup-id shutter --min_at_startup -a, mode "default"
-
-    # to close the menu: Enter or Escape
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
-bindsym Print mode "$mode_screenshot"
+bindsym Print exec --no-startup-id flameshot gui
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
