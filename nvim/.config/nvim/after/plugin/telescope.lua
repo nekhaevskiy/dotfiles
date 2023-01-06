@@ -64,14 +64,11 @@ end)
 keymap("n", "<leader>fc", builtin.git_status)
 keymap("n", "<leader>fd", builtin.diagnostics)
 keymap("n", "<leader>ff", function()
-	builtin.find_files({
-		no_ignore = false,
-		hidden = false,
-	})
+	builtin.find_files({ no_ignore = false, hidden = false })
 end)
 keymap("n", "<leader>fg", builtin.live_grep)
 keymap("n", "<leader>fh", builtin.help_tags)
 keymap("n", "<leader>fr", builtin.resume)
 keymap("n", "gr", function()
-	builtin.lsp_references(themes.get_dropdown({ show_line = false }))
+	builtin.lsp_references({ show_line = false })
 end)
