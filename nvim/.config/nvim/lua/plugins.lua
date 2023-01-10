@@ -65,28 +65,4 @@ return require("packer").startup(function(use)
 	})
 
 	use("tpope/vim-surround")
-
-	-- use({
-	-- 	"akinsho/bufferline.nvim",
-	-- 	tag = "v3.*",
-	-- 	config = [[require('config.bufferline')]],
-	-- })
-
-	-- use({
-	-- 	"norcalli/nvim-colorizer.lua",
-	-- 	config = function()
-	-- 		require("colorizer").setup()
-	-- 	end,
-	-- })
-
-	-- use({
-	-- 	"dinhhuy258/git.nvim",
-	-- 	config = [[require('config.git')]],
-	-- })
-
-	-- use({
-	-- 	"glepnir/lspsaga.nvim",
-	-- 	branch = "main",
-	-- 	config = [[require('config.lspsaga')]],
-	-- })
 end)
