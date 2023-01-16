@@ -12,7 +12,6 @@
 - ripgrep
 - stow
 - stylua
-- tldr
 - ttf-joypixels
 - vlc
 - webkit2gtk (required for SSO in Cisco AnyConnect)
