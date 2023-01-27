@@ -36,3 +36,6 @@ vim.opt.pumblend = 5
 
 -- clipboard
 vim.opt.clipboard = "unnamedplus"
+
+-- folding
+vim.opt.foldmethod = "indent"
