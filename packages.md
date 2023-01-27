@@ -21,6 +21,7 @@
 - man-pages
 - meld <!-- needed for Bright View -->
 - neovim
+- openssh
 - ripgrep
 - rxvt-unicode
 - scrot

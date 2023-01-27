@@ -2,23 +2,19 @@
 
 ## Installation
 
-You will need `git` and GNU `stow`.
-
 Go to your home directory and clone the repo:
 
 ```bash
 cd ~ && git clone https://github.com/nekhaevskiy/dotfiles.git
 ```
 
-Run `stow` to symlink everything or just select what you want
+Symlink everything via:
 
 ```bash
-stow */ # Everything (the '/' ignores the README)
+~/dotfiles/install.sh
 ```
 
-```bash
-stow zsh # Just my zsh config
-```
+or just select what you want manually.
 
 ## Packages
 
