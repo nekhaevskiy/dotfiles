@@ -46,6 +46,17 @@ setopt SHARE_HISTORY # both import and export typed commands to the history file
 autoload -U promptinit; promptinit
 prompt pure
 
+# Clear screen
+bindkey -r '^l'
+bindkey -r '^g'
+bindkey -s '^g' clear-screen
+
+########
+# tmux #
+########
+
+export DISABLE_AUTO_TITLE='true'
+
 ###########
 # Plugins #
 ###########
