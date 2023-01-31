@@ -2,6 +2,7 @@
 
 ## pacman
 
+- alacritty
 - arandr
 - chromium
 - code
@@ -23,7 +24,6 @@
 - neovim
 - openssh
 - ripgrep
-- rxvt-unicode
 - scrot
 - sshpass <!-- needed for Head Node Installer -->
 - tldr
@@ -35,7 +35,7 @@
 - unzip
 - virtualbox <!-- needed for Head Node Installer -->
 - vlc
-- webkit2gtk (required for SSO in Cisco AnyConnect) <!-- needed for SSO in Cisco AnyConnect -->
+- webkit2gtk <!-- needed for SSO in Cisco AnyConnect -->
 - wget
 - xclip
 - xsel

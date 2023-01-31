@@ -2,7 +2,7 @@
 xrdb -merge $HOME/.config/X11/.Xresources
 
 # run URxvt's daemon
-urxvtd -o -q -f
+# urxvtd -o -q -f
 
 # automatically mount devices
 udiskie &

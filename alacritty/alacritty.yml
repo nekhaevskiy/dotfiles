@@ -64,7 +64,7 @@ env:
 # Values for `decorations` (macOS only):
 #     - transparent: Title bar, transparent background and title bar buttons
 #     - buttonless: Title bar, transparent background and no title bar buttons
-#decorations: full
+decorations: none
 
 # Background opacity
 #
@@ -105,7 +105,7 @@ env:
 #scrolling:
 # Maximum number of lines in the scrollback buffer.
 # Specifying '0' will disable scrolling.
-#history: 10000
+history: 10000
 
 # Scrolling distance multiplier.
 #multiplier: 3
