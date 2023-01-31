@@ -1,0 +1,6 @@
+# copy selection to system clipboard
+set selection-clipboard clipboard
+
+# fix default browser 
+# https://git.pwmt.org/pwmt/zathura/-/issues/151
+set sandbox none
