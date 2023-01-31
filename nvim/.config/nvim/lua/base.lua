@@ -8,7 +8,7 @@ vim.opt.swapfile = false
 
 -- save undo-trees in files
 vim.opt.undofile = true
-vim.opt.undodir = "$HOME/.config/nvim/undo//"
+vim.opt.undodir = os.getenv("XDG_CONFIG_HOME") .. "/nvim/undo"
 
 -- number of undo saved
 vim.opt.undolevels = 10000
