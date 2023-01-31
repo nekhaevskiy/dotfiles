@@ -13,15 +13,11 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:FiraCode Nerd Font 10
+font pango:monospace 10
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 #font pango:DejaVu Sans Mono 8
-
-# Start XDG autostart .desktop files using dex. See also
-# https://wiki.archlinux.org/index.php/XDG_Autostart
-exec --no-startup-id dex --autostart --environment i3
 
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
@@ -34,25 +30,6 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
 
-# system tray GUI for blueberry (Bluetooth configuration tool)
-exec --no-startup-id blueberry-tray
-
-# desktop notifications
-exec --no-startup-id dunst
-
-# input method framework for changing input languages
-exec --no-startup-id ibus-daemon -drxR
-
-# terminal scratchpad
-exec alacritty --class alacritty_scratchpad
-bindsym $mod+Shift+t [instance="alacritty_scratchpad"] scratchpad show
-for_window [instance="alacritty_scratchpad"] move to scratchpad
-
-# htop scratchpad
-exec alacritty --class htop_scratchpad -e htop
-bindsym $mod+Shift+p [instance="htop_scratchpad"] scratchpad show
-for_window [instance="htop_scratchpad"] move to scratchpad
-
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
@@ -60,43 +37,11 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
-# keyboard player controls
-bindsym XF86AudioNext exec playerctl next
-bindsym XF86AudioPlay exec playerctl play-pause
-bindsym XF86AudioPrev exec playerctl previous
-
-# keyboard backlight controls
-bindsym XF86KbdBrightnessDown exec xbacklight -ctrl smc::kbd_backlight -dec 10
-bindsym XF86KbdBrightnessUp exec xbacklight -ctrl smc::kbd_backlight -inc 10
-
-# screen brightness controls
-bindsym XF86MonBrightnessDown exec xbacklight -dec 10
-bindsym XF86MonBrightnessUp exec xbacklight -inc 10
-
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-set $microsoft_teams cifhbcnohmdccbgoicgdjpfamggdegmo
-set $youtube_music cinhimbnkkaeohfgghhklpknlkffjgod
-
-# enable floating for specific windows
-for_window [window_role="pop-up"] floating enable
-for_window [window_role="task_dialog"] floating enable
-for_window [instance="1password"] floating enable
-for_window [instance="arandr"] floating enable
-
-# disable focus windows with mouse
-focus_follows_mouse no
-
-# move tiling windows via drag & drop by left-clicking into the title bar,
-# or left-clicking anywhere into the window while holding the floating modifier.
-tiling_drag modifier titlebar
-
-# go back to the last workspace with the same keystroke
-workspace_auto_back_and_forth yes
-
 # start a terminal
-bindsym $mod+Return exec alacritty
+bindsym $mod+Return exec urxvtc
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -154,13 +99,10 @@ bindsym $mod+Shift+space floating toggle
 bindsym $mod+space focus mode_toggle
 
 # focus the parent container
-bindsym $mod+a focus parent
+bindsym $mod+p focus parent
 
 # focus the child container
 #bindsym $mod+d focus child
-
-# remap Caps Lock key when external keyboard is plugged
-bindsym $mod+z exec "setxkbmap -option 'caps:ctrl_modifier'&"
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
@@ -199,27 +141,25 @@ bindsym $mod+Shift+8 move container to workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
 
+# go back to the last workspace with the same keystroke
+workspace_auto_back_and_forth yes
+
 # open applications in a specific workspace
-# assign [instance="Alacritty"] $ws1
-assign [class="firefox"] $ws2
-assign [instance="slack"] $ws3
+# assign [class="firefox" instance="Navigator"] $ws2
 
-# start apps with F1-F12
-bindsym $mod+F2 exec firefox
-bindsym $mod+F3 exec slack
-
-# reload the configuration file
-bindsym $mod+Shift+c reload
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart
-# exit i3 (logs you out of your X session)
-# bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+# disable focus windows with mouse
+focus_follows_mouse no
 
 # lock the screen
 set $i3lockwall sh $XDG_CONFIG_HOME/i3/scripts/lock.sh
 bindsym $mod+Ctrl+Shift+l exec --no-startup-id $i3lockwall
 
-# lock / shutdown / reboot menu
+# reload the configuration file
+bindsym $mod+Shift+c reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+
+# shutdown / restart / suspend...
 set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Ctrl+s) shutdown
 mode "$mode_system" {
     bindsym l exec --no-startup-id $i3lockwall, mode "default"
@@ -228,12 +168,125 @@ mode "$mode_system" {
     bindsym h exec --no-startup-id $i3lockwall && systemctl hibernate, mode "default"
     bindsym r exec --no-startup-id systemctl reboot, mode "default"
     bindsym Ctrl+s exec --no-startup-id systemctl poweroff -i, mode "default"
-
-    # to close the menu: Enter or Escape
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
 bindsym $mod+BackSpace mode "$mode_system"
+
+# floating pop-up automatically
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="task_dialog"] floating enable
+
+# enable floating for specific windows
+for_window [instance="1password"] floating enable
+for_window [instance="arandr"] floating enable
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+    # These bindings trigger as soon as you enter the resize mode
+    # Pressing left will shrink the window’s width.
+    # Pressing right will grow the window’s width.
+    # Pressing up will shrink the window’s height.
+    # Pressing down will grow the window’s height.
+    bindsym h resize shrink width 10 px or 10 ppt
+    bindsym j resize grow height 10 px or 10 ppt
+    bindsym k resize shrink height 10 px or 10 ppt
+    bindsym l resize grow width 10 px or 10 ppt
+    # same bindings, but for the arrow keys
+    bindsym Left resize shrink width 10 px or 10 ppt
+    bindsym Down resize grow height 10 px or 10 ppt
+    bindsym Up resize shrink height 10 px or 10 ppt
+    bindsym Right resize grow width 10 px or 10 ppt
+    # back to normal: Enter or Escape or $mod+r
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym $mod+r mode "default"
+}
+bindsym $mod+r mode "resize"
+
+# special
+set_from_resource $foreground foreground #C6C6C6
+set_from_resource $background background #1C1C1C
+set_from_resource $cursorColor cursorColor #C6C6C6
+
+# black
+set_from_resource $black1 color0 #303030
+set_from_resource $black2 color8 #444444
+set $trueblack #000000
+
+# red
+set_from_resource $red1 color1 #d75f5f
+set_from_resource $red2 color9 #d75f5f
+
+# green
+set_from_resource $green1 color2 #87AF87
+set_from_resource $green2 color10 #87AF87
+
+# yellow
+set_from_resource $yellow1 color3 #ffd75f
+set_from_resource $yellow2 color11 #ffd75f
+
+# blue
+set_from_resource $blue1 color4 #87afd7
+set_from_resource $blue2 color12 #87afd7
+
+# magenta
+set_from_resource $cyan1 color5 #afafd7
+set_from_resource $cyan2 color13 #afafd7
+
+# cyan
+set_from_resource $cyan1 color6 #afd7ff
+set_from_resource $cyan2 color14 #afd7ff
+
+# white
+set_from_resource $white1 color7 #4E4E4E
+set_from_resource $white2 color15 #ffffff
+
+##########
+# DESIGN #
+##########
+
+# hide borders
+hide_edge_borders both
+
+# class border backgr. text indicator child_border 
+client.focused 		#333333 $black2 $white2 #285577
+client.focused_inactive #333333 $background $foreground #484e50
+client.unfocused 	#333333 #222222 #888888 #292d2e #222222
+client.urgent 		$red1 $red1 $white2 $red1 $red1
+client.placeholder 	#000000 #0c0c0c $white2 #000000 0c0c0c
+
+for_window [class="URxvt*"] border pixel 1
+
+# terminal scratchpad
+for_window [instance="urxvt_scratchpad"] move to scratchpad, border none
+bindsym $mod+Shift+t [instance="urxvt_scratchpad"] scratchpad show
+exec urxvtc -name urxvt_scratchpad
+
+# htop scratchpad
+for_window [instance="htop_scratchpad"] move to scratchpad, border none
+bindsym $mod+Shift+p [instance="htop_scratchpad"] scratchpad show
+exec urxvtc -name htop_scratchpad -e htop
+
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
+bar {
+    status_command i3status --config $XDG_CONFIG_HOME/i3/i3status.conf
+    # Disable all tray icons
+    # tray_output none
+    tray_output primary
+    colors {
+        background $black2
+        statusline $white2
+        separator $white2
+                            # border background text
+        focused_workspace 	$background $background $red1
+        active_workspace 	$black2 $black1 $white2
+        inactive_workspace 	$black1 $black2 $foreground
+        urgent_workspace 	$red1 $red1 $white2
+        binding_mode 		$background $red2 $white2
+    }
+}
 
 # manage the screen
 set $mode_display Config screen layout - (h) home, (l) laptop, (o) office
@@ -241,46 +294,48 @@ mode "$mode_display" {
     bindsym h exec --no-startup-id sh "$HOME/.screenlayout/home.sh", mode "default"
     bindsym l exec --no-startup-id sh "$HOME/.screenlayout/laptop.sh", mode "default"
     bindsym o exec --no-startup-id sh "$HOME/.screenlayout/office.sh", mode "default"
-
     # back to normal: Enter or Escape
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
-bindsym $mod+x mode "$mode_display"
+bindsym $mod+a mode "$mode_display"
+
+
+
+
+
+# Start XDG autostart .desktop files using dex. See also
+# https://wiki.archlinux.org/index.php/XDG_Autostart
+exec --no-startup-id dex --autostart --environment i3
+
+# system tray GUI for blueberry (Bluetooth configuration tool)
+# exec --no-startup-id blueberry-tray
+
+# desktop notifications
+exec --no-startup-id dunst
+
+# input method framework for changing input languages
+exec --no-startup-id ibus-daemon -drxR
+
+# keyboard player controls
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioPrev exec playerctl previous
+
+# keyboard backlight controls
+bindsym XF86KbdBrightnessDown exec xbacklight -ctrl smc::kbd_backlight -dec 10
+bindsym XF86KbdBrightnessUp exec xbacklight -ctrl smc::kbd_backlight -inc 10
+
+# screen brightness controls
+bindsym XF86MonBrightnessDown exec xbacklight -dec 10
+bindsym XF86MonBrightnessUp exec xbacklight -inc 10
+
+# move tiling windows via drag & drop by left-clicking into the title bar,
+# or left-clicking anywhere into the window while holding the floating modifier.
+tiling_drag modifier titlebar
+
+# remap Caps Lock key when external keyboard is plugged
+bindsym $mod+z exec "setxkbmap -option 'caps:ctrl_modifier'&"
 
 # screenshot
 bindsym Print exec --no-startup-id flameshot gui
-
-# resize window (you can also use the mouse for that)
-mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
-
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
-        bindsym h resize shrink width 10 px or 10 ppt
-        bindsym j resize grow height 10 px or 10 ppt
-        bindsym k resize shrink height 10 px or 10 ppt
-        bindsym l resize grow width 10 px or 10 ppt
-
-        # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
-
-        # back to normal: Enter or Escape or $mod+r
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-        bindsym $mod+r mode "default"
-}
-
-bindsym $mod+r mode "resize"
-
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
-bar {
-        status_command i3status --config $XDG_CONFIG_HOME/i3/i3status.conf
-        tray_output primary
-}
