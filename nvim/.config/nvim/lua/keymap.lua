@@ -15,6 +15,9 @@ keymap("n", "<C-j>", "<C-w>j", opts)
 keymap("n", "<C-k>", "<C-w>k", opts)
 keymap("n", "<C-l>", "<C-w>l", opts)
 
+-- split window horizontally
+keymap("n", "<C-w>h", "<C-w>s", opts)
+
 -- vim-unimpaired inspired mapping
 local opts_next_prev = { noremap = true }
 keymap("n", "[a", "<cmd>previous<CR>", opts_next_prev)
