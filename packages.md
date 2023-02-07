@@ -52,6 +52,7 @@
 - brave-bin
 - fpm <!-- needed for Head Node Installer -->
 - google-chrome
+- inkdrop
 - nvm
 - prettierd
 - slack-desktop
