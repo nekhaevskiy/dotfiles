@@ -18,6 +18,7 @@
 - imagemagick
 - j4-dmenu-desktop
 - lazygit
+- libnotify <!-- needed for desktop notifications -->
 - man-pages
 - meld <!-- needed for Bright View -->
 - neovim
