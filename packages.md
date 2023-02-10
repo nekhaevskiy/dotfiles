@@ -4,7 +4,6 @@
 
 - alacritty
 - arandr
-- chromium
 - code
 - diff-so-fancy
 - dunst
@@ -49,7 +48,6 @@
 ## yay
 
 - 1password
-- brave-bin
 - fpm <!-- needed for Head Node Installer -->
 - google-chrome
 - inkdrop
