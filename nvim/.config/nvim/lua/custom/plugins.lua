@@ -14,7 +14,7 @@ local packer_bootstrap = ensure_packer()
 -- only required if you have packer configured as `opt`
 vim.cmd([[packadd packer.nvim]])
 
--- automatically run :PackerSync whenever plugins.lua is updated
+-- automatically run :PackerSync whenever this file is updated
 vim.cmd([[
   augroup packer_user_config
     autocmd!
