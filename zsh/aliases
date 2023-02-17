@@ -1,7 +1,10 @@
 alias ll='ls -lah'
 alias ga='git add'
 alias gc='git commit'
+alias gco='git checkout'
+alias gcom='git checkout master'
 alias gp='git push'
+alias gst='git status'
 
 alias d='dirs -v'
 for index ({1..9}) alias "$index"="cd +${index}"; unset index
