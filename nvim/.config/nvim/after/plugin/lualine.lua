@@ -16,7 +16,7 @@ lualine.setup({
 				symbols = { error = " ", warn = " ", info = " ", hint = " " },
 			},
 		},
-		lualine_c = { "filename" },
+		lualine_c = { { "filename", path = 1 } },
 		lualine_x = { "encoding", "fileformat", "filetype" },
 		lualine_y = { "progress" },
 		lualine_z = { "location" },
