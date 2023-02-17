@@ -2,10 +2,10 @@
 export XDG_CONFIG_HOME="$HOME/.config"
 
 # For user specific data
-export XDG_DATA_HOME="$XDG_CONFIG_HOME/local/share"
+export XDG_DATA_HOME="$HOME/.local/share"
 
 # For user cached files
-export XDG_CACHE_HOME="$XDG_CONFIG_HOME/cache"
+export XDG_CACHE_HOME="$HOME/.cache"
 
 # editor
 export EDITOR="nvim"
