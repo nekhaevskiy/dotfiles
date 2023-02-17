@@ -1,4 +1,3 @@
--- automatically install and set up packer.nvim
 local ensure_packer = function()
 	local fn = vim.fn
 	local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
@@ -9,29 +8,31 @@ local ensure_packer = function()
 	end
 	return false
 end
+
 local packer_bootstrap = ensure_packer()
 
--- only required if you have packer configured as `opt`
-vim.cmd([[packadd packer.nvim]])
-
--- automatically run :PackerSync whenever this file is updated
-vim.cmd([[
-  augroup packer_user_config
-    autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerSync
-  augroup end
-]])
-
-return require("packer").startup(function(use)
+require("packer").startup(function(use)
+	-- Package manager
 	use("wbthomason/packer.nvim")
+
+	use({ -- LSP Configuration & Plugins
+		"neovim/nvim-lspconfig",
+		requires = {
+			-- Automatically install LSPs to stdpath for neovim
+			"williamboman/mason.nvim",
+			"williamboman/mason-lspconfig.nvim",
+
+			-- Useful status updates for LSP
+			"j-hui/fidget.nvim",
+
+			-- Additional lua configuration, makes nvim stuff amazing
+			"folke/neodev.nvim",
+		},
+	})
 
 	use("navarasu/onedark.nvim")
 
 	use("nvim-tree/nvim-web-devicons")
-
-	use("williamboman/mason.nvim")
-	use("williamboman/mason-lspconfig.nvim")
-	use("neovim/nvim-lspconfig")
 
 	use({
 		"jose-elias-alvarez/null-ls.nvim",
@@ -80,6 +81,8 @@ return require("packer").startup(function(use)
 	use("tpope/vim-surround")
 	use("christoomey/vim-tmux-navigator")
 
+	-- Automatically set up your configuration after cloning packer.nvim
+	-- Put this at the end after all plugins
 	if packer_bootstrap then
 		require("packer").sync()
 	end
