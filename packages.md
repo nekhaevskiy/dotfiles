@@ -31,12 +31,13 @@
 - tmuxp
 - ttf-dejavu
 - ttf-joypixels
-- udiskie
+- udiskie <!-- automatically mount devices -->
 - unzip
 - virtualbox <!-- needed for Head Node Installer -->
 - vlc
 - webkit2gtk <!-- needed for SSO in Cisco AnyConnect -->
 - wget
+- xcape <!-- needed for remapping Caps Lock -->
 - xclip
 - xsel
 - zathura-pdf-mupdf
