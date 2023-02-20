@@ -7,6 +7,7 @@
 - code
 - diff-so-fancy
 - dunst
+- fd <!-- needed for neovim -->
 - firefox
 - flameshot
 - fzf
