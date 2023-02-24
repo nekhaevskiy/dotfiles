@@ -12,28 +12,19 @@
 
 ## Keymaps
 
-- `<C-Space>` - tmux prefix key
-- `<prefix> :` - open command prompt
-- `<prefix> r` - reload tmux config
-- `<prefix> v` - split window vertically
-- `<prefix> h` - split window horizontally
-- `<prefix> <A-<arrow_key>>` - resize a pane
+- `<C-Space>` - tmux <prefix> key
+- `<C-Space> ?` - list key bindings
+- `<C-Space> r` - reload tmux config
+- `<C-Space> |` - split window into panes vertically
+- `<C-Space> -` - split window into panes horizontally
 - `<C-h>` - focus pane to the left
 - `<C-j>` - focus pane below
 - `<C-k>` - focus pane above
 - `<C-l>` - focus pane to the right
-- `<prefix> n` - rename the current window
-- `<prefix> w` - create a new window
-- `<prefix> <number>` - go to the window <number>
-- `<A-j>` - go to the previous window
-- `<A-k>` - go to the next window
-- `<prefix> $` - rename the current session
-- `<prefix> &` - kill the current window
-- `<prefix> ?` - list all key bindings
+- `<A-h>` - go to the previous window
+- `<A-l>` - go to the next window
 
 ### Copy mode
 
-- `<prefix> [` - go to the copy mode
+- `<C-Space> [` - go to the copy mode
 - `q` - return back to the default mode (from the copy mode)
-- `v` - begin the selection of the text
-- `y` - yank the selected text to the system clipboard
