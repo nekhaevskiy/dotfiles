@@ -42,7 +42,7 @@ zle -N edit-command-line
 bindkey -M vicmd v edit-command-line
 
 # jump to a parent directory
-source "$HOME/dotfiles/zsh/external/bd.zsh"
+source "$DOTFILES/zsh/external/bd.zsh"
 
 # fzf
 if [ $(command -v "fzf") ]; then
@@ -67,6 +67,10 @@ export DISABLE_AUTO_TITLE='true'
 
 # zoxide
 eval "$(zoxide init zsh)"
+
+# zsh-autosuggestions
+source "/usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
+bindkey '^y' autosuggest-accept # use <C-y> keybinding to accept autosuggestion
 
 # zsh syntax highlighting
 source "/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
