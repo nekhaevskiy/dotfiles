@@ -59,6 +59,11 @@ fi
 # custom scripts
 source "$DOTFILES/zsh/scripts.sh"
 
+# Clearing the shell is now done with CTRL+g
+bindkey -r '^l'
+bindkey -r '^g'
+bindkey -s '^g' 'clear\n'
+
 # nvm
 source "/usr/share/nvm/init-nvm.sh"
 
