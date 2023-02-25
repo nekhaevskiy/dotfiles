@@ -42,6 +42,14 @@ ln -s "$DOTFILES/i3" "$XDG_CONFIG_HOME"
 rm -rf "$XDG_CONFIG_HOME/nvim"
 ln -s "$DOTFILES/nvim" "$XDG_CONFIG_HOME"
 
+########
+# tmux #
+########
+
+rm -rf "$XDG_CONFIG_HOME/tmux"
+mkdir -p "$XDG_CONFIG_HOME/tmux"
+ln -sf "$DOTFILES/tmux/tmux.conf" "$XDG_CONFIG_HOME/tmux"
+
 #######
 # X11 #
 #######
