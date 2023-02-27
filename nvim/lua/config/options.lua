@@ -5,4 +5,4 @@
 local opt = vim.opt
 
 opt.conceallevel = 0 -- do not hide markup for bold and italic
-opt.spell = false -- disable spell checking
+opt.spelllang = "" -- disable spell checking
