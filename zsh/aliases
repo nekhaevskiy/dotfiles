@@ -3,6 +3,7 @@ alias ga='git add'
 alias gc='git commit'
 alias gco='git checkout'
 alias gcom='git checkout master'
+alias gl='git pull'
 alias gp='git push'
 alias gst='git status'
 
