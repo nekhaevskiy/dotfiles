@@ -1,5 +1,1 @@
 # TODO
-
-## nvim
-
-- add Harpoon
