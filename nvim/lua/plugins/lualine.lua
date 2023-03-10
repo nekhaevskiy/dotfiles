@@ -14,13 +14,14 @@ return {
     return {
       options = {
         theme = "auto",
-        globalstatus = true,
+        globalstatus = false,
         disabled_filetypes = { statusline = { "dashboard", "lazy", "alpha" } },
       },
       sections = {
-        lualine_a = { "mode" },
-        lualine_b = { "branch" },
+        lualine_a = {},
+        lualine_b = {},
         lualine_c = {
+          { "filename", symbols = { modified = "  ", readonly = "", unnamed = "" } },
           {
             "diagnostics",
             symbols = {
@@ -30,8 +31,6 @@ return {
               hint = icons.diagnostics.Hint,
             },
           },
-          { "filetype", icon_only = true, separator = "", padding = { left = 1, right = 0 } },
-          { "filename", path = 1, symbols = { modified = "  ", readonly = "", unnamed = "" } },
             -- stylua: ignore
             {
               function() return require("nvim-navic").get_location() end,
@@ -67,7 +66,28 @@ return {
         },
         lualine_z = {},
       },
-      extensions = { "neo-tree" },
+      inactive_sections = {
+        lualine_a = {},
+        lualine_b = {},
+        lualine_c = { "filename" },
+        lualine_x = {},
+        lualine_y = {
+          { "location", padding = { left = 0, right = 1 } },
+        },
+        lualine_z = {},
+      },
+      tabline = {
+        lualine_a = { "mode" },
+        lualine_b = { "branch" },
+        lualine_c = {
+          { "filetype", icon_only = true, separator = "", padding = { left = 1, right = 0 } },
+          { "filename", path = 1, symbols = { modified = "  ", readonly = "", unnamed = "" } },
+        },
+        lualine_x = {},
+        lualine_y = {},
+        lualine_z = {},
+      },
+      extensions = { "mundo", "neo-tree" },
     }
   end,
 }
