@@ -55,6 +55,5 @@
 - google-chrome
 - inkdrop
 - nvm
-- prettierd
 - slack-desktop
 - zsh-pure-prompt
