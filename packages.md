@@ -38,7 +38,7 @@
 - vlc
 - webkit2gtk <!-- needed for SSO in Cisco AnyConnect -->
 - wget
-- xcape <!-- needed for remapping Caps Lock -->
+<!-- - xcape <!-- needed for remapping Caps Lock --> -->
 - xclip
 - xsel
 - zathura-pdf-mupdf

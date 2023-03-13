@@ -341,7 +341,7 @@ bindsym XF86MonBrightnessUp exec xbacklight -inc 10
 tiling_drag modifier titlebar
 
 # remap Caps Lock key when external keyboard is plugged
-bindsym $mod+z exec "setxkbmap -option 'caps:ctrl_modifier';xcape -e 'Caps_Lock=Escape' &"
+# bindsym $mod+z exec "setxkbmap -option 'caps:ctrl_modifier';xcape -e 'Caps_Lock=Escape' &"
 
 # screenshot
 bindsym Print exec --no-startup-id flameshot gui
