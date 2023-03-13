@@ -35,6 +35,14 @@ ln -s "$DOTFILES/git" "$XDG_CONFIG_HOME"
 rm -rf "$XDG_CONFIG_HOME/i3"
 ln -s "$DOTFILES/i3" "$XDG_CONFIG_HOME"
 
+###########
+# lazygit #
+###########
+
+rm -rf "$XDG_CONFIG_HOME/lazygit"
+mkdir -p "$XDG_CONFIG_HOME/lazygit"
+ln -sf "$DOTFILES/lazygit/config.yml" "$XDG_CONFIG_HOME/lazygit"
+
 ########
 # nvim #
 ########
