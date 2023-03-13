@@ -53,7 +53,4 @@
 - 1password
 - fpm <!-- needed for Head Node Installer -->
 - google-chrome
-- inkdrop
 - nvm
-- slack-desktop
-- zsh-pure-prompt
