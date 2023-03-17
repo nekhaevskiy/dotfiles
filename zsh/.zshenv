@@ -29,13 +29,13 @@ export FZF_DEFAULT_COMMAND="rg --files --hidden --glob '!.git'"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 # man
-export MANPAGER='nvim +Man!'
-export MANWIDTH=999
+# export MANPAGER='nvim +Man!'
+# export MANWIDTH=999
 
 # IBus (different input methods)
-export GTK_IM_MODULE="ibus"
-export QT_IM_MODULE="ibus"
-export XMODIFIERS="@im=ibus"
+# export GTK_IM_MODULE="ibus"
+# export QT_IM_MODULE="ibus"
+# export XMODIFIERS="@im=ibus"
 
 # PATH
 export PATH="$HOME/work/git-helpers/bin:$PATH" # Bright Git Extensions
@@ -45,5 +45,5 @@ export PATH="$HOME/work/repository-utils:$PATH" # Bright repository-utils
 # export PATH="$PATH:./node_modules/.bin"
 
 # terminal
-export TERMINAL="alacritty"
+# export TERMINAL="alacritty"
 
