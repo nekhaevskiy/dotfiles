@@ -46,14 +46,8 @@ source "$DOTFILES/zsh/external/bd.zsh"
 
 # fzf
 if [ $(command -v "fzf") ]; then
-    source "/usr/share/fzf/completion.zsh"
-    source "/usr/share/fzf/key-bindings.zsh"
-fi
-
-# automatically starting i3
-if [ "$(tty)" = "/dev/tty1" ];
-then
-    pgrep i3 || exec startx "$XDG_CONFIG_HOME/X11/.xinitrc"
+    source "/usr/share/doc/fzf/examples/completion.zsh"
+    source "/usr/share/doc/fzf/examples/key-bindings.zsh"
 fi
 
 # custom scripts
@@ -65,7 +59,8 @@ bindkey -r '^g'
 bindkey -s '^g' 'clear\n'
 
 # nvm
-source "/usr/share/nvm/init-nvm.sh"
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
 # tmux
 export DISABLE_AUTO_TITLE='true'
@@ -74,8 +69,8 @@ export DISABLE_AUTO_TITLE='true'
 eval "$(zoxide init zsh)"
 
 # zsh-autosuggestions
-source "/usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
+source "/usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
 bindkey '^y' autosuggest-accept # use <C-y> keybinding to accept autosuggestion
 
 # zsh syntax highlighting
-source "/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+source "/usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
