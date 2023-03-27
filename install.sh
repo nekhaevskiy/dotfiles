@@ -21,13 +21,6 @@ ln -sf "$DOTFILES/espanso/match/base.yml" "$XDG_CONFIG_HOME/espanso/match"
 rm -rf "$XDG_CONFIG_HOME/git"
 ln -s "$DOTFILES/git" "$XDG_CONFIG_HOME"
 
-#########
-# kitty #
-#########
-
-rm -rf "$XDG_CONFIG_HOME/kitty"
-ln -s "$DOTFILES/kitty" "$XDG_CONFIG_HOME"
-
 ###########
 # lazygit #
 ###########
