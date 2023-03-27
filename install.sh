@@ -7,6 +7,13 @@
 export XDG_CONFIG_HOME=$HOME/.config
 export DOTFILES=$HOME/dotfiles
 
+###########
+# espanso #
+###########
+
+rm -rf "$XDG_CONFIG_HOME/espanso/match/base.yml"
+ln -sf "$DOTFILES/espanso/match/base.yml" "$XDG_CONFIG_HOME/espanso/match"
+
 #######
 # git #
 #######
