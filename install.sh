@@ -1,5 +1,12 @@
 #!/bin/bash
 
+#################
+# env variables #
+#################
+
+export XDG_CONFIG_HOME=$HOME/.config
+export DOTFILES=$HOME/dotfiles
+
 #######
 # git #
 #######
@@ -41,7 +48,7 @@ ln -sf "$DOTFILES/tmux/tmux.conf" "$XDG_CONFIG_HOME/tmux"
 # zsh #
 #######
 
-rm "$HOME/.zshenv"
+rm -f "$HOME/.zshenv"
 rm -rf "$XDG_CONFIG_HOME/zsh"
 mkdir -p "$XDG_CONFIG_HOME/zsh"
 ln -sf "$DOTFILES/zsh/.zshenv" "$HOME"
