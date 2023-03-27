@@ -7,6 +7,13 @@
 export XDG_CONFIG_HOME=$HOME/.config
 export DOTFILES=$HOME/dotfiles
 
+#############
+# alacritty #
+#############
+
+rm -rf "$XDG_CONFIG_HOME/alacritty"
+ln -s "$DOTFILES/alacritty" "$XDG_CONFIG_HOME"
+
 ###########
 # espanso #
 ###########
