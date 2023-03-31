@@ -18,7 +18,9 @@ ln -s "$DOTFILES/alacritty" "$XDG_CONFIG_HOME"
 # espanso #
 ###########
 
+rm -rf "$XDG_CONFIG_HOME/espanso/config/default.yml"
 rm -rf "$XDG_CONFIG_HOME/espanso/match/base.yml"
+ln -sf "$DOTFILES/espanso/config/default.yml" "$XDG_CONFIG_HOME/espanso/config"
 ln -sf "$DOTFILES/espanso/match/base.yml" "$XDG_CONFIG_HOME/espanso/match"
 
 #######
