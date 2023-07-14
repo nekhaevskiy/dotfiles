@@ -10,13 +10,5 @@ return {
         end,
       },
     },
-    window = {
-      mappings = {
-        ["S"] = "none",
-        ["_"] = "open_split",
-        ["s"] = "none",
-        ["|"] = "open_vsplit",
-      },
-    },
   },
 }
