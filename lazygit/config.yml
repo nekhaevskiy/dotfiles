@@ -1,2 +1,4 @@
-gui:
-  mouseEvents: false
+customCommands:
+  - key: "<enter>"
+    context: "localBranches"
+    command: "git checkout {{.SelectedLocalBranch.Name}}"
