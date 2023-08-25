@@ -54,9 +54,9 @@ fi
 source "$DOTFILES/zsh/scripts.sh"
 
 # Clearing the shell is now done with CTRL+g
-bindkey -r '^l'
-bindkey -r '^g'
-bindkey -s '^g' 'clear\n'
+# bindkey -r '^l'
+# bindkey -r '^g'
+# bindkey -s '^g' 'clear\n'
 
 # nvm
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
