@@ -1,4 +1,7 @@
-require'nvim-treesitter.configs'.setup {
+local status, configs = pcall(require, "nvim-treesitter.configs")
+if (not status) then return end
+
+configs.setup {
   -- A list of parser names, or "all" (the five listed parsers should always be installed)
   ensure_installed = { "bash", "c", "css", "diff", "gitcommit", "gitignore", "html", "javascript", "jsdoc", "json", "lua", "markdown", "python", "scss", "typescript", "vim", "vimdoc", "yaml" },
 

@@ -1,4 +1,7 @@
-require('onedark').setup {
+local status, onedark = pcall(require, "onedark")
+if (not status) then return end
+
+onedark.setup {
 	transparent = false
 }
-require('onedark').load()
+onedark.load()
