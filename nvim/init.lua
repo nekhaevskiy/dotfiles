@@ -1,1 +1,1 @@
-require("nekhaevskiy")
+require("config")
