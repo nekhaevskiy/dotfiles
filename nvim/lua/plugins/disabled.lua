@@ -8,6 +8,7 @@ return {
 
   -- Editor
   -- { "echasnovski/mini.bufremove", enabled = false },
+  { "folke/flash.nvim", enabled = false },
 
   -- UI
   -- { "akinsho/bufferline.nvim", enabled = false },
