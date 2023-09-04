@@ -40,10 +40,10 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 # PATH
 export PATH="$HOME/work/git-helpers/bin:$PATH" # Bright Git Extensions
 # export PATH="$HOME/work/repository-utils:$PATH" # Bright repository-utils
+export PATH="$HOME/.cargo/bin:$PATH" # Cargo
 export PATH="$HOME/.local/bin":$PATH # JupyterLab
 # export PATH="$HOME/.local/share/neovim/bin":$PATH
 # export PATH="$PATH:./node_modules/.bin"
 
 # terminal
 # export TERMINAL="alacritty"
-
