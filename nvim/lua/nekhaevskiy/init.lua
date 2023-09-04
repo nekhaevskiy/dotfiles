@@ -1,2 +1,2 @@
-require("nekhaevskiy.set")
+require("nekhaevskiy.options")
 require("nekhaevskiy.remap")
