@@ -9,7 +9,7 @@ opt.expandtab = true
 -- opt.formatoptions:append { "r" } -- Add asterisks in block comments
 opt.hlsearch = false
 opt.ignorecase = true
-opt.inccommand = "split"
+-- opt.inccommand = "split"
 -- opt.isfname:append("@-@")
 opt.list = true
 opt.number = true
@@ -34,3 +34,11 @@ opt.undofile = true
 opt.updatetime = 200
 -- opt.wildignore:append { "*/node_modules/*" }
 opt.wrap = false
+
+-- highlight yanked text for 300ms using the "Visual" highlight group
+vim.cmd [[
+  augroup highlight_yank
+  autocmd!
+  au TextYankPost * silent! lua vim.highlight.on_yank({higroup="Visual", timeout=300})
+  augroup END
+]]
