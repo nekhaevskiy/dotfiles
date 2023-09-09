@@ -14,6 +14,8 @@ keymap.set("n", "]b", "<cmd>bnext<cr>", { desc = "Next buffer" })
 
 keymap.set({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and clear hlsearch" })
 
+keymap.set("n", "<leader>p", "<cmd>Lazy<cr>", { desc = "Lazy" })
+
 keymap.set("n", "<leader>ll", "<cmd>lopen<cr>", { desc = "Location List" })
 keymap.set("n", "[l", "<cmd>lprev<cr>zz", { desc = "Previous location item"})
 keymap.set("n", "]l", "<cmd>lnext<cr>zz", { desc = "Next location item"})
