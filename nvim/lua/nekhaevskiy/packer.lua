@@ -7,8 +7,6 @@ return require('packer').startup(function(use)
 	-- Packer can manage itself
 	use 'wbthomason/packer.nvim'
 
-	use 'tpope/vim-fugitive'
-
 	use {
 		'VonHeikemen/lsp-zero.nvim',
 		branch = 'v2.x',
