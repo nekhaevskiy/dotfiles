@@ -6,4 +6,5 @@ local opt = vim.opt
 
 opt.clipboard = ""
 opt.conceallevel = 0 -- do not hide markup for bold and italic
+opt.hlsearch = false
 opt.spelllang = "" -- disable spell checking
