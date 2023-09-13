@@ -7,6 +7,17 @@
 export XDG_CONFIG_HOME=$HOME/.config
 export DOTFILES=$HOME/dotfiles
 
+#######
+# Min #
+#######
+
+rm -rf "$XDG_CONFIG_HOME/Min"
+mkdir -p "$XDG_CONFIG_HOME/Min"
+ln -sf "$DOTFILES/Min/bookmarksBackup.html" "$XDG_CONFIG_HOME/Min"
+ln -sf "$DOTFILES/Min/Preferences" "$XDG_CONFIG_HOME/Min"
+ln -sf "$DOTFILES/Min/settings.json" "$XDG_CONFIG_HOME/Min"
+ln -s "$DOTFILES/Min/bookmarksBackup.html" "$XDG_CONFIG_HOME/Min"
+
 #############
 # alacritty #
 #############
