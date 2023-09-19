@@ -2,14 +2,14 @@ return {
   "VonHeikemen/lsp-zero.nvim",
   dependencies = {
     -- LSP Support
-    {'neovim/nvim-lspconfig'},             -- Required
-    {'williamboman/mason.nvim'},           -- Optional
-    {'williamboman/mason-lspconfig.nvim'}, -- Optional
+    { 'neovim/nvim-lspconfig' },             -- Required
+    { 'williamboman/mason.nvim' },           -- Optional
+    { 'williamboman/mason-lspconfig.nvim' }, -- Optional
 
     -- Autocompletion
-    {'hrsh7th/nvim-cmp'},     -- Required
-    {'hrsh7th/cmp-nvim-lsp'}, -- Required
-    {'L3MON4D3/LuaSnip'},     -- Required
+    { 'hrsh7th/nvim-cmp' },     -- Required
+    { 'hrsh7th/cmp-nvim-lsp' }, -- Required
+    { 'L3MON4D3/LuaSnip' },     -- Required
   },
   config = function()
     local lsp_zero = require('lsp-zero')
@@ -17,8 +17,21 @@ return {
     lsp_zero.on_attach(function(_, bufnr)
       -- see :help lsp-zero-keybindings
       -- to learn the available actions
-      lsp_zero.default_keymaps({buffer = bufnr})
+      lsp_zero.default_keymaps({ buffer = bufnr })
+
+      vim.keymap.set('n', 'gr', '<cmd>Telescope lsp_references<cr>', { buffer = bufnr })
     end)
+
+    lsp_zero.format_on_save({
+      format_opts = {
+        async = false,
+        timeout_ms = 10000,
+      },
+      servers = {
+        ['lua_ls'] = { 'lua' },
+        ['tsserver'] = { 'javascript', 'typescript' },
+      }
+    })
 
     require('mason').setup({})
     require('mason-lspconfig').setup({
@@ -37,12 +50,14 @@ return {
     -- Autocompletion config
     ---
     local cmp = require('cmp')
+    local cmp_format = lsp_zero.cmp_format()
     local cmp_action = lsp_zero.cmp_action()
 
     cmp.setup({
+      formatting = cmp_format,
       mapping = cmp.mapping.preset.insert({
         -- `Enter` key to confirm completion
-        ['<CR>'] = cmp.mapping.confirm({select = false}),
+        ['<CR>'] = cmp.mapping.confirm({ select = false }),
 
         -- Ctrl+Space to trigger completion menu
         ['<C-Space>'] = cmp.mapping.complete(),
