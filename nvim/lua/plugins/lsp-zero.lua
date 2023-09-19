@@ -22,6 +22,13 @@ return {
       vim.keymap.set('n', 'gr', '<cmd>Telescope lsp_references<cr>', { buffer = bufnr })
     end)
 
+    lsp_zero.set_sign_icons({
+      error = '✘',
+      warn = '▲',
+      hint = '⚑',
+      info = '»'
+    })
+
     lsp_zero.format_on_save({
       format_opts = {
         async = false,
