@@ -3,6 +3,13 @@ return {
   dependencies = {
     "nvim-lua/plenary.nvim",
   },
+  config = function ()
+    require("harpoon").setup({
+      menu = {
+        width = 120,
+      }
+    })
+  end,
   keys = {
     {"<leader>hh", function() require("harpoon.ui").toggle_quick_menu() end, desc = "Toggle Harpoon"},
     {"<leader>ha", function() require("harpoon.mark").add_file() end, desc = "Add file to Harpoon"},
