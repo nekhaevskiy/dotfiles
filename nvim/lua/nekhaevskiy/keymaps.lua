@@ -1,7 +1,5 @@
 local keymap = vim.keymap
 
-keymap.set("n", "<leader>e", vim.cmd.Ex, { desc = "Open File Exporer" })
-
 keymap.set("n", "<A-j>", "<cmd>m .+1<cr>==", { desc = "Move down" })
 keymap.set("n", "<A-k>", "<cmd>m .-2<cr>==", { desc = "Move up" })
 keymap.set("i", "<A-j>", "<esc><cmd>m .+1<cr>==gi", { desc = "Move down" })
