@@ -8,6 +8,15 @@ return {
   config = function()
     require('neo-tree').setup({
       close_if_last_window = true, -- Close Neo-tree if it is the last window left in the tab
+      event_handlers = {
+        {
+          event = "file_opened",
+          handler = function()
+            --auto close
+            require("neo-tree.command").execute({ action = "close" })
+          end,
+        },
+      },
       filesystem = {
         follow_current_file = {
           enabled = true, -- This will find and focus the file in the active buffer every time the current file is changed while the tree is open.
