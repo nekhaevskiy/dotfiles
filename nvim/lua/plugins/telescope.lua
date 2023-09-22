@@ -13,5 +13,6 @@ return {
     { '<leader>fg', function() require('telescope.builtin').git_files() end,  desc = 'Find Git files' },
     { '<leader>fh', function() require('telescope.builtin').help_tags() end,  desc = 'Find Help' },
     { '<leader>fs', function() require('telescope.builtin').live_grep() end,  desc = 'Find Strings' },
+    { '<leader>gs', function() require('telescope.builtin').git_status() end, desc = 'Git Status' },
   },
 }
