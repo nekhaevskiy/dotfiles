@@ -7,15 +7,15 @@ return {
     { 'williamboman/mason.nvim' },
     { 'williamboman/mason-lspconfig.nvim' },
 
-    -- for some keybindings
-    { 'nvim-telescope/telescope.nvim' },
-
     -- Autocompletion
     { 'hrsh7th/cmp-nvim-lsp' },
     { 'hrsh7th/cmp-path' },
     { 'hrsh7th/cmp-buffer' },
     { 'hrsh7th/nvim-cmp' },
     { 'L3MON4D3/LuaSnip' },
+
+    -- for some keybindings
+    { 'nvim-telescope/telescope.nvim' },
   },
   config = function()
     local lsp_zero = require('lsp-zero')
@@ -66,12 +66,6 @@ return {
         lua_ls = function()
           local lua_opts = lsp_zero.nvim_lua_ls()
           require('lspconfig').lua_ls.setup(lua_opts)
-          require('lspconfig').tsserver.setup({
-            on_init = function(client)
-              client.server_capabilities.documentFormattingProvider = false
-              client.server_capabilities.documentFormattingRangeProvider = false
-            end,
-          })
         end,
       }
     })
