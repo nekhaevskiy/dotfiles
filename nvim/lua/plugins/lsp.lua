@@ -29,7 +29,7 @@ return {
       vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
       vim.keymap.set('n', 'go', vim.lsp.buf.type_definition, opts)
       vim.keymap.set('n', 'gr', function() require('telescope.builtin').lsp_references({ show_line = false }) end, opts)
-      vim.keymap.set('i', '<C-h>', vim.lsp.buf.signature_help, opts)
+      vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
       vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
       vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
       vim.keymap.set('n', 'gl', vim.diagnostic.open_float)
