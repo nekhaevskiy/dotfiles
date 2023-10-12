@@ -3,5 +3,22 @@ return {
   dependencies = {
     'nvim-tree/nvim-web-devicons'
   },
-  config = true
+  opts = {
+    sections = {
+      lualine_c = {
+        {
+          'filename',
+          path = 1 -- relative path
+        }
+      }
+    },
+    inactive_sections = {
+      lualine_c = {
+        {
+          'filename',
+          path = 1 -- relative path
+        }
+      }
+    }
+  }
 }
