@@ -28,8 +28,8 @@ opt.wrap = false
 
 -- Folding
 opt.foldlevel = 99
-opt.foldtext = "v:lua.require'nekhaevskiy.lazyvim-util'.foldtext()"
-opt.statuscolumn = [[%!v:lua.require'nekhaevskiy.lazyvim-util'.statuscolumn()]]
+-- opt.foldtext = "v:lua.require'nekhaevskiy.lazyvim-util'.foldtext()"
+-- opt.statuscolumn = [[%!v:lua.require'nekhaevskiy.lazyvim-util'.statuscolumn()]]
 opt.foldmethod = "indent"
 -- opt.foldmethod = "expr"
 -- opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
