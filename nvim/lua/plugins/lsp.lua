@@ -25,9 +25,9 @@ return {
 
       vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
       vim.keymap.set('n', 'gd', function() require('telescope.builtin').lsp_definitions({ show_line = false }) end, opts)
-      vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
+      vim.keymap.set('n', 'go', vim.lsp.buf.declaration, opts)
       vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
-      vim.keymap.set('n', 'go', vim.lsp.buf.type_definition, opts)
+      vim.keymap.set('n', 'gD', vim.lsp.buf.type_definition, opts)
       vim.keymap.set('n', 'gr', function() require('telescope.builtin').lsp_references({ show_line = false }) end, opts)
       vim.keymap.set('i', '<C-k>', vim.lsp.buf.signature_help, opts)
       vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
