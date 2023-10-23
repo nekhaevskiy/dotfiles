@@ -105,13 +105,23 @@ prompt_purity_precmd() {
     print -P ''
 }
 
+prompt_node_version() {
+    local node_version
+    node_version=$(node -v 2>/dev/null)
+    if [[ -n "$node_version" ]]; then
+        echo "%F{green}󰎙 $node_version%f "
+    else
+        echo ""
+    fi
+}
+
 prompt_purification_setup() {
     # Display git branch
 
     autoload -Uz add-zsh-hook
     add-zsh-hook precmd prompt_purity_precmd
 
-    ZSH_THEME_GIT_PROMPT_PREFIX=" %F{yellow}λ:%f%F{blue}"
+    ZSH_THEME_GIT_PROMPT_PREFIX=" %F{yellow} %f%F{blue}"
     ZSH_THEME_GIT_PROMPT_DIRTY=""
     ZSH_THEME_GIT_PROMPT_CLEAN=""
 
@@ -126,7 +136,7 @@ prompt_purification_setup() {
     ZSH_THEME_GIT_PROMPT_AHEAD="%B%F{green}%f%b "
 
     prompt_git_branch
-    RPROMPT='$(prompt_git_info) $(git_prompt_status)'
+    RPROMPT='$(prompt_node_version) $(prompt_git_info) $(git_prompt_status)'
     PROMPT=$'%F{white}%~ %B%F{blue}>%f%b '
 }
 
