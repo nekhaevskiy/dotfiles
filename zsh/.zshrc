@@ -69,3 +69,8 @@ bindkey '^y' autosuggest-accept # use <C-y> keybinding to accept autosuggestion
 
 # zsh syntax highlighting
 source "/usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+
+# pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
