@@ -22,7 +22,13 @@ rm -rf "$XDG_CONFIG_HOME/lazygit"
 mkdir -p "$XDG_CONFIG_HOME/lazygit"
 ln -sf "$DOTFILES/lazygit/config.yml" "$XDG_CONFIG_HOME/lazygit"
 
-# TODO: add kitty config
+#########
+# kitty #
+#########
+
+rm -rf "$XDG_CONFIG_HOME/kitty"
+mkdir -p "$XDG_CONFIG_HOME/kitty"
+ln -sf "$DOTFILES/kitty/kitty.conf" "$XDG_CONFIG_HOME/kitty"
 
 ########
 # nvim #
