@@ -1,7 +1,5 @@
-alias cors="$HOME/work/bright-frontend/common/scripts/provision-cors.sh"
-
 alias gbcp="git bc-cherry-pick"
-alias gbse="git bc-show-eligible master"
+alias gbse="git bc-show-eligible"
 alias gc='git commit'
 alias gca='git commit --amend'
 alias gcan='git commit --amend --no-edit'
@@ -19,8 +17,6 @@ alias gst='git status'
 alias gwip=" git commit --no-verify -m '[WIP]'"
 alias gunwip="git log -n 1 | grep -q -c '[WIP]' && git reset HEAD~1"
 
-alias headphones="bluetoothctl connect AC:BF:71:B5:D0:48"
-
 alias killssh="for pid in \$(ps aux | grep ssh | grep -v grep | awk {'print \$2'}); do kill -9 \$pid; done"
 alias krusty="ssh yuryn@krusty"
 
@@ -31,7 +27,6 @@ alias ll='ls -lah'
 alias ni="npm i"
 alias ns="npm start"
 
+alias cors="$HOME/work/bright-frontend/common/scripts/provision-cors.sh"
 alias pr="$HOME/work/bright-frontend/common/scripts/deploy-from-pr.sh"
 alias restore="$HOME/work/bright-frontend/common/scripts/restore-backup.sh"
-
-alias vpn="nmcli connection up id Bright"
