@@ -12,7 +12,7 @@ return {
     return {
       options = {
         theme = "onedark",
-        globalstatus = true,
+        globalstatus = false,
         disabled_filetypes = { statusline = { "dashboard", "alpha", "starter" } },
       },
       sections = {
