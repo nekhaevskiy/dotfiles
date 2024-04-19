@@ -14,8 +14,6 @@ export VISUAL="nvim"
 # zsh
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 
-# History filepath
-export HISTFILE="$ZDOTDIR/.zhistory"
 # Maximum events for internal history
 export HISTSIZE=10000
 # Maximum events in history file
@@ -28,22 +26,5 @@ export DOTFILES="$HOME/dotfiles"
 export FZF_DEFAULT_COMMAND="rg --files --hidden --glob '!.git'"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
-# man
-# export MANPAGER='nvim +Man!'
-# export MANWIDTH=999
-
-# IBus (different input methods)
-# export GTK_IM_MODULE="ibus"
-# export QT_IM_MODULE="ibus"
-# export XMODIFIERS="@im=ibus"
-
 # PATH
 export PATH="$HOME/work/git-helpers/bin:$PATH" # Bright Git Extensions
-# export PATH="$HOME/work/repository-utils:$PATH" # Bright repository-utils
-export PATH="$HOME/.cargo/bin:$PATH" # Cargo
-export PATH="$HOME/.local/bin":$PATH # JupyterLab
-# export PATH="$HOME/.local/share/neovim/bin":$PATH
-# export PATH="$PATH:./node_modules/.bin"
-
-# terminal
-# export TERMINAL="alacritty"
