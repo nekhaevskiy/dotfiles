@@ -1,24 +1,12 @@
 return {
   "nvim-lualine/lualine.nvim",
   opts = function()
-    -- PERF: we don't need this lualine require madness 🤷
-    local lualine_require = require("lualine_require")
-    lualine_require.require = require
-
     local icons = require("lazyvim.config").icons
-
-    vim.o.laststatus = vim.g.lualine_laststatus
-
     return {
       options = {
         theme = "onedark",
-        globalstatus = false,
-        disabled_filetypes = { statusline = { "dashboard", "alpha", "starter" } },
       },
       sections = {
-        lualine_a = { "mode" },
-        lualine_b = { "branch" },
-
         lualine_c = {
           LazyVim.lualine.root_dir(),
           {
@@ -82,6 +70,22 @@ return {
           { "progress", separator = " ", padding = { left = 1, right = 0 } },
           { "location", padding = { left = 0, right = 1 } },
         },
+      },
+      winbar = {
+        lualine_a = {},
+        lualine_b = {},
+        lualine_c = { "filename" },
+        lualine_x = {},
+        lualine_y = {},
+        lualine_z = {},
+      },
+      inactive_winbar = {
+        lualine_a = {},
+        lualine_b = {},
+        lualine_c = { "filename" },
+        lualine_x = {},
+        lualine_y = {},
+        lualine_z = {},
       },
       extensions = { "neo-tree", "lazy" },
     }
