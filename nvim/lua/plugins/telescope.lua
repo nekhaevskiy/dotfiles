@@ -14,10 +14,11 @@ return {
   },
   keys = {
     {
-      "<leader>fb",
+      "<leader>bb",
       "<cmd>Telescope buffers sort_mru=true sort_lastused=true initial_mode=normal<cr>",
-      desc = "Buffers",
+      desc = "Buffers List",
     },
+    { "<leader>fb", false },
     { "<leader>gs", "<cmd>Telescope git_status initial_mode=normal<CR>", desc = "Status" },
   },
 }
