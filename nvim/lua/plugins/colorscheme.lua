@@ -1,14 +1,9 @@
 return {
-  -- add onedark
-  { "navarasu/onedark.nvim", opts = {
-    style = "darker",
-  } },
-
-  -- configure LazyVim to load onedark
-  {
-    "LazyVim/LazyVim",
-    opts = {
-      colorscheme = "onedark",
-    },
-  },
+  "navarasu/onedark.nvim",
+  lazy = false,
+  priority = 1000,
+  config = function()
+    require("onedark").setup({ style = "darker" })
+    require("onedark").load()
+  end,
 }

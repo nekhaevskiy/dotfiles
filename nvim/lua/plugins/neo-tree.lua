@@ -1,41 +1,16 @@
 return {
   "nvim-neo-tree/neo-tree.nvim",
-  keys = {
-    { "<leader>be", false },
-    { "<leader>E", false },
-    { "<leader>e", false },
-    { "<leader>fe", false },
-    { "<leader>fE", false },
-    { "<leader>ge", false },
-    {
-      "<leader>ee",
-      function()
-        require("neo-tree.command").execute({ toggle = true, dir = LazyVim.root() })
-      end,
-      desc = "Explorer NeoTree (Root Dir)",
-      remap = true,
-    },
-    {
-      "<leader>eE",
-      function()
-        require("neo-tree.command").execute({ toggle = true, dir = vim.uv.cwd() })
-      end,
-      desc = "Explorer NeoTree (cwd)",
-      remap = true,
-    },
-    {
-      "<leader>eg",
-      function()
-        require("neo-tree.command").execute({ source = "git_status", toggle = true })
-      end,
-      desc = "Git Explorer",
-    },
-    {
-      "<leader>eb",
-      function()
-        require("neo-tree.command").execute({ source = "buffers", toggle = true })
-      end,
-      desc = "Buffer Explorer",
-    },
+  branch = "v3.x",
+  dependencies = {
+    "nvim-lua/plenary.nvim",
+    "nvim-tree/nvim-web-devicons",
+    "MunifTanjim/nui.nvim",
   },
+  config = function()
+    require("neo-tree").setup({
+        close_if_last_window = true
+    })
+
+    vim.keymap.set("n", "<leader>e", "<cmd>Neotree toggle current reveal_force_cwd<cr>")
+  end,
 }
