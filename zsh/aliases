@@ -1,3 +1,4 @@
+alias ga="git add"
 alias gbcp="git bc-cherry-pick"
 alias gbse="git bc-show-eligible"
 alias gc='git commit'
@@ -26,6 +27,14 @@ alias ll='ls -lah'
 
 alias ni="npm i"
 alias ns="npm start"
+
+alias rf="rush format-all"
+alias rr="rush rebuild"
+alias rro="rush rebuild --only"
+alias rrt="rush rebuild --to"
+alias ru="rush update"
+alias rxs="rushx start"
+alias rxss="rushx storybook:start"
 
 alias cors="$HOME/work/bright-frontend/common/scripts/provision-cors.sh"
 alias pr="$HOME/work/bright-frontend/common/scripts/deploy-from-pr.sh"
