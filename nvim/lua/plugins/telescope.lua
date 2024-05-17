@@ -13,12 +13,9 @@ return {
     },
   },
   keys = {
-    {
-      "<leader>bb",
-      "<cmd>Telescope buffers sort_mru=true sort_lastused=true initial_mode=normal<cr>",
-      desc = "Buffers List",
-    },
-    { "<leader>fb", false },
-    { "<leader>gs", "<cmd>Telescope git_status initial_mode=normal<CR>", desc = "Status" },
+    { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find Files" },
+    { "<leader>fg", "<cmd>Telescope live_grep<cr>", desc = "Grep" },
+    { "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Buffers" },
+    { "<leader>fh", "<cmd>Telescope help_tags<cr>", desc = "Help Tags" },
   },
 }
