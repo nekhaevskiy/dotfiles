@@ -33,6 +33,9 @@ autoload -Uz edit-command-line
 zle -N edit-command-line
 bindkey -M vicmd v edit-command-line
 
+bindkey '^P' up-line-or-search
+bindkey '^N' down-line-or-search
+
 # fzf
 if [ $(command -v "fzf") ]; then
     source "/usr/share/doc/fzf/examples/completion.zsh"
