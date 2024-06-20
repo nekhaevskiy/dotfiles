@@ -8,10 +8,11 @@ Go to your home directory and clone the repo:
 cd ~ && git clone https://github.com/nekhaevskiy/dotfiles.git
 ```
 
-Symlink everything via:
+Use [GNU Stow](https://www.gnu.org/software/stow/) for creating symlinks:
 
 ```bash
-~/dotfiles/install.sh
+stow backgrounds
+stow git
+stow i3
+...
 ```
-
-or just select what you want manually.
