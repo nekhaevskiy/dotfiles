@@ -1,8 +1,6 @@
 # Dotfiles
 
-## Installation
-
-Go to your home directory and clone the repo:
+Clone the repo:
 
 ```bash
 cd ~ && git clone https://github.com/nekhaevskiy/dotfiles.git
