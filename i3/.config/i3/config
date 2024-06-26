@@ -8,8 +8,8 @@
 
 set $mod Mod4
 
+# compositor for X11
 exec --no-startup-id picom
-exec --no-startup-id feh --bg-scale ~/backgrounds/background.png
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -49,15 +49,18 @@ floating_modifier $mod
 tiling_drag modifier titlebar
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec kitty
 
 # kill focused window
 bindsym $mod+Shift+q kill
 
-# start rofi (a program launcher)
-bindsym $mod+d exec --no-startup-id rofi -show drun
-bindsym $mod+space exec --no-startup-id rofi -show combi
-bindsym $mod+Tab exec --no-startup-id rofi -show window
+# start dmenu (a program launcher)
+# bindsym $mod+d exec --no-startup-id dmenu_run
+# A more modern dmenu replacement is rofi:
+# bindcode $mod+40 exec rofi -modi drun,run -show drun
+# There also is i3-dmenu-desktop which only displays applications shipping a
+# .desktop file. It is a wrapper around dmenu, so you need that installed.
+bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 # change focus
 bindsym $mod+h focus left
@@ -84,16 +87,16 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-bindsym $mod+s split h
+bindsym $mod+Ctrl+v split h
 
 # split in vertical orientation
-bindsym $mod+v split v
+bindsym $mod+Ctrl+h split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+c layout stacking
+bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
@@ -101,13 +104,13 @@ bindsym $mod+e layout toggle split
 bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
-# bindsym $mod+space focus mode_toggle
+bindsym $mod+space focus mode_toggle
 
 # focus the parent container
-bindsym $mod+a focus parent
+bindsym $mod+p focus parent
 
 # focus the child container
-#bindsym $mod+d focus child
+bindsym $mod+c focus child
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
@@ -134,7 +137,10 @@ bindsym $mod+8 workspace number $ws8
 bindsym $mod+9 workspace number $ws9
 bindsym $mod+0 workspace number $ws10
 
-# move focused container to workspace
+# hover should not move focus
+focus_follows_mouse no
+
+# move focused container to workspace#
 bindsym $mod+Shift+1 move container to workspace number $ws1
 bindsym $mod+Shift+2 move container to workspace number $ws2
 bindsym $mod+Shift+3 move container to workspace number $ws3
@@ -146,12 +152,42 @@ bindsym $mod+Shift+8 move container to workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
 
+# go back to the last workspace with the same keystroke
+workspace_auto_back_and_forth yes
+
+# open applications in a specific workspace
+assign [class="firefox" instance="Navigator"] $ws3
+assign [class="1Password" instance="1password"] $ws10
+
+# lock the screen
+set $i3lockwall sh $HOME/.config/i3/scripts/lock.sh
+bindsym $mod+BackSpace exec --no-startup-id $i3lockwall
+
+# wallpaper
+exec --no-startup-id feh --no-fehbg --bg-fill $HOME/backgrounds/background.png
+
+# floating pop up automatically
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="task_dialog"] floating enable
+for_window [class="1Password"] floating enable
+
+# terminal scratchpad
+for_window [instance="kitty_scratchpad"] move scratchpad
+bindsym $mod+Shift+t [instance="kitty_scratchpad"] scratchpad show
+exec --no-startup-id kitty --name kitty_scratchpad
+
+# htop scratchpad
+for_window [instance="htop_scratchpad"] move scratchpad
+bindsym $mod+Shift+p [instance="htop_scratchpad"] scratchpad show
+exec --no-startup-id kitty --name htop_scratchpad -e htop
+
 # reload the configuration file
 bindsym $mod+Shift+c reload
+
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart
-# exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+r restart 
+
+# exit i3 (logs you out of your X session) bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -161,15 +197,15 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 10 px or 10 ppt
+        bindsym h resize shrink width 10 px or 10 ppt
+        bindsym j resize shrink height 10 px or 10 ppt
         bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym semicolon resize grow width 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
 
         # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Down resize shrink height 10 px or 10 ppt
+        bindsym Up resize grow height 10 px or 10 ppt
         bindsym Right resize grow width 10 px or 10 ppt
 
         # back to normal: Enter or Escape or $mod+r
@@ -180,8 +216,39 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+# shutdown / restart / suspend...
+set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Ctrl+s) shutdown
+
+mode "$mode_system" {
+	bindsym l exec --no-startup-id $i3lockwall, mode "default"
+	bindsym e exec --no-startup-id i3-msg exit, mode "default"
+	bindsym s exec --no-startup-id $i3lockwall && systemctl suspend, mode "default"
+	bindsym h exec --no-startup-id $i3lockwall && systemctl hibernate, mode "default"
+	bindsym r exec --no-startup-id systemctl reboot, mode "default"
+	bindsym Ctrl+s exec --no-startup-id systemctl poweroff -i, mode "default"
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
+}
+
+bindsym $mod+Ctrl+Shift+q mode "$mode_system"
+
+# screen layouts
+set $mode_display Config monitor resolution - Default (d), Home (h), Office (o)
+
+mode "$mode_display" {
+    bindsym d exec --no-startup-id sh "$HOME/.screenlayout/default.sh", mode "default"
+    bindsym h exec --no-startup-id sh "$HOME/.screenlayout/home.sh", mode "default"
+    bindsym o exec --no-startup-id sh "$HOME/.screenlayout/office.sh", mode "default"
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+bindsym $mod+a mode "$mode_display"
+
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        status_command i3status
+  status_command i3status --config $HOME/.config/i3/i3status.conf
 }
