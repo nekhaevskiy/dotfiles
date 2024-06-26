@@ -26,19 +26,20 @@ return {
 
       vim.keymap.set("n", "<leader>/", builtin.current_buffer_fuzzy_find)
 
-      vim.keymap.set("n", "<leader>da", builtin.diagnostics)
+      vim.keymap.set("n", "<leader>bl", builtin.buffers)
+
       vim.keymap.set("n", "<leader>dd", function()
         builtin.diagnostics({ bufnr = 0, wrap_results = true })
       end)
+      vim.keymap.set("n", "<leader>dl", builtin.diagnostics)
 
-      vim.keymap.set("n", "<leader>fb", builtin.buffers)
       vim.keymap.set("n", "<leader>ff", builtin.find_files)
       vim.keymap.set("n", "<leader>fh", builtin.help_tags)
       vim.keymap.set("n", "<leader>fr", builtin.oldfiles)
       vim.keymap.set("n", "<leader>fs", builtin.live_grep)
       vim.keymap.set("n", "<leader>fS", builtin.grep_string)
 
-      vim.keymap.set("n", "<leader>gf", builtin.git_status)
+      vim.keymap.set("n", "<leader>gl", builtin.git_status)
     end,
   },
 }
