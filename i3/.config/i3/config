@@ -181,6 +181,19 @@ for_window [instance="htop_scratchpad"] move scratchpad
 bindsym $mod+Shift+p [instance="htop_scratchpad"] scratchpad show
 exec --no-startup-id kitty --name htop_scratchpad -e htop
 
+# notifications
+exec --no-startup-id dunst
+
+# dunst keyboard shortcuts
+bindsym $mod+x exec dunstctl close-all
+bindsym Ctrl+BackSpace exec dunstctl history-pop
+
+# remap CapsLock key when external keyboard is plugged
+bindsym $mod+z exec "setxkbmap -option 'caps:ctrl_modifier';xcape -e 'Caps_Lock=Escape' &"
+
+# bluetooth
+exec --no-startup-id blueberry-tray
+
 # reload the configuration file
 bindsym $mod+Shift+c reload
 
