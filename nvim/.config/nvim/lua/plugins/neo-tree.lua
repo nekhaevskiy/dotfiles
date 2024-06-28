@@ -8,7 +8,12 @@ return {
   },
   config = function()
     require("neo-tree").setup({
-        close_if_last_window = true
+      filesystem = {
+        filtered_items = {
+          visible = true
+        }
+      },
+      close_if_last_window = true
     })
 
     vim.keymap.set("n", "<leader>e", "<cmd>Neotree toggle current reveal_force_cwd<cr>")
