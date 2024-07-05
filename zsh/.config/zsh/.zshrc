@@ -68,3 +68,9 @@ esac
 ##########
 
 PATH="$HOME/work/git-helpers/bin:$PATH"
+
+###########
+# Scripts #
+###########
+
+source "$ZDOTDIR/scripts.zsh"
