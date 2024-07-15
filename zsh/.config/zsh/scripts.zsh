@@ -6,12 +6,15 @@ cips() {
     return 1
   fi
 
-  echo $1 > $HOME/work/scripts/cluster-ip
+  echo "$1" > "$HOME/work/scripts/cluster-ip"
+  export CLUSTER_IP="$1"
+  echo "$CLUSTER_IP" | xsel -ib
   echo "Cluster IP saved."
 }
 
 # load cluster IP
 cipl() {
   export CLUSTER_IP=$(cat "$HOME/work/scripts/cluster-ip")
+  echo "$CLUSTER_IP" | xsel -ib
   echo "$CLUSTER_IP"
 }
