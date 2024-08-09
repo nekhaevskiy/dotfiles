@@ -38,7 +38,7 @@ alias rxss="rushx storybook:start"
 alias rxt="rushx test"
 alias rxtu="rushx test:ui"
 
+alias branch="$HOME/work/bright-frontend/common/scripts/deploy-from-branch.sh"
 alias cors="$HOME/work/bright-frontend/common/scripts/provision-cors.sh"
 alias pr="$HOME/work/bright-frontend/common/scripts/deploy-from-pr.sh"
-alias prbv="$HOME/work/bright-frontend/common/scripts/deploy-from-pr.sh base-view"
 alias restore="$HOME/work/bright-frontend/common/scripts/restore-backup.sh"
