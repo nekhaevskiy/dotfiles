@@ -32,7 +32,7 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id nm-applet
 
 # Keyboard layout
-exec --no-startup-id "setxkbmap -layout us,ru -option 'grp:alt_space_toggle'"
+exec --no-startup-id "setxkbmap -layout us,ru -option 'grp:alt_space_toggle' -option 'caps:ctrl_modifier';xcape -e 'Caps_Lock=Escape'"
 
 # Use pactl to adjust volume in PipeWire.
 # set $refresh_i3status killall -SIGUSR1 i3status
@@ -59,7 +59,7 @@ floating_modifier $mod
 tiling_drag modifier titlebar
 
 # start a terminal
-bindsym $mod+Return exec kitty
+bindsym $mod+space exec kitty
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -187,17 +187,17 @@ bindsym $mod+Shift+p [instance="htop_scratchpad"] scratchpad show
 exec --no-startup-id kitty --name htop_scratchpad -e htop
 
 # dunst keyboard shortcuts
+bindsym $mod+n exec dunstctl history-pop
 bindsym $mod+x exec dunstctl close-all
-bindsym Ctrl+BackSpace exec dunstctl history-pop
 
 # remap CapsLock key when external keyboard is plugged
-bindsym $mod+z exec "setxkbmap -option 'caps:ctrl_modifier';xcape -e 'Caps_Lock=Escape' &"
+bindsym $mod+z exec "setxkbmap -layout us,ru -option 'grp:alt_space_toggle' -option 'caps:ctrl_modifier';xcape -e 'Caps_Lock=Escape' &"
 
 # bluetooth
 exec --no-startup-id blueberry-tray
 
 # browser
-bindsym $mod+space exec brave
+bindsym $mod+Return exec brave
 
 # dunst - notifications
 exec --no-startup-id dunst
