@@ -59,7 +59,7 @@ floating_modifier $mod
 tiling_drag modifier titlebar
 
 # start a terminal
-bindsym $mod+space exec kitty
+bindsym $mod+grave exec brave
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -197,7 +197,7 @@ bindsym $mod+z exec "setxkbmap -layout us,ru -option 'grp:alt_space_toggle' -opt
 exec --no-startup-id blueberry-tray
 
 # browser
-bindsym $mod+Return exec brave
+bindsym $mod+Return exec kitty
 
 # dunst - notifications
 exec --no-startup-id dunst
