@@ -16,6 +16,6 @@ return {
       close_if_last_window = true
     })
 
-    vim.keymap.set("n", "<leader>e", "<cmd>Neotree toggle current reveal_force_cwd<cr>")
+    vim.keymap.set("n", "<leader>e", "<cmd>Neotree toggle reveal_force_cwd<cr>")
   end,
 }
