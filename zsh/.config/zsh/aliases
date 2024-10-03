@@ -28,6 +28,9 @@ alias ll='ls -lah'
 alias ni="npm i"
 alias ns="npm start"
 
+alias rb="rush build"
+alias rbo="rush build --only"
+alias rbt="rush build --to"
 alias rf="rush format-all"
 alias rr="rush rebuild"
 alias rro="rush rebuild --only"
