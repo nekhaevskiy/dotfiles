@@ -58,9 +58,6 @@ floating_modifier $mod
 # or left-clicking anywhere into the window while holding the floating modifier.
 tiling_drag modifier titlebar
 
-# start a terminal
-bindsym $mod+grave exec brave
-
 # kill focused window
 bindsym $mod+Shift+q kill
 
@@ -197,7 +194,7 @@ bindsym $mod+z exec "setxkbmap -layout us,ru -option 'grp:alt_space_toggle' -opt
 exec --no-startup-id blueberry-tray
 
 # browser
-bindsym $mod+Return exec kitty
+bindsym $mod+Return exec brave
 
 # dunst - notifications
 exec --no-startup-id dunst
@@ -211,6 +208,9 @@ bindsym Print exec flameshot gui
 
 # picom - compositor for X11
 exec --no-startup-id picom
+
+# terminal
+bindsym $mod+grave exec kitty
 
 # volume icon
 exec --no-startup-id volumeicon
