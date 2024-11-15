@@ -37,7 +37,7 @@ return {
         vim.keymap.set("n", "gr", function()
           telescope_builtin.lsp_references({ show_line = false })
         end, { buffer = 0 })
-        vim.keymap.set("n", "gy", function()
+        vim.keymap.set("n", "gt", function()
           telescope_builtin.lsp_type_definitions({ show_line = false })
         end, { buffer = 0 })
         vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = 0 })
