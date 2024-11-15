@@ -43,10 +43,10 @@ return {
         vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = 0 })
       end
 
-      lspconfig.eslint.setup({
-        capabilities = capabilities,
-        on_attach = on_attach,
-      })
+      -- lspconfig.eslint.setup({
+      --   capabilities = capabilities,
+      --   on_attach = on_attach,
+      -- })
       lspconfig.lua_ls.setup({
         capabilities = capabilities,
         on_attach = on_attach,
