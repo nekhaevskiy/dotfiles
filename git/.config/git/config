@@ -1,6 +1,19 @@
+[alias]
+  checkoutl = "!git checkout $(git branch | fzf | sed 's/\\* //')"
+  discard = checkout --
+  nevermind = !git reset --hard HEAD && git clean -d -f
+  uncommit = reset --mixed HEAD~
+  unstage = reset -q HEAD --
+[blame]
+  date = relative
+[core]
+  editor = nvim
+[log]
+  abbrevCommit = true
 [pull]
   rebase = true
 [push]
-	autoSetupRemote = true
+  autoSetupRemote = true
+  default = simple
 [user]
-	name = Yury Nekhaevskiy
+  name = Yury Nekhaevskiy
