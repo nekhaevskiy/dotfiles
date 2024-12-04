@@ -30,7 +30,10 @@ alias krusty="ssh yuryn@krusty"
 
 alias lg="lazygit"
 
-alias ll='ls -lah'
+alias l='ls -CF'
+alias la='ls -A'
+alias ll='ls -alF'
+alias ls='ls --color=auto'
 
 alias ni="npm i"
 alias ns="npm start"
