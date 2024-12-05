@@ -10,8 +10,8 @@ Use [GNU Stow](https://www.gnu.org/software/stow/) for creating symlinks:
 
 ```bash
 cd dotfiles
-stow bash
 stow git
+stow kitty
 stow nvim
 ...
 ```
