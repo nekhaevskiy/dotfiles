@@ -1,3 +1,6 @@
+# history filepath
+HISTFILE="$HOME/.zsh_history"
+
 # maximum events for internal history
 HISTSIZE=10000
 
