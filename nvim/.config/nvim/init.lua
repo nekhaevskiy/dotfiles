@@ -542,7 +542,7 @@ require('lazy').setup({
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
         -- clangd = {},
-        eslint = {},
+        -- eslint = {},
         -- gopls = {},
         -- pyright = {},
         -- rust_analyzer = {},
@@ -860,8 +860,8 @@ require('lazy').setup({
   --
   -- require 'kickstart.plugins.debug',
   -- require 'kickstart.plugins.indent_line',
-  -- require 'kickstart.plugins.lint',
   -- require 'kickstart.plugins.autopairs',
+  require 'kickstart.plugins.lint',
   require 'kickstart.plugins.neo-tree',
   require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
 
