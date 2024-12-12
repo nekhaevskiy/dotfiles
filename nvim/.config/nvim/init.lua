@@ -87,6 +87,13 @@ vim.opt.cursorline = true
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 8
 
+vim.diagnostic.config {
+  -- Do not use virtual text for diagnostics
+  virtual_text = false,
+  -- Sort diagnostics by severity
+  severity_sort = true,
+}
+
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 
