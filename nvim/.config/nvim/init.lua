@@ -804,6 +804,9 @@ require('lazy').setup({
       -- Visualize indent scope
       require('mini.indentscope').setup { options = { try_as_border = true } }
 
+      -- Jump within visible lines
+      require('mini.jump2d').setup()
+
       -- Add/delete/replace surroundings (brackets, quotes, etc.)
       --
       -- - saiw) - [S]urround [A]dd [I]nner [W]ord [)]Paren
@@ -817,17 +820,65 @@ require('lazy').setup({
       local statusline = require 'mini.statusline'
       -- set use_icons to true if you have a Nerd Font
       statusline.setup {
+        content = {
+          active = function()
+            local mode, mode_hl = statusline.section_mode { trunc_width = 120 }
+            local git = statusline.section_git { trunc_width = 140 }
+            local diff = statusline.section_diff { trunc_width = 75 }
+            local diagnostics = statusline.section_diagnostics { trunc_width = 75 }
+            local lsp = statusline.section_lsp { trunc_width = 75 }
+            local filename = statusline.section_filename { trunc_width = 140 }
+            local fileinfo = statusline.section_fileinfo { trunc_width = 160 }
+            local location = statusline.section_location { trunc_width = 75 }
+            local search = statusline.section_searchcount { trunc_width = 75 }
+
+            return statusline.combine_groups {
+              { hl = mode_hl, strings = { mode } },
+              { hl = 'MiniStatuslineDevinfo', strings = { git, diff, diagnostics, lsp } },
+              '%<', -- Mark general truncate point
+              { hl = 'MiniStatuslineFilename', strings = { filename } },
+              '%=', -- End left alignment
+              { hl = 'MiniStatuslineFileinfo', strings = { fileinfo } },
+              { hl = mode_hl, strings = { search, location } },
+            }
+          end,
+          inactive = function()
+            local filename = statusline.section_filename { trunc_width = 140 }
+
+            return statusline.combine_groups {
+              { hl = 'MiniStatuslineFilename', strings = { filename } },
+            }
+          end,
+        },
         use_icons = true,
       }
 
       ---@diagnostic disable-next-line: duplicate-set-field
       statusline.section_filename = function()
-        return '%f'
+        return '%t'
       end
 
       ---@diagnostic disable-next-line: duplicate-set-field
       -- statusline.section_fileinfo = function()
-      --   return '%Y'
+      --   local filetype = vim.bo.filetype
+      --   local trunc_width = 120
+      --
+      --   -- Don't show anything if there is no filetype
+      --   if filetype == '' then
+      --     return ''
+      --   end
+      --
+      --   -- Construct output string if truncated or buffer is not normal
+      --   if statusline.is_truncated(trunc_width) or vim.bo.buftype ~= '' then
+      --     return filetype
+      --   end
+      --
+      --   -- Construct output string with extra file info
+      --   local encoding = vim.bo.fileencoding or vim.bo.encoding
+      --   local format = vim.bo.fileformat
+      --
+      --   --   return string.format('%s %s[%s] %s', filetype, encoding, format)
+      --   return filetype .. ' ' .. encoding .. ' [' .. format .. ']'
       -- end
 
       -- You can configure sections in the statusline by overriding their
