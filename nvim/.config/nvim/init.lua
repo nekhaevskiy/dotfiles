@@ -900,7 +900,7 @@ require('lazy').setup({
       -- cursor location to LINE:COLUMN
       ---@diagnostic disable-next-line: duplicate-set-field
       statusline.section_location = function()
-        return 'Ln %2l/%2L, Col %-2v'
+        return 'Ln %l/%L, Col %-2v'
       end
 
       -- ... and there is more!
