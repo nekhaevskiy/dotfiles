@@ -819,7 +819,7 @@ require('lazy').setup({
       require('mini.indentscope').setup { options = { try_as_border = true } }
 
       -- Jump within visible lines
-      require('mini.jump2d').setup()
+      -- require('mini.jump2d').setup()
 
       -- Add/delete/replace surroundings (brackets, quotes, etc.)
       --
