@@ -176,7 +176,7 @@ vim.opt.rtp:prepend(lazypath)
 --    :Lazy update
 --
 -- NOTE: Here is where you install your plugins.
-require('lazy').setup({
+require('lazy').setup {
   -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
   'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
 
@@ -484,13 +484,16 @@ require('lazy').setup({
           --  Similar to document symbols, except searches over your entire project.
           map('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
 
-          -- Rename the variable under your cursor.
-          --  Most Language Servers support renaming across files, etc.
-          map('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
-
           -- Execute a code action, usually your cursor needs to be on top of an error
           -- or a suggestion from your LSP for this to activate.
           map('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction', { 'n', 'x' })
+
+          -- TypeScriptTools Organize Imports
+          map('<leader>co', require('typescript-tools.api').organize_imports, '[C]ode [O]rganize imports')
+
+          -- Rename the variable under your cursor.
+          --  Most Language Servers support renaming across files, etc.
+          map('<leader>cr', vim.lsp.buf.rename, '[C]ode [R]ename')
 
           -- WARN: This is not Goto Definition, this is Goto Declaration.
           --  For example, in C this would take you to the header.
@@ -573,7 +576,7 @@ require('lazy').setup({
         --    https://github.com/pmizio/typescript-tools.nvim
         --
         -- But for many setups, the LSP (`ts_ls`) will work just fine
-        ts_ls = {},
+        -- ts_ls = {},
         --
 
         lua_ls = {
@@ -619,6 +622,8 @@ require('lazy').setup({
             require('lspconfig')[server_name].setup(server)
           end,
         },
+        ensure_installed = { 'lua_ls' },
+        automatic_installation = true,
       }
     end,
   },
@@ -968,13 +973,13 @@ require('lazy').setup({
   -- Or use telescope!
   -- In normal mode type `<space>sh` then write `lazy.nvim-plugin`
   -- you can continue same window with `<space>sr` which resumes last telescope search
-}, {
-  ui = {
-    -- If you are using a Nerd Font: set icons to an empty table which will use the
-    -- default lazy.nvim defined Nerd Font icons, otherwise define a unicode icons table
-    icons = {},
-  },
-})
+  -- }, {
+  --   ui = {
+  --     -- If you are using a Nerd Font: set icons to an empty table which will use the
+  --     -- default lazy.nvim defined Nerd Font icons, otherwise define a unicode icons table
+  --     icons = {},
+  --   },
+}
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
