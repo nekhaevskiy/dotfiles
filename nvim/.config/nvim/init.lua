@@ -848,7 +848,7 @@ require('lazy').setup {
             local diagnostics = statusline.section_diagnostics { trunc_width = 75 }
             local lsp = statusline.section_lsp { trunc_width = 75 }
             local filename = statusline.section_filename { trunc_width = 140 }
-            local fileinfo = statusline.section_fileinfo { trunc_width = 160 }
+            local fileinfo = statusline.section_fileinfo { trunc_width = 180 }
             local location = statusline.section_location { trunc_width = 75 }
             local search = statusline.section_searchcount { trunc_width = 75 }
 
@@ -875,7 +875,13 @@ require('lazy').setup {
 
       ---@diagnostic disable-next-line: duplicate-set-field
       statusline.section_filename = function()
-        return '%t'
+        -- In terminal always use plain name
+        if vim.bo.buftype == 'terminal' then
+          return '%t'
+        else
+          -- Use fullpath if not truncated
+          return '%t%m%r'
+        end
       end
 
       ---@diagnostic disable-next-line: duplicate-set-field
