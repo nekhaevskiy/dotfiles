@@ -23,7 +23,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
     { 'nvim-tree/nvim-web-devicons', enabled = true },
 
     -- Telescope File Browser
-    { 'nvim-telescope/telescope-file-browser.nvim' },
+    -- { 'nvim-telescope/telescope-file-browser.nvim' },
   },
   config = function()
     -- Telescope is a fuzzy finder that comes with a lot of different things that
@@ -68,13 +68,13 @@ return { -- Fuzzy Finder (files, lsp, etc)
         ['ui-select'] = {
           require('telescope.themes').get_dropdown(),
         },
-        file_browser = {
-          hijack_netrw = true,
-          path = '%:p:h',
-          cwd_to_path = true,
-          hidden = true,
-          initial_mode = 'normal',
-        },
+        -- file_browser = {
+        --   hijack_netrw = true,
+        --   path = '%:p:h',
+        --   cwd_to_path = true,
+        --   hidden = true,
+        --   initial_mode = 'normal',
+        -- },
       },
     }
 
@@ -97,9 +97,9 @@ return { -- Fuzzy Finder (files, lsp, etc)
     vim.keymap.set('n', '<leader>/', builtin.current_buffer_fuzzy_find, { desc = '[/] Fuzzily search in current buffer' })
 
     vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
-    vim.keymap.set('n', '<leader>fb', function()
-      require('telescope').extensions.file_browser.file_browser()
-    end, { desc = '[F]ile [B]rowser' })
+    -- vim.keymap.set('n', '<leader>fb', function()
+    --   require('telescope').extensions.file_browser.file_browser()
+    -- end, { desc = '[F]ile [B]rowser' })
     vim.keymap.set('n', '<leader>sc', builtin.git_status, { desc = '[S]earch [C]hanged files' })
     vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
     vim.keymap.set('n', '<leader>sf', builtin.find_files, { desc = '[S]earch [F]iles' })
