@@ -24,6 +24,9 @@ bindkey '^N' down-line-or-search
 
 source "$ZDOTDIR/aliases"
 
+# Neovim switcher
+alias nvim-lazy="NVIM_APPNAME=LazyVim nvim"
+
 ################
 # Autocomplete #
 ################
