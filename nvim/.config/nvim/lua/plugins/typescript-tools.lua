@@ -4,6 +4,11 @@ return {
   config = function()
     -- Configure typescript-tools.nvim
     require('typescript-tools').setup {
+      settings = {
+        tsserver_file_preferences = {
+          includeInlayParameterNameHints = 'all',
+        },
+      },
       server = {
         on_attach = function(_, bufnr)
           -- Automatically organize imports on save
