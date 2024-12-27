@@ -62,6 +62,9 @@ vim.opt.cursorline = true
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 8
 
+-- Disable use a swapfile for a buffer
+vim.opt.swapfile = false
+
 vim.diagnostic.config {
   -- Do not use virtual text for diagnostics
   virtual_text = false,
