@@ -8,7 +8,7 @@ return {
       winopts = {
         preview = {
           layout = 'vertical',
-          vertical = 'down:70%',
+          vertical = 'down:60%',
         },
       },
       keymap = {
