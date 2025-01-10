@@ -4,5 +4,3 @@ start_directory: $HOME/dotfiles
 windows:
   - panes:
       -
-  - panes:
-      - lg

@@ -4,5 +4,3 @@ start_directory: $HOME/work/functional-test
 windows:
   - panes:
       -
-  - panes:
-      - lg
