@@ -42,3 +42,7 @@ vim.keymap.set('n', '<C-d>', '<C-d>zz')
 vim.keymap.set('n', '<C-u>', '<C-u>zz')
 vim.keymap.set('n', 'n', 'nzzzv')
 vim.keymap.set('n', 'N', 'Nzzzv')
+
+-- Delete the selected text into the black hole register and put the content of
+-- the default register before the cursor position
+vim.keymap.set('x', '<leader>p', [["_dP]])
