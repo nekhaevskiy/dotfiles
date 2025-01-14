@@ -43,6 +43,5 @@ vim.keymap.set('n', '<C-u>', '<C-u>zz')
 vim.keymap.set('n', 'n', 'nzzzv')
 vim.keymap.set('n', 'N', 'Nzzzv')
 
--- Delete the selected text into the black hole register and put the content of
--- the default register before the cursor position
-vim.keymap.set('x', '<leader>p', [["_dP]])
+vim.keymap.set('x', '<leader>p', [["_dP]], { desc = 'Delete the selected text into the black hole register' })
+vim.keymap.set({ 'n', 'v' }, '<leader>y', [["+y]], { desc = 'Yank into clipboard register' })
