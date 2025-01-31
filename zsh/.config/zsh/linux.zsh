@@ -6,10 +6,12 @@
 source "$HOME/.cargo/env"
 
 # fzf
-source /usr/share/doc/fzf/examples/key-bindings.zsh
-source /usr/share/doc/fzf/examples/completion.zsh
+source "$HOME/.fzf.zsh"
 FZF_DEFAULT_COMMAND="rg --files --hidden --glob '!.git'"
 FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
+# fzf-git 
+source "$ZDOTDIR/fzf-git.sh"
 
 # nvm
 export NVM_DIR="$HOME/.nvm"
