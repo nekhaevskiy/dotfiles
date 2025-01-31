@@ -20,7 +20,7 @@ cipl() {
 }
 
 # git bc-cherry-pick improved
-gbcpi() {
+gbcp() {
   if [ -z "$1" ]; then
     echo "No branch provided."
     return 1
