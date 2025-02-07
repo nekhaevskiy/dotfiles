@@ -21,12 +21,37 @@ cipl() {
 
 # git bc-cherry-pick improved
 gbcp() {
-  if [ -z "$1" ]; then
-    echo "No branch provided."
+  local branch="$1"
+  if [ -z "$branch" ]; then
+    git bc-show-eligible | fzf --no-sort --reverse | grep -o '^[a-f0-9]\{40\}' | xargs git bc-cherry-pick
+  else
+    git bc-show-eligible "$branch" | fzf --no-sort --reverse | grep -o '^[a-f0-9]\{40\}' | xargs git bc-cherry-pick
+  fi
+
+}
+
+# git worktree add <path/to/directory> <branch>
+gwa() {
+  local branch="$1"
+  if [ -z "$branch" ]; then
+    echo "Usage: gwa <branch>"
     return 1
   fi
 
-  git bc-show-eligible "$1" | fzf --no-sort --reverse | grep -o '^[a-f0-9]\{40\}' | xargs git bc-cherry-pick
+  git worktree add "../$branch" "$branch"
+  cd "$branch"
+}
+
+# git worktree add <path/to/directory> -b <branch>
+gwab() {
+  local branch="$1"
+  if [ -z "$branch" ]; then
+    echo "Usage: gwab <branch>"
+    return 1
+  fi
+
+  git worktree add "../$branch" -b "$branch"
+  cd "../$branch"
 }
 
 # remove a user-specified IP from the known_hosts file
