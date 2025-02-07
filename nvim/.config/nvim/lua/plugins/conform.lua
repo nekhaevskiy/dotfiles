@@ -1,3 +1,12 @@
+local function toggle_format_on_save()
+  vim.g.disable_format_on_save = not vim.g.disable_format_on_save
+  if vim.g.disable_format_on_save then
+    print 'Format on save disabled'
+  else
+    print 'Format on save enabled'
+  end
+end
+
 return { -- Autoformat
   'stevearc/conform.nvim',
   event = { 'BufWritePre' },
@@ -11,11 +20,20 @@ return { -- Autoformat
       mode = '',
       desc = '[C]ode [F]ormat',
     },
+    {
+      '<leader>tf',
+      toggle_format_on_save,
+      mode = '',
+      desc = '[T]oggle [F]ormat on save',
+    },
   },
   opts = {
     -- log_level = vim.log.levels.DEBUG,
-    notify_on_error = false,
+    notify_on_error = true,
     format_on_save = function(bufnr)
+      if vim.g.disable_format_on_save then
+        return
+      end
       -- Disable "format_on_save lsp_fallback" for languages that don't
       -- have a well standardized coding style. You can add additional
       -- languages here or re-enable it for the disabled ones.
