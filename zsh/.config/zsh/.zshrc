@@ -8,7 +8,7 @@ HISTSIZE=10000
 SAVEHIST=10000
 
 # options
-# setopt autocd nomatch
+setopt autocd nomatch
 # unsetopt beep extendedglob notify
 
 # enable the vi mode
