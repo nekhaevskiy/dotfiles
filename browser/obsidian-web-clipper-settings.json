@@ -1,0 +1,124 @@
+{
+  "general_settings": {
+    "betaFeatures": false,
+    "legacyMode": false,
+    "showMoreActionsButton": false,
+    "silentOpen": false
+  },
+  "highlighter_settings": {
+    "alwaysShowHighlights": false,
+    "highlightBehavior": "no-highlights",
+    "highlighterEnabled": true
+  },
+  "interpreter_settings": {
+    "defaultPromptContext": "",
+    "interpreterAutoRun": false,
+    "interpreterEnabled": false,
+    "interpreterModel": "",
+    "models": [],
+    "providers": []
+  },
+  "property_types": [
+    {
+      "defaultValue": "{{title}}",
+      "name": "title",
+      "type": "text"
+    },
+    {
+      "name": "source",
+      "type": "text"
+    },
+    {
+      "defaultValue": "{{author|split:\", \"|wikilink|join}}",
+      "name": "author",
+      "type": "multitext"
+    },
+    {
+      "defaultValue": "{{published}}",
+      "name": "published",
+      "type": "date"
+    },
+    {
+      "defaultValue": "{{date}}",
+      "name": "created",
+      "type": "date"
+    },
+    {
+      "defaultValue": "{{description}}",
+      "name": "description",
+      "type": "text"
+    },
+    {
+      "defaultValue": "clippings",
+      "name": "tags",
+      "type": "multitext"
+    }
+  ],
+  "stats": {
+    "addToObsidian": 10,
+    "copyToClipboard": 0,
+    "saveFile": 0,
+    "share": 0
+  },
+  "template_1737229461099axfc7m85q": {
+    "id": "1737229461099axfc7m85q",
+    "name": "Default",
+    "behavior": "create",
+    "noteNameFormat": "{{title}}",
+    "path": "0 Inbox",
+    "noteContentFormat": "\n# {{title}}\n\n{{content}}",
+    "context": "",
+    "properties": [
+      {
+        "id": "1737229461099o54zpsj9y",
+        "name": "created",
+        "value": "{{date|date:\\\"YYYY-MM-DD HH-mm-ss\\\"}}",
+        "type": "date"
+      },
+      {
+        "id": "1737229461099p7v0ywohs",
+        "name": "source",
+        "value": "{{url}}",
+        "type": "text"
+      },
+      {
+        "id": "1737229461099m7mwpl19q",
+        "name": "author",
+        "value": "",
+        "type": "multitext"
+      }
+    ],
+    "triggers": []
+  },
+  "template_1737229471292krqyx3ikq": {
+    "id": "1737229471292krqyx3ikq",
+    "name": "Instagram",
+    "behavior": "create",
+    "noteNameFormat": "Instagram {{date|date:\"YYYY-MM-DD HH-mm-ss\"}}",
+    "path": "0 Inbox",
+    "noteContentFormat": "{{title}}",
+    "properties": [
+      {
+        "id": "1737229560019u908rai4q",
+        "name": "created",
+        "value": "{{date|date:\\\"YYYY-MM-DD HH-mm-ss\\\"}}",
+        "type": "date"
+      },
+      {
+        "id": "1737229581190sl68cin2d",
+        "name": "source",
+        "value": "{{url}}",
+        "type": "text"
+      }
+    ],
+    "triggers": [
+      "instagram.com"
+    ],
+    "context": ""
+  },
+  "template_list": [
+    "1737229461099axfc7m85q",
+    "1737229471292krqyx3ikq"
+  ],
+  "vaults": []
+}
