@@ -1,5 +1,5 @@
 session_name: frontend
-start_directory: $HOME/work/frontend
+start_directory: $HOME/work/frontend/master
 
 windows:
   - panes:
