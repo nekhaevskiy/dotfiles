@@ -41,24 +41,25 @@ gaf() {
     local -r header=$(
         cat <<-EOF
 		> CTRL-S to switch between Add Mode and Reset mode
-		> CTRL-T for status preview | CTRL-F for diff preview | CTRL-B for blame preview
+		> CTRL-T for status preview | CTRL-F for diff preview
 		> ALT-E to open files in your editor
+		> ALT-C to commit | ALT-A to append to the last commit
 		EOF
     )
 
     local -r add_header=$(
         cat <<-EOF
 		$header
-		> ENTER to add files
 		> ALT-P to add patch
+		> ENTER to add files
 		EOF
     )
 
     local -r reset_header=$(
         cat <<-EOF
 		$header
-		> ENTER to reset files
 		> ALT-D to reset and checkout files
+		> ENTER to reset files
 		EOF
     )
 
@@ -79,8 +80,6 @@ gaf() {
         --bind="ctrl-t:+change-preview(git status --short)" \
         --bind="ctrl-f:change-preview-label($preview_status_label)" \
         --bind="ctrl-f:+change-preview($preview_status)" \
-        --bind='ctrl-b:change-preview-label([ Blame ])' \
-        --bind='ctrl-b:+change-preview(git blame --color-by-age {})' \
         --bind="ctrl-s:transform:[[ \$FZF_PROMPT =~ '$prompt_add' ]] && echo '$mode_reset' || echo '$mode_add'" \
         --bind="enter:execute($enter_cmd)" \
         --bind="enter:+reload([[ \$FZF_PROMPT =~ '$prompt_add' ]] && $git_unstaged_files || $git_staged_files)" \
@@ -89,7 +88,9 @@ gaf() {
         --bind="alt-p:+reload($git_unstaged_files)" \
         --bind="alt-d:execute($git_reset && git checkout {+})" \
         --bind="alt-d:+reload($git_staged_files)" \
-        --bind='alt-e:execute(${EDITOR:-vim} {+})' \
+        --bind='alt-c:execute(git commit)+abort' \
+        --bind='alt-a:execute(git commit --amend)+abort' \
+        --bind='alt-e:execute(${EDITOR:-nvim} {+})' \
         --bind='f1:toggle-header' \
         --bind='f2:toggle-preview' \
         --bind='ctrl-y:preview-up' \
@@ -127,7 +128,7 @@ gclb() {
 
     cd "$dir"
 
-    # Configure fetch settings inside the cloned repo
+    # Fix fetch settings
     git config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
 }
 
@@ -145,14 +146,14 @@ gwa() {
     fi
 
     if ! $(git rev-parse --is-bare-repository); then
-        echo 2
         cd "$(git rev-parse --show-toplevel)"
         cd ..
     fi
 
     git worktree add "$branch"
     cd "$branch"
-    git fetch --all
+
+    git fetch
     git branch --set-upstream-to origin/"$branch"
 }
 
@@ -170,13 +171,19 @@ gwab() {
     fi
 
     if ! $(git rev-parse --is-bare-repository); then
-        echo 2
         cd "$(git rev-parse --show-toplevel)"
         cd ..
     fi
 
     git worktree add -b "$branch" "$branch"
     cd "$branch"
+}
+
+# rush update with git hooks fix
+ru() {
+    git config --unset core.hooksPath
+    rush update
+    git config core.hooksPath "$(git rev-parse --git-dir)/hooks"
 }
 
 # remove a user-specified IP from the known_hosts file
