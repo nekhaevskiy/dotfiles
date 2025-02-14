@@ -19,8 +19,8 @@ cipl() {
     echo "$CLUSTER_IP"
 }
 
-# fzf-git-files
-fgf() {
+# git add fzf
+gaf() {
     local -r prompt_add="Add > "
     local -r prompt_reset="Reset > "
 
