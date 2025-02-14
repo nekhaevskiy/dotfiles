@@ -32,11 +32,10 @@ return {
     vim.keymap.set('n', '<leader>ff', require('fzf-lua').files, { desc = '[F]iles' })
     vim.keymap.set('n', '<leader>fg', require('fzf-lua').git_files, { desc = '[G]it files' })
     vim.keymap.set('n', '<leader>fh', require('fzf-lua').helptags, { desc = '[H]elp' })
-    vim.keymap.set('n', '<leader>fk', require('fzf-lua').keymaps, { desc = '[K]eymaps' })
-    vim.keymap.set('n', '<leader>fr', require('fzf-lua').registers, { desc = '[R]egisters' })
-    vim.keymap.set('n', '<leader>fR', require('fzf-lua').resume, { desc = '[R]esume' })
+    vim.keymap.set('n', '<leader>fo', require('fzf-lua').oldfiles, { desc = '[O]ld Files' })
+    vim.keymap.set('n', '<leader>fr', require('fzf-lua').resume, { desc = '[R]esume' })
+    vim.keymap.set('n', '<leader>fR', require('fzf-lua').registers, { desc = '[R]egisters' })
     vim.keymap.set('n', '<leader>ft', require('fzf-lua').live_grep, { desc = '[T]ext' })
     vim.keymap.set('n', '<leader>fw', require('fzf-lua').grep_cword, { desc = 'current [W]ord' })
-    vim.keymap.set('n', '<leader>f.', require('fzf-lua').oldfiles, { desc = 'recent Files ("." for repeat)' })
   end,
 }
