@@ -18,7 +18,6 @@ alias gp="git push"
 alias gpf="git push --force"
 alias gpu="git push --set-upstream origin HEAD"
 alias gst="git status"
-#alias gwa="git worktree add"
 alias gwip="git commit --no-verify -m '[WIP]'"
 alias gwl="git worktree list"
 alias gwp="git worktree prune"
@@ -29,8 +28,6 @@ alias krusty="ssh yuryn@krusty"
 
 alias lg="lazygit"
 
-alias l='ls -CF'
-alias la='ls -A'
 alias ll='ls -alF'
 alias ls='ls --color=auto'
 
@@ -41,7 +38,6 @@ alias rb="rush build"
 alias rbo="rush build --only"
 alias rbt="rush build --to"
 alias rf="rush format-all"
-alias ri="rush install"
 alias rp="rush purge"
 alias rr="rush rebuild"
 alias rro="rush rebuild --only"
