@@ -110,6 +110,56 @@ gbcp() {
 
 }
 
+# git branch fzf
+gbf() {
+    local -r git_branches="git branch --color --format=$'%(HEAD) %(color:yellow)%(refname:short)\t%(color:green)%(committerdate:short)\t%(color:blue)%(subject)' | column --table --separator=$'\t'"
+    local -r get_selected_branch='echo {} | sed "s/^[* ]*//" | awk "{print \$1}"'
+    local -r git_log="git log \$($get_selected_branch) --graph --color --format='%C(white)%h - %C(green)%cs - %C(blue)%s%C(red)%d'"
+    local -r git_diff='git diff --color $(git branch --show-current)..$(echo {} | sed "s/^[* ]*//" | awk "{print \$1}")'
+    local -r git_show_subshell=$(
+        cat <<-EOF
+		[[ \$($get_selected_branch) != '' ]] && sh -c "git show --color \$($get_selected_branch) | less -R"
+	EOF
+    )
+    local -r header=$(
+        cat <<-EOF
+	> ALT-M to merge with current * branch | ALT-R to rebase with current * branch
+	> ALT-C to checkout the branch
+	> ALT-D to delete the merged local branch | ALT-X to force delete the local branch
+	> ENTER to open the diff with less
+	EOF
+    )
+
+    eval "$git_branches" |
+        fzf \
+            --ansi \
+            --reverse \
+            --no-sort \
+            --preview-label '[ Commits ]' \
+            --preview "$git_log" \
+            --header-first \
+            --header="$header" \
+            --bind="alt-c:execute(git checkout \$($get_selected_branch))" \
+            --bind="alt-c:+reload($git_branches)" \
+            --bind="alt-m:execute(git merge \$($get_selected_branch))" \
+            --bind="alt-r:execute(git rebase \$($get_selected_branch))" \
+            --bind="alt-d:execute(git branch --delete \$($get_selected_branch))" \
+            --bind="alt-d:+reload($git_branches)" \
+            --bind="alt-x:execute(git branch --delete --force \$($get_selected_branch))" \
+            --bind="alt-x:+reload($git_branches)" \
+            --bind="enter:execute($git_show_subshell)" \
+            --bind='ctrl-f:change-preview-label([ Diff ])' \
+            --bind="ctrl-f:+change-preview($git_diff)" \
+            --bind='ctrl-i:change-preview-label([ Commits ])' \
+            --bind="ctrl-i:+change-preview($git_log)" \
+            --bind='f1:toggle-header' \
+            --bind='f2:toggle-preview' \
+            --bind='ctrl-y:preview-up' \
+            --bind='ctrl-e:preview-down' \
+            --bind='ctrl-u:preview-half-page-up' \
+            --bind='ctrl-d:preview-half-page-down'
+}
+
 # git clone --bare
 gclb() {
     local repo="$1"
@@ -130,6 +180,89 @@ gclb() {
 
     # Fix fetch settings
     git config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
+}
+
+# git log fzf
+glf() {
+    local -r git_log=$(
+        cat <<-EOF
+		git log --graph --color --format="%C(white)%h - %C(green)%cs - %C(blue)%s%C(red)%d"
+	EOF
+    )
+
+    local -r git_log_all=$(
+        cat <<-EOF
+		git log --all --graph --color --format="%C(white)%h - %C(green)%cs - %C(blue)%s%C(red)%d"
+	EOF
+    )
+
+    local get_hash
+    read -r -d '' get_hash <<-'EOF'
+		echo {} | grep -o "[a-f0-9]\{7\}" | sed -n "1p"
+	EOF
+
+    local -r git_show="[[ \$($get_hash) != '' ]] && git show --color \$($get_hash)"
+    local -r git_show_subshell=$(
+        cat <<-EOF
+		[[ \$($get_hash) != '' ]] && sh -c "git show --color \$($get_hash) | less -R"
+	EOF
+    )
+
+    local -r git_checkout="[[ \$($get_hash) != '' ]] && git checkout \$($get_hash)"
+    local -r git_reset="[[ \$($get_hash) != '' ]] && git reset \$($get_hash)"
+    local -r git_rebase_interactive="[[ \$($get_hash) != '' ]] && git rebase --interactive \$($get_hash)"
+    local -r git_cherry_pick="[[ \$($get_hash) != '' ]] && git cherry-pick \$($get_hash)"
+
+    local -r header=$(
+        cat <<-EOF
+		> ENTER to display the diff with less
+	EOF
+    )
+
+    local -r header_branch=$(
+        cat <<-EOF
+		$header
+		> CTRL-S to switch to All Commits mode
+		> ALT-C to checkout the commit | ALT-R to reset to the commit
+		> ALT-I to rebase interactively until the commit
+	EOF
+    )
+
+    local -r header_all=$(
+        cat <<-EOF
+		$header
+		> CTRL-S to switch to Branch Commits mode
+		> ALT-P to cherry pick
+	EOF
+    )
+
+    local -r branch_prompt='Branch > '
+    local -r all_prompt='All > '
+
+    local -r mode_all="change-prompt($all_prompt)+reload($git_log_all)+change-header($header_all)+unbind(alt-c)+unbind(alt-r)+unbind(alt-i)+rebind(alt-p)"
+    local -r mode_branch="change-prompt($branch_prompt)+reload($git_log)+change-header($header_branch)+rebind(alt-c)+rebind(alt-r)+rebind(alt-i)+unbind(alt-p)"
+
+    eval "$git_log" | fzf \
+        --ansi \
+        --reverse \
+        --no-sort \
+        --prompt="$branch_prompt" \
+        --header-first \
+        --header="$header_branch" \
+        --preview="$git_show" \
+        --bind='start:unbind(alt-p)' \
+        --bind="ctrl-s:transform:[[ \$FZF_PROMPT =~ '$branch_prompt' ]] && echo '$mode_all' || echo '$mode_branch'" \
+        --bind="enter:execute($git_show_subshell)" \
+        --bind="alt-c:execute($git_checkout)+abort" \
+        --bind="alt-r:execute($git_reset)+abort" \
+        --bind="alt-i:execute($git_rebase_interactive)+abort" \
+        --bind="alt-p:execute($git_cherry_pick)+abort" \
+        --bind='f1:toggle-header' \
+        --bind='f2:toggle-preview' \
+        --bind='ctrl-y:preview-up' \
+        --bind='ctrl-e:preview-down' \
+        --bind='ctrl-u:preview-half-page-up' \
+        --bind='ctrl-d:preview-half-page-down'
 }
 
 # git worktree add - add an existing remote branch
@@ -177,6 +310,37 @@ gwab() {
 
     git worktree add -b "$branch" "$branch"
     cd "$branch"
+}
+
+# git worktree fzf
+gwf() {
+    #   local -r git_worktree_list='git worktree list'
+    #
+    #   local -r header=$(
+    #       cat <<-EOF
+    # > ALT-R to remove the worktree
+    # > ALT-P to prune worktrees
+    # > ENTER to checkout the worktree
+    # EOF
+    #   )
+
+    #    local get_worktree
+    #    read -r -d '' get_worktree <<-'EOF'
+    # 	echo {} | awk "{print \$1}"
+    # EOF
+
+    # local -r git_worktree_remove="[[ \$($get_worktree) != '' ]] && git worktree remove \$($get_worktree)"
+
+    cd $(eval "$git_worktree_list" |
+        fzf \
+            --reverse \
+            --no-sort \
+            --prompt="Git Worktree > " \
+            awk "{print \$1}")
+    # --header="$header" \
+    # --header-first \
+    # --bind="alt-r:execute($git_worktree_remove)" \
+    # --bind="alt-r:+reload($git_worktree_list)" \
 }
 
 # rush update with git hooks fix
