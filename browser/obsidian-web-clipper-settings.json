@@ -72,7 +72,7 @@
       {
         "id": "1737229461099o54zpsj9y",
         "name": "created",
-        "value": "{{date|date:\\\"YYYY-MM-DD HH-mm-ss\\\"}}",
+        "value": "{{date}}",
         "type": "date"
       },
       {
@@ -94,14 +94,14 @@
     "id": "1737229471292krqyx3ikq",
     "name": "Instagram",
     "behavior": "create",
-    "noteNameFormat": "Instagram {{date|date:\"YYYY-MM-DD HH-mm-ss\"}}",
+    "noteNameFormat": "Instagram {{date}}",
     "path": "0 Inbox",
     "noteContentFormat": "{{title}}",
     "properties": [
       {
         "id": "1737229560019u908rai4q",
         "name": "created",
-        "value": "{{date|date:\\\"YYYY-MM-DD HH-mm-ss\\\"}}",
+        "value": "{{date}}",
         "type": "date"
       },
       {
