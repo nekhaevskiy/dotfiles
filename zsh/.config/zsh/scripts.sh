@@ -1,3 +1,10 @@
+_git_check() {
+    git rev-parse HEAD >/dev/null 2>&1 && return
+
+    [[ -n $TMUX ]] && tmux display-message "Not in a git repository"
+    return 1
+}
+
 # cluster IP save
 cips() {
     # Check if an argument is provided
@@ -314,33 +321,34 @@ gwab() {
 
 # git worktree fzf
 gwf() {
-    #   local -r git_worktree_list='git worktree list'
-    #
-    #   local -r header=$(
-    #       cat <<-EOF
-    # > ALT-R to remove the worktree
-    # > ALT-P to prune worktrees
-    # > ENTER to checkout the worktree
-    # EOF
-    #   )
+    _git_check || return
 
-    #    local get_worktree
-    #    read -r -d '' get_worktree <<-'EOF'
-    # 	echo {} | awk "{print \$1}"
-    # EOF
+    local -r header="
+> Ctrl-l to change preview window layout
+> Alt-X to remove the worktree
+> Alt-P to prune worktrees
 
-    # local -r git_worktree_remove="[[ \$($get_worktree) != '' ]] && git worktree remove \$($get_worktree)"
+"
+    local -r preview="
+git -c color.status=always -C {1} status --short --branch
+echo
+git log --oneline --graph --date=short --color=always --pretty='format:%C(auto)%cd %h%d %s' {2} --
+"
 
-    cd $(eval "$git_worktree_list" |
-        fzf \
-            --reverse \
-            --no-sort \
-            --prompt="Git Worktree > " \
-            awk "{print \$1}")
-    # --header="$header" \
-    # --header-first \
-    # --bind="alt-r:execute($git_worktree_remove)" \
-    # --bind="alt-r:+reload($git_worktree_list)" \
+    local -r dir_path=$(git worktree list | fzf --height=50% --tmux 90%,70% \
+        --layout=reverse --multi --min-height=20 --border \
+        --border-label-pos=2 \
+        --border-label 'Git Worktrees ' \
+        --header="$header" \
+        --color='header:underline,label:blue' \
+        --preview-window='right,50%,border-left' \
+        --preview="$preview" \
+        --bind='ctrl-l:change-preview-window(down,50%,border-top|hidden|)' \
+        --bind 'alt-x:reload(git worktree remove {1} > /dev/null; git worktree list)' \
+        --bind 'alt-p:reload(git worktree prune > /dev/null; git worktree list)' |
+        awk '{print $1}')
+
+    [[ -n $dir_path ]] && cd $dir_path
 }
 
 # rush update with git hooks fix

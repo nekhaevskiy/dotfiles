@@ -49,16 +49,16 @@ PATH="$HOME/work/git-helpers/bin:$PATH"
 # Scripts #
 ###########
 
-source "$ZDOTDIR/scripts.zsh"
+source "$ZDOTDIR/scripts.sh"
 
 case "$OSTYPE" in
-  darwin*)  
-    source "$ZDOTDIR/macos.zsh"
-    ;;
-  linux*)   
-    source "$ZDOTDIR/linux.zsh"
-    ;;
-  *)        
-    echo "Unknown OS: $OSTYPE"
-    ;;
+darwin*)
+  source "$ZDOTDIR/macos.zsh"
+  ;;
+linux*)
+  source "$ZDOTDIR/linux.zsh"
+  ;;
+*)
+  echo "Unknown OS: $OSTYPE"
+  ;;
 esac
