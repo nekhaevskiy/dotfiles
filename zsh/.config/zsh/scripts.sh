@@ -100,10 +100,8 @@ gaf() {
         --bind='alt-e:execute(${EDITOR:-nvim} {+})' \
         --bind='f1:toggle-header' \
         --bind='f2:toggle-preview' \
-        --bind='ctrl-y:preview-up' \
-        --bind='ctrl-e:preview-down' \
-        --bind='ctrl-u:preview-half-page-up' \
-        --bind='ctrl-d:preview-half-page-down'
+        --bind='ctrl-u:preview-up' \
+        --bind='ctrl-d:preview-down'
 }
 
 # git bc-cherry-pick improved
@@ -161,10 +159,8 @@ gbf() {
             --bind="ctrl-i:+change-preview($git_log)" \
             --bind='f1:toggle-header' \
             --bind='f2:toggle-preview' \
-            --bind='ctrl-y:preview-up' \
-            --bind='ctrl-e:preview-down' \
-            --bind='ctrl-u:preview-half-page-up' \
-            --bind='ctrl-d:preview-half-page-down'
+            --bind='ctrl-u:preview-up' \
+            --bind='ctrl-d:preview-down'
 }
 
 # git clone --bare
@@ -266,10 +262,8 @@ glf() {
         --bind="alt-p:execute($git_cherry_pick)+abort" \
         --bind='f1:toggle-header' \
         --bind='f2:toggle-preview' \
-        --bind='ctrl-y:preview-up' \
-        --bind='ctrl-e:preview-down' \
-        --bind='ctrl-u:preview-half-page-up' \
-        --bind='ctrl-d:preview-half-page-down'
+        --bind='ctrl-u:preview-up' \
+        --bind='ctrl-d:preview-down'
 }
 
 # git worktree add - add an existing remote branch
