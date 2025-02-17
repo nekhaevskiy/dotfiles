@@ -153,7 +153,9 @@ _fzf_git_fzf() {
     --border-label-pos=2 \
     --color='header:italic:underline,label:blue' \
     --preview-window='right,50%,border-left' \
-    --bind='ctrl-/:change-preview-window(down,50%,border-top|hidden|)' "$@"
+    --bind='ctrl-/:change-preview-window(down,50%,border-top|hidden|)' \
+    --bind='ctrl-y:preview-up' \
+    --bind='ctrl-e:preview-down' "$@"
 }
 
 _fzf_git_check() {
@@ -180,8 +182,9 @@ _fzf_git_files() {
     --bind "ctrl-o:execute-silent:bash \"$__fzf_git\" --list file {-1}" \
     --bind "alt-e:execute:${EDITOR:-vim} {-1} > /dev/tty" \
     --query "$query" \
-    --preview "git diff --no-ext-diff --color=$(__fzf_git_color .) -- {-1} | $(__fzf_git_pager); $(__fzf_git_cat) {-1}" "$@" |
+    --preview "git diff --no-ext-diff --color=$(__fzf_git_color .) -- {-1} | $(__fzf_git_pager)" "$@" |
   cut -c4- | sed 's/.* -> //'
+    # --preview "git diff --no-ext-diff --color=$(__fzf_git_color .) -- {-1} | $(__fzf_git_pager); $(__fzf_git_cat) {-1}" "$@" |
 }
 
 _fzf_git_branches() {
