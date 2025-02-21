@@ -1,10 +1,3 @@
-_git_check() {
-    git rev-parse HEAD >/dev/null 2>&1 && return
-
-    [[ -n $TMUX ]] && tmux display-message "Not in a git repository"
-    return 1
-}
-
 # cluster IP save
 cips() {
     # Check if an argument is provided
@@ -106,61 +99,11 @@ gaf() {
 
 # git bc-cherry-pick improved
 gbcp() {
-    local branch="$1"
-    if [ -z "$branch" ]; then
-        git bc-show-eligible | fzf --no-sort --reverse | grep -o '^[a-f0-9]\{40\}' | xargs git bc-cherry-pick
-    else
-        git bc-show-eligible "$branch" | fzf --no-sort --reverse | grep -o '^[a-f0-9]\{40\}' | xargs git bc-cherry-pick
-    fi
-
-}
-
-# git branch fzf
-gbf() {
-    local -r git_branches="git branch --color --format=$'%(HEAD) %(color:yellow)%(refname:short)\t%(color:green)%(committerdate:short)\t%(color:blue)%(subject)' | column --table --separator=$'\t'"
-    local -r get_selected_branch='echo {} | sed "s/^[* ]*//" | awk "{print \$1}"'
-    local -r git_log="git log \$($get_selected_branch) --graph --color --format='%C(white)%h - %C(green)%cs - %C(blue)%s%C(red)%d'"
-    local -r git_diff='git diff --color $(git branch --show-current)..$(echo {} | sed "s/^[* ]*//" | awk "{print \$1}")'
-    local -r git_show_subshell=$(
-        cat <<-EOF
-		[[ \$($get_selected_branch) != '' ]] && sh -c "git show --color \$($get_selected_branch) | less -R"
-	EOF
-    )
-    local -r header=$(
-        cat <<-EOF
-	> ALT-M to merge with current * branch | ALT-R to rebase with current * branch
-	> ALT-C to checkout the branch
-	> ALT-D to delete the merged local branch | ALT-X to force delete the local branch
-	> ENTER to open the diff with less
-	EOF
-    )
-
-    eval "$git_branches" |
-        fzf \
-            --ansi \
-            --reverse \
-            --no-sort \
-            --preview-label '[ Commits ]' \
-            --preview "$git_log" \
-            --header-first \
-            --header="$header" \
-            --bind="alt-c:execute(git checkout \$($get_selected_branch))" \
-            --bind="alt-c:+reload($git_branches)" \
-            --bind="alt-m:execute(git merge \$($get_selected_branch))" \
-            --bind="alt-r:execute(git rebase \$($get_selected_branch))" \
-            --bind="alt-d:execute(git branch --delete \$($get_selected_branch))" \
-            --bind="alt-d:+reload($git_branches)" \
-            --bind="alt-x:execute(git branch --delete --force \$($get_selected_branch))" \
-            --bind="alt-x:+reload($git_branches)" \
-            --bind="enter:execute($git_show_subshell)" \
-            --bind='ctrl-f:change-preview-label([ Diff ])' \
-            --bind="ctrl-f:+change-preview($git_diff)" \
-            --bind='ctrl-i:change-preview-label([ Commits ])' \
-            --bind="ctrl-i:+change-preview($git_log)" \
-            --bind='f1:toggle-header' \
-            --bind='f2:toggle-preview' \
-            --bind='ctrl-u:preview-up' \
-            --bind='ctrl-d:preview-down'
+    local branch="${1:-}"
+    git bc-show-eligible ${branch:+"$branch"} |
+        fzf --no-sort --reverse |
+        grep -o '^[a-f0-9]\{40\}' |
+        xargs git bc-cherry-pick
 }
 
 # git clone --bare
@@ -273,7 +216,7 @@ gwa() {
         return 1
     fi
 
-    local branch="$1"
+    local -r branch="$1"
     if [ -z "$branch" ]; then
         echo "Usage: gwa <branch>"
         return 1
@@ -284,11 +227,11 @@ gwa() {
         cd ..
     fi
 
-    git worktree add "$branch"
+    git worktree add --track -b "$branch" "$branch" "origin/$branch"
     cd "$branch"
 
-    git fetch
-    git branch --set-upstream-to origin/"$branch"
+    # git fetch
+    # git branch --set-upstream-to origin/"$branch"
 }
 
 # git worktree add - create a new branch
@@ -298,51 +241,20 @@ gwab() {
         return 1
     fi
 
-    local branch="$1"
-    if [ -z "$branch" ]; then
+    local -r new_branch="$1"
+    if [ -z "$new_branch" ]; then
         echo "Usage: gwab <branch>"
         return 1
     fi
 
+    local -r curr_branch=$(git branch --show-current)
+
     if ! $(git rev-parse --is-bare-repository); then
-        cd "$(git rev-parse --show-toplevel)"
-        cd ..
+        cd "$(git rev-parse --git-common-dir)"
     fi
 
-    git worktree add -b "$branch" "$branch"
-    cd "$branch"
-}
-
-# git worktree fzf
-gwf() {
-    _git_check || return
-
-    local -r header="
-> Ctrl-l to change preview window layout
-> Alt-X to remove the worktree
-> Alt-P to prune worktrees
-
-"
-    local -r preview="
-git -c color.status=always -C {1} status --short --branch
-echo
-git log --oneline --graph --date=short --color=always --pretty='format:%C(auto)%cd %h%d %s' {2} --
-"
-
-    local -r dir_path=$(git worktree list | fzf --height=50% --tmux 90%,70% \
-        --layout=reverse --multi --min-height=20 --border \
-        --border-label-pos=2 \
-        --border-label 'Git Worktrees ' \
-        --header="$header" \
-        --color='header:underline,label:blue' \
-        --preview-window='right,50%,border-left' \
-        --preview="$preview" \
-        --bind='ctrl-l:change-preview-window(down,50%,border-top|hidden|)' \
-        --bind 'alt-x:reload(git worktree remove {1} > /dev/null; git worktree list)' \
-        --bind 'alt-p:reload(git worktree prune > /dev/null; git worktree list)' |
-        awk '{print $1}')
-
-    [[ -n $dir_path ]] && cd $dir_path
+    git worktree add -b "$new_branch" "$new_branch" "$curr_branch"
+    cd "$new_branch"
 }
 
 # rush update with git hooks fix
@@ -362,4 +274,17 @@ sshr() {
 
     ssh-keygen -f "$HOME/.ssh/known_hosts" -R "$ip"
     echo "IP $ip removed from known_hosts file."
+}
+
+# tmuxp load session
+tls() {
+    local -r session=$(
+        ls -1 $HOME/.config/tmuxp | sed 's/\.yml$//' | fzf --height=50% --tmux 90%,70% \
+            --layout=reverse --min-height=20 --border \
+            --border-label-pos=2 \
+            --border-label 'tmux sessions ' \
+            --color='label:blue'
+    )
+
+    [[ -n $session ]] && tmuxp load $session
 }
