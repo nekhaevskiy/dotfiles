@@ -43,17 +43,13 @@ return {
           -- map('gd', function()
           -- require('telescope.builtin').lsp_definitions { show_line = false }
           -- end, '[G]oto [D]efinition')
-          map('gd', function()
-            require('fzf-lua').lsp_definitions { jump_to_single_result = true }
-          end, '[G]oto [D]efinition')
+          map('gd', require('fzf-lua').lsp_definitions, '[G]oto [D]efinition')
 
           -- Find references for the word under your cursor.
           -- map('gr', function()
           --   require('telescope.builtin').lsp_references { show_line = false }
           -- end, '[G]oto [R]eferences')
-          map('gr', function()
-            require('fzf-lua').lsp_references { jump_to_single_result = true }
-          end, '[G]oto [R]eferences')
+          map('gr', require('fzf-lua').lsp_references, '[G]oto [R]eferences')
 
           -- Jump to the implementation of the word under your cursor.
           --  Useful when your language has ways of declaring types without an actual implementation.

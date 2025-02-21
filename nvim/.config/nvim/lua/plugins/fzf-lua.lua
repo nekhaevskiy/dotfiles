@@ -11,31 +11,19 @@ return {
           vertical = 'down:70%',
         },
       },
-      keymap = {
-        builtin = {
-          true,
-          ['<C-d>'] = 'preview-page-down',
-          ['<C-u>'] = 'preview-page-up',
-        },
-        fzf = {
-          true,
-          ['ctrl-d'] = 'preview-page-down',
-          ['ctrl-u'] = 'preview-page-up',
-        },
-      },
     }
 
     vim.keymap.set('n', '<leader>/', require('fzf-lua').lgrep_curbuf, { desc = 'Find in current buffer ("/")' })
     vim.keymap.set('n', '<leader>fb', require('fzf-lua').buffers, { desc = '[B]uffers' })
-    vim.keymap.set('n', '<leader>fc', require('fzf-lua').git_status, { desc = '[C]hanged files' })
-    vim.keymap.set('n', '<leader>fd', require('fzf-lua').diagnostics_document, { desc = '[D]iagnostics' })
     vim.keymap.set('n', '<leader>ff', require('fzf-lua').files, { desc = '[F]iles' })
-    vim.keymap.set('n', '<leader>fg', require('fzf-lua').git_files, { desc = '[G]it files' })
+    vim.keymap.set('n', '<leader>fg', require('fzf-lua').git_status, { desc = 'Git [S]tatus' })
+    vim.keymap.set('n', '<leader>fG', require('fzf-lua').grep, { desc = '[G]rep' })
     vim.keymap.set('n', '<leader>fh', require('fzf-lua').helptags, { desc = '[H]elp' })
+    vim.keymap.set('n', '<leader>fl', require('fzf-lua').live_grep, { desc = '[L]ive Grep' })
     vim.keymap.set('n', '<leader>fo', require('fzf-lua').oldfiles, { desc = '[O]ld Files' })
-    vim.keymap.set('n', '<leader>fr', require('fzf-lua').resume, { desc = '[R]esume' })
-    vim.keymap.set('n', '<leader>fR', require('fzf-lua').registers, { desc = '[R]egisters' })
-    vim.keymap.set('n', '<leader>ft', require('fzf-lua').live_grep, { desc = '[T]ext' })
-    vim.keymap.set('n', '<leader>fw', require('fzf-lua').grep_cword, { desc = 'current [W]ord' })
+    vim.keymap.set('n', '<leader>fr', require('fzf-lua').registers, { desc = '[R]egisters' })
+    vim.keymap.set('n', '<leader>fR', require('fzf-lua').resume, { desc = '[R]esume' })
+    -- vim.keymap.set('n', '<leader>fG', require('fzf-lua').git_files, { desc = '[G]it files' })
+    vim.keymap.set('n', '<leader>dd', require('fzf-lua').diagnostics_document, { desc = '[D]iagnostics' })
   end,
 }
