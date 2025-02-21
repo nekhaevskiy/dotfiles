@@ -161,15 +161,17 @@ cipl() {
 
 # remove a user-specified IP from the known_hosts file
 sshr() {
-    local ip="$1"
-    if [ -z "$ip" ]; then
-        echo "Usage: sshr <ip>"
-        return 1
-    fi
+	local ip="$1"
+	if [ -z "$ip" ]; then
+		echo "Usage: sshr <ip>"
+		return 1
+	fi
 
-    ssh-keygen -f "$HOME/.ssh/known_hosts" -R "$ip"
-    echo "IP $ip removed from known_hosts file."
+	ssh-keygen -f "$HOME/.ssh/known_hosts" -R "$ip"
+	echo "IP $ip removed from known_hosts file."
 }
 
 # export PATH=${PATH}:/opt/p4v/bin/
 # export PATH=${PATH}:/opt/pycharm-community-2020.3.3/bin/
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
