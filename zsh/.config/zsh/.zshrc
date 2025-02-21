@@ -7,13 +7,12 @@ HISTSIZE=10000
 # maximum events in history file
 SAVEHIST=10000
 
+# amount of time that Zsh waits for the next key in a multi-key sequence
+KEYTIMEOUT=100
+
 # options
 setopt autocd nomatch
 # unsetopt beep extendedglob notify
-
-# enable the vi mode
-# bindkey -v
-# KEYTIMEOUT=1
 
 bindkey '^P' up-line-or-search
 bindkey '^N' down-line-or-search
