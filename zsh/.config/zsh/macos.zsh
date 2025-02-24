@@ -6,7 +6,7 @@
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # fzf
-source "$HOME/.fzf.zsh"
+source <(fzf --zsh)
 FZF_DEFAULT_COMMAND="rg --files --hidden --glob '!.git'"
 FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
