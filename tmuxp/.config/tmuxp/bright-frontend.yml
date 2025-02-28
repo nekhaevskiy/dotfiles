@@ -1,5 +1,5 @@
 session_name: bright-frontend
-start_directory: $HOME/work/bright-frontend/main
+start_directory: $HOME/work/bright-frontend
 
 windows:
   - panes:
