@@ -1,22 +1,49 @@
 {
+  "interpreter_settings": {
+    "interpreterModel": "",
+    "models": [],
+    "providers": [],
+    "interpreterEnabled": false,
+    "interpreterAutoRun": false,
+    "defaultPromptContext": ""
+  },
+  "template_1737229471292krqyx3ikq": {
+    "id": "1737229471292krqyx3ikq",
+    "name": "Instagram",
+    "behavior": "create",
+    "noteNameFormat": "Instagram {{date}}",
+    "path": "0 Inbox",
+    "noteContentFormat": "{{title}}",
+    "properties": [
+      {
+        "id": "1737229560019u908rai4q",
+        "name": "created",
+        "value": "{{date|date:\\\"YYYY-MM-DD HH:mm\\\"}}",
+        "type": "date"
+      },
+      {
+        "id": "1737229581190sl68cin2d",
+        "name": "source",
+        "value": "{{url}}",
+        "type": "text"
+      }
+    ],
+    "triggers": [
+      "instagram.com"
+    ],
+    "context": ""
+  },
+  "vaults": [],
   "general_settings": {
+    "showMoreActionsButton": false,
     "betaFeatures": false,
     "legacyMode": false,
-    "showMoreActionsButton": false,
     "silentOpen": false
   },
   "highlighter_settings": {
+    "highlighterEnabled": true,
     "alwaysShowHighlights": false,
-    "highlightBehavior": "no-highlights",
-    "highlighterEnabled": true
-  },
-  "interpreter_settings": {
-    "defaultPromptContext": "",
-    "interpreterAutoRun": false,
-    "interpreterEnabled": false,
-    "interpreterModel": "",
-    "models": [],
-    "providers": []
+    "highlightBehavior": "no-highlights"
   },
   "property_types": [
     {
@@ -55,7 +82,7 @@
     }
   ],
   "stats": {
-    "addToObsidian": 10,
+    "addToObsidian": 18,
     "copyToClipboard": 0,
     "saveFile": 0,
     "share": 0
@@ -72,7 +99,7 @@
       {
         "id": "1737229461099o54zpsj9y",
         "name": "created",
-        "value": "{{date}}",
+        "value": "{{date|date:\\\"YYYY-MM-DD HH:mm\\\"}}",
         "type": "date"
       },
       {
@@ -90,35 +117,8 @@
     ],
     "triggers": []
   },
-  "template_1737229471292krqyx3ikq": {
-    "id": "1737229471292krqyx3ikq",
-    "name": "Instagram",
-    "behavior": "create",
-    "noteNameFormat": "Instagram {{date}}",
-    "path": "0 Inbox",
-    "noteContentFormat": "{{title}}",
-    "properties": [
-      {
-        "id": "1737229560019u908rai4q",
-        "name": "created",
-        "value": "{{date}}",
-        "type": "date"
-      },
-      {
-        "id": "1737229581190sl68cin2d",
-        "name": "source",
-        "value": "{{url}}",
-        "type": "text"
-      }
-    ],
-    "triggers": [
-      "instagram.com"
-    ],
-    "context": ""
-  },
   "template_list": [
     "1737229461099axfc7m85q",
     "1737229471292krqyx3ikq"
-  ],
-  "vaults": []
+  ]
 }
