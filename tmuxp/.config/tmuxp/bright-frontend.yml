@@ -3,4 +3,5 @@ start_directory: $HOME/work/bright-frontend
 
 windows:
   - panes:
-      -
+    -
+    -
