@@ -72,9 +72,6 @@ return {
           -- or a suggestion from your LSP for this to activate.
           map('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction', { 'n', 'x' })
 
-          -- TypeScriptTools Organize Imports
-          map('<leader>co', require('typescript-tools.api').organize_imports, '[C]ode [O]rganize imports')
-
           -- Rename the variable under your cursor.
           --  Most Language Servers support renaming across files, etc.
           map('<leader>cr', vim.lsp.buf.rename, '[C]ode [R]ename')
