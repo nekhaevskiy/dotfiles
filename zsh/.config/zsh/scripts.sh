@@ -282,6 +282,7 @@ gwab() {
 ru() {
     git config --unset core.hooksPath
     rush update
+    rush lint-format-staged
     git config core.hooksPath "$(git rev-parse --git-dir)/hooks"
 }
 
