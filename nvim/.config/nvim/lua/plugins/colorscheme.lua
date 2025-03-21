@@ -7,10 +7,10 @@ return { -- You can easily change to a different colorscheme.
   priority = 1000, -- Make sure to load this before all the other start plugins.
   config = function()
     -- Load the colorscheme here.
-    require('onedark').setup { style = 'darker' }
+    require('onedark').setup { style = 'deep' }
     require('onedark').load()
 
     -- You can configure highlights by doing something like:
-    vim.cmd.hi 'Comment gui=none'
+    -- vim.cmd.hi 'Comment gui=none'
   end,
 }
