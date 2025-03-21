@@ -251,6 +251,7 @@ gwa() {
         cd ..
     fi
 
+    git fetch --prune
     git worktree add --track -b "$branch" "$branch" "origin/$branch"
     cd "$branch"
 }
