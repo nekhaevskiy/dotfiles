@@ -11,6 +11,20 @@ return {
           vertical = 'down:70%',
         },
       },
+      keymap = {
+        builtin = {
+          true,
+          ['<S-down>'] = 'preview-down',
+          ['<S-up>'] = 'preview-up',
+          ['<M-S-down>'] = 'preview-page-down',
+          ['<M-S-up>'] = 'preview-page-up',
+        },
+        fzf = {
+          true,
+          ['shift-down'] = 'preview-down',
+          ['shift-up'] = 'preview-up',
+        },
+      },
     }
 
     vim.keymap.set('n', '<leader>/', require('fzf-lua').lgrep_curbuf, { desc = 'Find in current buffer ("/")' })
