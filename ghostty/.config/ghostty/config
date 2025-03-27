@@ -1,6 +1,7 @@
 # font-family = FiraCode Nerd Font Mono
 font-feature = -calt  # disable ligatures
-font-size = 16
+font-size = 14
+# font-size = 16
 theme = iTerm2 Default
 window-decoration = none
 
