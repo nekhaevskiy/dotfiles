@@ -45,7 +45,7 @@ return { -- Autoformat
         lsp_format_opt = 'fallback'
       end
       return {
-        timeout_ms = 500,
+        timeout_ms = 5000,
         lsp_format = lsp_format_opt,
       }
     end,
@@ -54,13 +54,13 @@ return { -- Autoformat
       -- python = { "isort", "black" },
       --
       -- You can use 'stop_after_first' to run the first available formatter from the list
-      javascript = { 'prettierd', 'prettier', stop_after_first = true },
-      json = { 'prettierd', 'prettier', stop_after_first = true },
-      jsonc = { 'prettierd', 'prettier', stop_after_first = true },
+      javascript = { 'prettier', 'prettierd', stop_after_first = true },
+      json = { 'prettier', 'prettierd', stop_after_first = true },
+      jsonc = { 'prettier', 'prettierd', stop_after_first = true },
       lua = { 'stylua' },
-      markdown = { 'prettierd', 'prettier', stop_after_first = true },
-      typescript = { 'prettierd', 'prettier', stop_after_first = true },
-      typescriptreact = { 'prettierd', 'prettier', stop_after_first = true },
+      markdown = { 'prettier', 'prettierd', stop_after_first = true },
+      typescript = { 'prettier', 'prettierd', stop_after_first = true },
+      typescriptreact = { 'prettier', 'prettierd', stop_after_first = true },
     },
   },
 }
