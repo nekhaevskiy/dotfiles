@@ -1,3 +1,14 @@
+# Preview at the bottom
+_fzf_git_fzf() {
+    fzf --height 50% --tmux 90%,70% \
+        --layout reverse --multi --min-height 20+ --border \
+        --no-separator --header-border horizontal \
+        --border-label-pos 2 \
+        --color 'label:blue' \
+        --preview-window 'bottom,60%' --preview-border line \
+        --bind 'ctrl-/:change-preview-window(right,50%|hidden|)' "$@"
+}
+
 # _fzf_git_files without file preview
 _fzf_git_files() {
     _fzf_git_check || return
@@ -16,7 +27,7 @@ _fzf_git_files() {
             --border-label '📁 Files ' \
             --header 'CTRL-O (open in browser) ╱ ALT-E (open in editor)' \
             --bind "ctrl-o:execute-silent:bash \"$__fzf_git\" --list file {-1}" \
-            --bind "alt-e:execute:${EDITOR:-vim} {-1} > /dev/tty" \
+            --bind "alt-e:execute:${EDITOR:-nvim} {-1} > /dev/tty" \
             --query "$query" \
             --preview "git diff --no-ext-diff --color=$(__fzf_git_color .) -- {-1} | $(__fzf_git_pager)" "$@" |
         cut -c4- | sed 's/.* -> //'
@@ -112,8 +123,8 @@ gaf() {
         --bind="alt-p:+reload($git_unstaged_files)" \
         --bind="alt-d:execute($git_reset && git checkout {+})" \
         --bind="alt-d:+reload($git_staged_files)" \
-        --bind='alt-c:execute(git commit)+abort' \
-        --bind='alt-a:execute(git commit --amend)+abort' \
+        --bind='alt-c:execute(git commit --verbose)+abort' \
+        --bind='alt-a:execute(git commit --amend --verbose)+abort' \
         --bind='alt-e:execute(${EDITOR:-nvim} {+})' \
         --bind='f1:toggle-header' \
         --bind='f2:toggle-preview' \
