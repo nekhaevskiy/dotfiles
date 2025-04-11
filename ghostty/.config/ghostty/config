@@ -8,5 +8,5 @@ window-decoration = none
 # keybind = ctrl+shift+r=reload_config
 
 # switch tmux windows with Ctrl+Tab
-keybind = ctrl+tab=text:\x00n
-keybind = ctrl+shift+tab=text:\x00p
+keybind = ctrl+tab=text:\x01n
+keybind = ctrl+shift+tab=text:\x01p
