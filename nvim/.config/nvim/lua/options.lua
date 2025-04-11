@@ -65,6 +65,9 @@ vim.opt.scrolloff = 4
 -- Disable use a swapfile for a buffer
 vim.opt.swapfile = false
 
+-- Convert tab to spaces
+vim.opt.expandtab = true
+
 vim.diagnostic.config {
   -- Do not use virtual text for diagnostics
   virtual_text = false,
