@@ -12,6 +12,7 @@ FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 # fzf-git
 source "$HOME/.fzf-git/fzf-git.sh"
+source "$ZDOTDIR/yn-fzf-git.sh"
 
 # nvm
 export NVM_DIR="$HOME/.nvm"
