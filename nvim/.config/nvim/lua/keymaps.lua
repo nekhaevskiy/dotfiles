@@ -46,4 +46,4 @@ vim.keymap.set('n', 'N', 'Nzzzv')
 vim.keymap.set('x', '<leader>p', [["_dP]], { desc = 'Delete the selected text into the black hole register' })
 vim.keymap.set({ 'n', 'v' }, '<leader>y', [["+y]], { desc = 'Yank into clipboard register' })
 
-vim.keymap.set('i', 'jk', '<Esc>', { desc = 'Exit insert mode' })
+-- vim.keymap.set('i', 'jk', '<Esc>', { desc = 'Exit insert mode' })
