@@ -5,6 +5,9 @@ font-size = 14
 theme = YN iTerm2 Default
 window-decoration = none
 
+# disable ligatures
+font-feature = -calt, -liga, -dlig
+
 # keybind = ctrl+shift+r=reload_config
 
 # switch tmux windows with Ctrl+Tab
