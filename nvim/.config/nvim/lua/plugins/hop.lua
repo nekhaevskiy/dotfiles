@@ -1,3 +1,7 @@
+if true then
+  return {}
+end
+
 return {
   'smoka7/hop.nvim',
   version = '*',
