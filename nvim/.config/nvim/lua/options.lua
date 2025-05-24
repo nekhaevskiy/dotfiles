@@ -74,3 +74,12 @@ vim.diagnostic.config {
   -- Sort diagnostics by severity
   severity_sort = true,
 }
+
+-- Size of indent
+vim.opt.shiftwidth = 2
+
+-- Insert indents automatically
+vim.opt.smartindent = true
+
+-- Number of spaces tabs count fot
+vim.opt.tabstop = 2
