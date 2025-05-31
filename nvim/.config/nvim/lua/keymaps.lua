@@ -47,3 +47,9 @@ vim.keymap.set('x', '<leader>p', [["_dP]], { desc = 'Delete the selected text in
 vim.keymap.set({ 'n', 'v' }, '<leader>y', [["+y]], { desc = 'Yank into clipboard register' })
 
 -- vim.keymap.set('i', 'jk', '<Esc>', { desc = 'Exit insert mode' })
+
+-- Disable default keybindings
+vim.keymap.del('n', 'gra')
+vim.keymap.del('n', 'gri')
+vim.keymap.del('n', 'grn')
+vim.keymap.del('n', 'grr')
