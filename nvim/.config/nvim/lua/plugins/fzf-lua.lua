@@ -38,6 +38,8 @@ return {
     vim.keymap.set('n', '<leader>fr', require('fzf-lua').registers, { desc = '[R]egisters' })
     vim.keymap.set('n', '<leader>fR', require('fzf-lua').resume, { desc = '[R]esume' })
     -- vim.keymap.set('n', '<leader>fG', require('fzf-lua').git_files, { desc = '[G]it files' })
-    vim.keymap.set('n', '<leader>dd', require('fzf-lua').diagnostics_document, { desc = '[D]iagnostics' })
+    vim.keymap.set('n', '<leader>dd', function()
+      require('fzf-lua').diagnostics_document { sort = true }
+    end, { desc = '[D]iagnostics' })
   end,
 }
