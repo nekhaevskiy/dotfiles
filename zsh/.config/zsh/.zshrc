@@ -52,10 +52,12 @@ source "$ZDOTDIR/scripts.sh"
 
 case "$OSTYPE" in
 darwin*)
-  source "$ZDOTDIR/macos.zsh"
+  source "$ZDOTDIR/macos.sh"
+  source "$ZDOTDIR/macos-scripts.sh"
   ;;
 linux*)
-  source "$ZDOTDIR/linux.zsh"
+  source "$ZDOTDIR/linux.sh"
+  source "$ZDOTDIR/linux-scripts.sh"
   ;;
 *)
   echo "Unknown OS: $OSTYPE"
