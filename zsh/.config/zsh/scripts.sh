@@ -234,8 +234,8 @@ gwab() {
   cd "$new_branch"
 }
 
-# rush update with git hooks fix
-ru() {
+# rush update with git worktree hooks fix
+rugw() {
   git config --unset core.hooksPath
   rush update
   rush lint-format-staged
