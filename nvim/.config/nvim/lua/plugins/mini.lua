@@ -15,6 +15,9 @@ return { -- Collection of various small independent plugins/modules
     -- Jump within visible lines
     -- require('mini.jump2d').setup()
 
+    -- Autopairs
+    require('mini.pairs').setup {}
+
     -- Add/delete/replace surroundings (brackets, quotes, etc.)
     require('mini.surround').setup {
       mappings = {
