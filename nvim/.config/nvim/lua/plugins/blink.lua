@@ -1,34 +1,39 @@
+_G.ai_enabled = true
+
 return { -- Autocompletion
   'saghen/blink.cmp',
-  event = 'VimEnter',
   version = '1.*',
   dependencies = {
-    -- Snippet Engine
+    -- GitHub Copilot
     {
-      'L3MON4D3/LuaSnip',
-      version = '2.*',
-      build = (function()
-        -- Build Step is needed for regex support in snippets.
-        -- This step is not supported in many windows environments.
-        -- Remove the below condition to re-enable on windows.
-        if vim.fn.has 'win32' == 1 or vim.fn.executable 'make' == 0 then
-          return
-        end
-        return 'make install_jsregexp'
-      end)(),
-      dependencies = {
-        -- `friendly-snippets` contains a variety of premade snippets.
-        --    See the README about individual language/framework/plugin snippets:
-        --    https://github.com/rafamadriz/friendly-snippets
-        -- {
-        --   'rafamadriz/friendly-snippets',
-        --   config = function()
-        --     require('luasnip.loaders.from_vscode').lazy_load()
-        --   end,
-        -- },
-      },
-      opts = {},
+      'giuxtaposition/blink-cmp-copilot',
     },
+    -- Snippet Engine
+    -- {
+    --   'L3MON4D3/LuaSnip',
+    --   version = '2.*',
+    --   build = (function()
+    --     -- Build Step is needed for regex support in snippets.
+    --     -- This step is not supported in many windows environments.
+    --     -- Remove the below condition to re-enable on windows.
+    --     if vim.fn.has 'win32' == 1 or vim.fn.executable 'make' == 0 then
+    --       return
+    --     end
+    --     return 'make install_jsregexp'
+    --   end)(),
+    --   dependencies = {
+    --     -- `friendly-snippets` contains a variety of premade snippets.
+    --     --    See the README about individual language/framework/plugin snippets:
+    --     --    https://github.com/rafamadriz/friendly-snippets
+    --     -- {
+    --     --   'rafamadriz/friendly-snippets',
+    --     --   config = function()
+    --     --     require('luasnip.loaders.from_vscode').lazy_load()
+    --     --   end,
+    --     -- },
+    --   },
+    --   opts = {},
+    -- },
     'folke/lazydev.nvim',
   },
   opts = {
@@ -72,19 +77,31 @@ return { -- Autocompletion
     },
 
     completion = {
+      -- Disable auto brackets
+      -- NOTE: some LSPs may add auto brackets themselves anyway
+      accept = { auto_brackets = { enabled = false } },
       -- By default, you may press `<c-space>` to show the documentation.
       -- Optionally, set `auto_show = true` to show the documentation after a delay.
       documentation = { auto_show = true, auto_show_delay_ms = 500 },
     },
 
     sources = {
-      default = { 'lsp', 'path', 'snippets', 'lazydev' },
+      default = { 'lsp', 'path', 'lazydev', 'copilot' },
       providers = {
         lazydev = { module = 'lazydev.integrations.blink', score_offset = 100 },
+        copilot = {
+          name = 'copilot',
+          module = 'blink-cmp-copilot',
+          enabled = function()
+            return _G.ai_enabled
+          end,
+          async = true,
+          score_offset = 100,
+        },
       },
     },
 
-    snippets = { preset = 'luasnip' },
+    -- snippets = { preset = 'luasnip' },
 
     -- Blink.cmp includes an optional, recommended rust fuzzy matcher,
     -- which automatically downloads a prebuilt binary when enabled.
@@ -97,5 +114,16 @@ return { -- Autocompletion
 
     -- Shows a signature help window while you type arguments for a function
     signature = { enabled = false },
+  },
+  keys = {
+    {
+      '<leader>ta',
+      function()
+        _G.ai_enabled = not _G.ai_enabled
+        print('Copilot is now ' .. (_G.ai_enabled and 'enabled' or 'disabled'))
+        require('blink-cmp').reload()
+      end,
+      desc = '[T]oggle [A]I',
+    },
   },
 }
