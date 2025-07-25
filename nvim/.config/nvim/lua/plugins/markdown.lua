@@ -1,10 +1,10 @@
 return {
-  {
-    'MeanderingProgrammer/render-markdown.nvim',
-    dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.nvim' }, -- if you use the mini.nvim suite
-    ft = { 'markdown' },
-    opts = {},
-  },
+  -- {
+  --   'MeanderingProgrammer/render-markdown.nvim',
+  --   dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.nvim' }, -- if you use the mini.nvim suite
+  --   ft = { 'markdown' },
+  --   opts = {},
+  -- },
   {
     'iamcco/markdown-preview.nvim',
     cmd = { 'MarkdownPreviewToggle', 'MarkdownPreview', 'MarkdownPreviewStop' },
@@ -12,5 +12,8 @@ return {
     build = function()
       vim.fn['mkdp#util#install']()
     end,
+    keys = {
+      { '<leader>mp', mode = { 'n', 'v' }, '<cmd>MarkdownPreviewToggle<cr>', desc = '[M]arkdown [P]review' },
+    },
   },
 }
