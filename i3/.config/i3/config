@@ -58,16 +58,22 @@ floating_modifier $mod
 # or left-clicking anywhere into the window while holding the floating modifier.
 tiling_drag modifier titlebar
 
+# gaps
+# gaps inner 10
+# gaps outer 0
+# smart_gaps on
+
 # kill focused window
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
 # bindsym $mod+d exec --no-startup-id dmenu_run
 # A more modern dmenu replacement is rofi:
-# bindcode $mod+40 exec rofi -modi drun,run -show drun
+# bindcode $mod+65 = bindsym $mod+Space
+bindcode $mod+65 exec rofi -show drun
 # There also is i3-dmenu-desktop which only displays applications shipping a
 # .desktop file. It is a wrapper around dmenu, so you need that installed.
-bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 # change focus
 bindsym $mod+h focus left
@@ -166,12 +172,13 @@ workspace_auto_back_and_forth yes
 bindsym $mod+m move workspace to output next
 
 # open applications in a specific workspace
-assign [class="1Password" instance="1password"] $ws10
+# assign [class="1Password" instance="1password"] $ws10
 
 # floating pop up automatically
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable
-# for_window [class="1Password"] floating enable
+for_window [class="Anki"] floating enable
+for_window [class="Nitrogen"] floating enable
 
 # terminal scratchpad
 for_window [instance="kitty_scratchpad"] move scratchpad
@@ -194,7 +201,7 @@ bindsym $mod+z exec "setxkbmap -layout us,ru -option 'grp:alt_space_toggle' -opt
 exec --no-startup-id blueberry-tray
 
 # browser
-bindsym $mod+Return exec brave
+# bindsym $mod+Return exec brave
 
 # dunst - notifications
 exec --no-startup-id dunst
@@ -204,13 +211,13 @@ exec --no-startup-id flameshot
 bindsym Print exec flameshot gui
 
 # nitrogen - wallpaper
-# exec --no-startup-id nitrogen --restore
+exec --no-startup-id nitrogen --restore
 
 # picom - compositor for X11
-exec --no-startup-id picom
+# exec --no-startup-id picom
 
 # terminal
-bindsym $mod+grave exec kitty
+# bindsym $mod+grave exec kitty
 
 # volume icon
 exec --no-startup-id volumeicon
@@ -219,7 +226,7 @@ exec --no-startup-id volumeicon
 bindsym $mod+Shift+c reload
 
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart 
+bindsym $mod+Shift+r restart
 
 # exit i3 (logs you out of your X session) bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
