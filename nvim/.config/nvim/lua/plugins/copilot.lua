@@ -1,13 +1,10 @@
 return {
   'zbirenbaum/copilot.lua',
-  cmd = 'Copilot',
+  opts = {},
   event = 'InsertEnter',
-  opts = {
-    panel = { enabled = false },
-    suggestion = { enabled = false },
-    filetypes = {
-      markdown = true,
-      help = true,
-    },
+  cmd = 'Copilot',
+  keys = {
+    { '<leader>ap', '<cmd>Copilot panel<cr>', desc = '[p]anel' },
+    { '<leader>as', '<cmd>Copilot suggestion<cr>', desc = '[s]uggestion' },
   },
 }
