@@ -9,7 +9,7 @@ return {
       function()
         require('harpoon'):list():add()
       end,
-      desc = '[A]dd',
+      desc = '[a]dd',
     },
     {
       '<leader>hh',
@@ -17,7 +17,7 @@ return {
       function()
         require('harpoon').ui:toggle_quick_menu(require('harpoon'):list())
       end,
-      desc = 'Toggle',
+      desc = 'toggle',
     },
     {
       '<leader>h1',
@@ -25,7 +25,7 @@ return {
       function()
         require('harpoon'):list():select(1)
       end,
-      desc = 'Select [1]',
+      desc = 'select [1]',
     },
     {
       '<leader>h2',
@@ -33,7 +33,7 @@ return {
       function()
         require('harpoon'):list():select(2)
       end,
-      desc = 'Select [2]',
+      desc = 'select [2]',
     },
     {
       '<leader>h3',
@@ -41,7 +41,7 @@ return {
       function()
         require('harpoon'):list():select(3)
       end,
-      desc = 'Select [3]',
+      desc = 'select [3]',
     },
     {
       '<leader>h4',
@@ -49,7 +49,7 @@ return {
       function()
         require('harpoon'):list():select(4)
       end,
-      desc = 'Select [4]',
+      desc = 'select [4]',
     },
   },
 }
