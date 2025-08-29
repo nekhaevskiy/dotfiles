@@ -4,8 +4,11 @@ return {
     'nvim-lua/plenary.nvim',
     'nvim-treesitter/nvim-treesitter',
     'j-hui/fidget.nvim',
+    'zbirenbaum/copilot.lua',
   },
   opts = {
+    ---@module "codecompanion"
+    ---@type CodeCompanion.Config
     strategies = {
       chat = {
         adapter = {
@@ -14,22 +17,29 @@ return {
         },
         keymaps = {
           send = {
-            modes = { n = '<cr>', i = '<C-cr>' },
+            modes = {
+              n = '<C-cr>',
+              i = '<C-cr>',
+            },
           },
           close = {
-            modes = { n = 'q', i = '<C-q>' },
+            modes = {
+              n = '<C-q>',
+              i = '<C-q>',
+            },
           },
         },
       },
     },
   },
   init = function()
+    vim.cmd [[cab cc CodeCompanion]]
     require('plugins.codecompanion.fidget-spinner'):init()
   end,
+  cmd = { 'CodeCompanion', 'CodeCompanionChat', 'CodeCompanionActions' },
   keys = {
-    -- See Keymaps section for keybindings
-    { '<leader>aa', mode = { 'n', 'v' }, '<cmd>CodeCompanionActions<cr>', desc = '[A]I [A]ctions' },
-    { '<leader>ac', mode = { 'n', 'v' }, '<cmd>CodeCompanionChat Toggle<cr>', desc = '[A]I [C]hat' },
+    { '<leader>aa', mode = { 'n', 'v' }, '<cmd>CodeCompanionActions<cr>', desc = '[a]ctions' },
+    { '<leader>ac', mode = { 'n', 'v' }, '<cmd>CodeCompanionChat Toggle<cr>', desc = '[c]hat' },
     { 'ga', mode = { 'v' }, '<cmd>CodeCompanionChat Add<cr>', desc = 'Add visually selected text to the chat' },
   },
 }
