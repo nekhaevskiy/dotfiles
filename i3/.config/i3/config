@@ -275,7 +275,9 @@ mode "$mode_display" {
 
 bindsym $mod+a mode "$mode_display"
 
-# increase standby/suspend/off times
+# disable screensaver and increase standby/suspend/off times
+exec --no-startup-id xset s noblank
+exec --no-startup-id xset s off
 exec --no-startup-id xset dpms 3600 3600 3600
 
 # Start i3bar to display a workspace bar (plus the system information i3status
