@@ -1,16 +1,12 @@
-return { -- Collection of various small independent plugins/modules
+return {
   'echasnovski/mini.nvim',
+  version = '*',
   config = function()
     -- Better Around/Inside textobjects
-    --
-    -- Examples:
-    --  - va)  - [V]isually select [A]round [)]paren
-    --  - yinq - [Y]ank [I]nside [N]ext [Q]uote
-    --  - ci'  - [C]hange [I]nside [']quote
-    require('mini.ai').setup { n_lines = 500 }
+    -- require('mini.ai').setup { n_lines = 500 }
 
     -- Visualize indent scope
-    require('mini.indentscope').setup { options = { try_as_border = true } }
+    -- require('mini.indentscope').setup { options = { try_as_border = true } }
 
     -- Jump within visible lines
     -- require('mini.jump2d').setup()
@@ -121,8 +117,5 @@ return { -- Collection of various small independent plugins/modules
     statusline.section_location = function()
       return 'L:%l/%L, C:%-2v'
     end
-
-    -- ... and there is more!
-    --  Check out: https://github.com/echasnovski/mini.nvim
   end,
 }
