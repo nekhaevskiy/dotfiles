@@ -18,13 +18,13 @@ return { -- Autoformat
         require('conform').format { async = true, lsp_format = 'fallback' }
       end,
       mode = '',
-      desc = '[C]ode [F]ormat',
+      desc = '[f]ormat',
     },
     {
       '<leader>tf',
       toggle_format_on_save,
       mode = '',
-      desc = '[T]oggle [F]ormat on save',
+      desc = '[f]ormat on save',
     },
   },
   opts = {
