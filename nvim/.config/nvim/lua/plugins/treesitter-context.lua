@@ -6,7 +6,7 @@ return {
       function()
         require('treesitter-context').toggle()
       end,
-      desc = '[T]oggle Treesitter [C]ontext',
+      desc = 'treesitter [c]ontext',
     },
   },
 }
