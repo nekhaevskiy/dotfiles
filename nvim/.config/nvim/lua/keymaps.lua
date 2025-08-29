@@ -6,8 +6,8 @@
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
 -- Diagnostic keymaps
-vim.keymap.set('n', '<leader>dl', vim.diagnostic.open_float, { desc = 'Show [D]iagnostic for current [L]ine message' })
-vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
+vim.keymap.set('n', '<leader>dl', vim.diagnostic.open_float, { desc = 'Show diagnostics for current [l]ine' })
+vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [q]uickfix list' })
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
@@ -49,7 +49,20 @@ vim.keymap.set({ 'n', 'v' }, '<leader>y', [["+y]], { desc = 'Yank into clipboard
 -- vim.keymap.set('i', 'jk', '<Esc>', { desc = 'Exit insert mode' })
 
 -- Disable default keybindings
-vim.keymap.del('n', 'gra')
-vim.keymap.del('n', 'gri')
-vim.keymap.del('n', 'grn')
-vim.keymap.del('n', 'grr')
+-- vim.keymap.del('n', 'gra')
+-- vim.keymap.del('n', 'gri')
+-- vim.keymap.del('n', 'grn')
+-- vim.keymap.del('n', 'grr')
+-- vim.keymap.del('n', 'grt')
+
+-- Toggle Diagnostic Underline
+vim.keymap.set('n', '<leader>td', function()
+  local config = vim.diagnostic.config()
+  if config.underline == true then
+    vim.diagnostic.config { underline = false }
+    print 'Diagnostic underline disabled'
+  else
+    vim.diagnostic.config { underline = true }
+    print 'Diagnostic underline enabled'
+  end
+end, { desc = '[d]iagnostic underline' })
