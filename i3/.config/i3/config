@@ -206,6 +206,7 @@ bindsym $mod+m move workspace to output next
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable
 for_window [class="Anki"] floating enable
+for_window [class="flameshot"] floating enable
 for_window [class="Nitrogen"] floating enable
 
 # terminal scratchpad
