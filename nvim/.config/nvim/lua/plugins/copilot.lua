@@ -1,6 +1,24 @@
 return {
   'zbirenbaum/copilot.lua',
-  opts = {},
+  opts = {
+    panel = {
+      keymap = {
+        jump_prev = '[[',
+        jump_next = ']]',
+        accept = '<CR>',
+        refresh = 'gr',
+        open = '<M-CR>',
+      },
+    },
+    suggestion = {
+      keymap = {
+        accept = '<M-y>',
+        next = '<M-]>',
+        prev = '<M-[>',
+        dismiss = '<M-e>',
+      },
+    },
+  },
   event = 'InsertEnter',
   cmd = 'Copilot',
   keys = {
