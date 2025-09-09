@@ -13,14 +13,14 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 })
 
 -- Highlight all matches while searching, but clear them afterwards
-vim.api.nvim_create_augroup('yn-incsearch-highlight', { clear = true })
-vim.api.nvim_create_autocmd('CmdlineEnter', {
-  pattern = { '/', '\\?' },
-  group = 'yn-incsearch-highlight',
-  command = 'set hlsearch',
-})
-vim.api.nvim_create_autocmd('CmdlineLeave', {
-  pattern = { '/', '\\?' },
-  group = 'yn-incsearch-highlight',
-  command = 'set nohlsearch',
-})
+-- vim.api.nvim_create_augroup('yn-incsearch-highlight', { clear = true })
+-- vim.api.nvim_create_autocmd('CmdlineEnter', {
+--   pattern = { '/', '\\?' },
+--   group = 'yn-incsearch-highlight',
+--   command = 'set hlsearch',
+-- })
+-- vim.api.nvim_create_autocmd('CmdlineLeave', {
+--   pattern = { '/', '\\?' },
+--   group = 'yn-incsearch-highlight',
+--   command = 'set nohlsearch',
+-- })
