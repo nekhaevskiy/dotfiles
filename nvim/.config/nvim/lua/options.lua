@@ -88,7 +88,8 @@ vim.opt.tabstop = 2
 vim.opt.foldmethod = 'expr'
 vim.opt.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
 vim.opt.foldlevel = 99
--- vim.opt.foldlevelstart = 1
+vim.opt.foldlevelstart = 99 -- Start with all folds open
 vim.opt.foldnestmax = 4
 vim.opt.foldcolumn = '0'
 vim.opt.foldtext = ''
+--vim.opt.fillchars = { fold = ' ', foldopen = '', foldclose = '' }
