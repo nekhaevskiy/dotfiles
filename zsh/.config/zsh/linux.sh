@@ -3,10 +3,10 @@
 ###########
 
 # cargo (rush package manager)
-source "$HOME/.cargo/env"
+# source "$HOME/.cargo/env"
 
 # fzf
-source "$HOME/.fzf.zsh"
+source <(fzf --zsh)
 FZF_DEFAULT_COMMAND="rg --files --hidden --glob '!.git'"
 FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
@@ -15,9 +15,7 @@ source "$HOME/.fzf-git/fzf-git.sh"
 source "$ZDOTDIR/yn-fzf-git.sh"
 
 # nvm
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
+source /usr/share/nvm/init-nvm.sh
 
 # pyenv (needed for JupyterLab)
 export PYENV_ROOT="$HOME/.pyenv"
@@ -31,8 +29,8 @@ eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
 
 # zsh-autosuggestions
-source "/usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
+source "/usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
 bindkey '^y' autosuggest-accept # use <C-y> keybinding to accept autosuggestion
 
 # zsh syntax highlighting
-source "/usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+source "/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
