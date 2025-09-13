@@ -13,7 +13,7 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:monospace 10
+font pango:JetBrains Mono 11
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -50,7 +50,7 @@ tiling_drag modifier titlebar
 
 # start a terminal
 # bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+Return exec kitty
+bindsym $mod+Return exec alacritty
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -235,12 +235,12 @@ exec --no-startup-id blueman-applet
 # dunst - notifications
 exec --no-startup-id dunst
 
+# feh - wallpaper
+exec --no-startup-id feh --bg-scale ~/Pictures/ubuntu-wallpaper-d.png
+
 # flameshot - screenshots
 exec --no-startup-id flameshot
 bindsym Print exec flameshot gui
-
-# nitrogen - wallpaper
-exec --no-startup-id nitrogen --restore
 
 # volume icon
 exec --no-startup-id volumeicon
