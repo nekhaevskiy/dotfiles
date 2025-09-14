@@ -11,7 +11,7 @@ FZF_DEFAULT_COMMAND="rg --files --hidden --glob '!.git'"
 FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 # fzf-git
-source "$HOME/.fzf-git/fzf-git.sh"
+source "$HOME/fzf-git.sh/fzf-git.sh"
 source "$ZDOTDIR/yn-fzf-git.sh"
 
 # nvm
