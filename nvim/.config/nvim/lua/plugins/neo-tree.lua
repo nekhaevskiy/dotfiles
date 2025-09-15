@@ -49,7 +49,6 @@ return {
   lazy = true,
   cmd = 'Neotree',
   keys = {
-    { '<leader>e', '<cmd>:Neotree position=current reveal toggle<cr>', desc = 'NeoTree' },
-    { '<leader>E', '<cmd>:Neotree reveal toggle<cr>', desc = 'NeoTree' },
+    { '<leader>e', '<cmd>:Neotree reveal toggle<cr>', desc = 'NeoTree' },
   },
 }
