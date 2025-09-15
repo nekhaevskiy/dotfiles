@@ -8,50 +8,50 @@ gbcp() {
 }
 
 # git worktree add - add an existing remote branch
-gwa() {
-  if ! git rev-parse --git-dir >/dev/null 2>&1; then
-    echo "This is NOT a Git repository."
-    return 1
-  fi
-
-  local -r branch="$1"
-  if [ -z "$branch" ]; then
-    echo "Usage: gwa <branch>"
-    return 1
-  fi
-
-  if ! $(git rev-parse --is-bare-repository); then
-    cd "$(git rev-parse --show-toplevel)"
-    cd ..
-  fi
-
-  git fetch --prune
-  git worktree add --track -b "$branch" "$branch" "origin/$branch"
-  cd "$branch"
-}
+# gwa() {
+#   if ! git rev-parse --git-dir >/dev/null 2>&1; then
+#     echo "This is NOT a Git repository."
+#     return 1
+#   fi
+#
+#   local -r branch="$1"
+#   if [ -z "$branch" ]; then
+#     echo "Usage: gwa <branch>"
+#     return 1
+#   fi
+#
+#   if ! $(git rev-parse --is-bare-repository); then
+#     cd "$(git rev-parse --show-toplevel)"
+#     cd ..
+#   fi
+#
+#   git fetch --prune
+#   git worktree add --track -b "$branch" "../$branch" "origin/$branch"
+#   cd "$branch"
+# }
 
 # git worktree add - create a new branch
-gwab() {
-  if ! git rev-parse --git-dir >/dev/null 2>&1; then
-    echo "This is NOT a Git repository."
-    return 1
-  fi
-
-  local -r new_branch="$1"
-  if [ -z "$new_branch" ]; then
-    echo "Usage: gwab <branch>"
-    return 1
-  fi
-
-  local -r curr_branch=$(git branch --show-current)
-
-  if ! $(git rev-parse --is-bare-repository); then
-    cd "$(git rev-parse --git-common-dir)"
-  fi
-
-  git worktree add -b "$new_branch" "$new_branch" "$curr_branch"
-  cd "$new_branch"
-}
+# gwab() {
+#   if ! git rev-parse --git-dir >/dev/null 2>&1; then
+#     echo "This is NOT a Git repository."
+#     return 1
+#   fi
+#
+#   local -r new_branch="$1"
+#   if [ -z "$new_branch" ]; then
+#     echo "Usage: gwab <branch>"
+#     return 1
+#   fi
+#
+#   local -r curr_branch=$(git branch --show-current)
+#
+#   if ! $(git rev-parse --is-bare-repository); then
+#     cd "$(git rev-parse --git-common-dir)"
+#   fi
+#
+#   git worktree add -b "$new_branch" "../$new_branch" "$curr_branch"
+#   cd "$new_branch"
+# }
 
 # rush update with git worktree hooks fix
 rugw() {
