@@ -6,6 +6,6 @@ return {
     'j-hui/fidget.nvim',
   },
   opts = {
-    ensure_installed = { 'lua_ls', 'ts_ls' },
+    ensure_installed = { 'lua_ls', 'vtsls' },
   },
 }

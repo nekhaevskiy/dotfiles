@@ -1,7 +1,7 @@
 return {
   'neovim/nvim-lspconfig',
   config = function()
-    vim.lsp.config('ts_ls', {
+    vim.lsp.config('vtsls', {
       root_dir = function(bufnr, on_dir)
         -- The project root is where the LSP can be started from
         -- As stated in the documentation above, this LSP supports monorepos and simple projects.
