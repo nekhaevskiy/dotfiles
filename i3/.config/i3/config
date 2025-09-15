@@ -58,7 +58,7 @@ bindsym $mod+Shift+q kill
 # start dmenu (a program launcher)
 bindsym $mod+d exec --no-startup-id dmenu_run
 # A more modern dmenu replacement is rofi:
-bindcode $mod+65 exec "rofi -modi drun,run -show drun"
+bindcode $mod+65 exec "rofi -show drun"
 # bindcode $mod+65 = bindsym $mod+Space
 # There also is i3-dmenu-desktop which only displays applications shipping a
 # .desktop file. It is a wrapper around dmenu, so you need that installed.
@@ -207,17 +207,16 @@ for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable
 for_window [class="Anki"] floating enable
 for_window [class="flameshot"] floating enable
-for_window [class="Nitrogen"] floating enable
 
 # terminal scratchpad
-for_window [instance="kitty_scratchpad"] move scratchpad
-bindsym $mod+Shift+t [instance="kitty_scratchpad"] scratchpad show
-exec --no-startup-id kitty --name kitty_scratchpad
+for_window [instance="alacritty_scratchpad"] move scratchpad
+bindsym $mod+Shift+t [instance="alacritty_scratchpad"] scratchpad show
+exec --no-startup-id alacritty --class Alacritty,alacritty_scratchpad
 
 # htop scratchpad
 for_window [instance="htop_scratchpad"] move scratchpad
 bindsym $mod+Shift+p [instance="htop_scratchpad"] scratchpad show
-exec --no-startup-id kitty --name htop_scratchpad -e htop
+exec --no-startup-id alacritty --class Alacritty,htop_scratchpad -e htop
 
 # dunst keyboard shortcuts
 bindsym $mod+n exec dunstctl history-pop
@@ -230,20 +229,20 @@ exec --no-startup-id "setxkbmap -layout us,ru -option 'grp:alt_space_toggle' -op
 bindsym $mod+z exec "setxkbmap -layout us,ru -option 'grp:alt_space_toggle' -option 'caps:ctrl_modifier';xcape -e 'Caps_Lock=Escape' &"
 
 # bluetooth
-exec --no-startup-id blueman-applet
+# exec --no-startup-id blueman-applet
 
 # dunst - notifications
 exec --no-startup-id dunst
 
 # feh - wallpaper
-exec --no-startup-id feh --bg-scale ~/Pictures/ubuntu-wallpaper-d.png
+exec --no-startup-id feh --bg-fill $HOME/Pictures/ubuntu-wallpaper-d.png $HOME/Pictures/ubuntu-wallpaper-d.png
 
 # flameshot - screenshots
 exec --no-startup-id flameshot
 bindsym Print exec flameshot gui
 
 # volume icon
-exec --no-startup-id volumeicon
+# exec --no-startup-id volumeicon
 
 # shutdown / restart / suspend...
 set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Ctrl+s) shutdown
@@ -277,7 +276,6 @@ mode "$mode_display" {
 bindsym $mod+a mode "$mode_display"
 
 # disable screensaver and increase standby/suspend/off times
-exec --no-startup-id xset s noblank
 exec --no-startup-id xset s off
 exec --no-startup-id xset dpms 3600 3600 3600
 
