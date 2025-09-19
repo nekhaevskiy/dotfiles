@@ -178,6 +178,11 @@ mode "resize" {
         bindsym Up resize grow height 5 px or 5 ppt
         bindsym Right resize grow width 5 px or 5 ppt
 
+        # make the window's width to be 1/3, 1/2, 2/3 of the screen's width
+        bindsym a resize set width 33 ppt
+        bindsym s resize set width 50 ppt
+        bindsym d resize set width 66 ppt
+
         # back to normal: Enter or Escape or $mod+r
         bindsym Return mode "default"
         bindsym Escape mode "default"
@@ -235,7 +240,7 @@ bindsym $mod+z exec "setxkbmap -layout us,ru -option 'grp:alt_space_toggle' -opt
 exec --no-startup-id dunst
 
 # feh - wallpaper
-exec --no-startup-id feh --bg-fill $HOME/Pictures/ubuntu-wallpaper-d.png $HOME/Pictures/ubuntu-wallpaper-d.png
+exec --no-startup-id feh --no-fehbg --bg-fill $HOME/Pictures/ubuntu-wallpaper-d.png
 
 # flameshot - screenshots
 exec --no-startup-id flameshot
@@ -245,13 +250,14 @@ bindsym Print exec flameshot gui
 # exec --no-startup-id volumeicon
 
 # shutdown / restart / suspend...
-set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Ctrl+s) shutdown
+# set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Ctrl+s) shutdown
+set $mode_system System (l) lock, (e) logout, (s) suspend, (r) reboot, (Ctrl+s) shutdown
 
 mode "$mode_system" {
 	bindsym l exec --no-startup-id i3lock, mode "default"
 	bindsym e exec --no-startup-id i3-msg exit, mode "default"
 	bindsym s exec --no-startup-id i3lock && systemctl suspend, mode "default"
-	bindsym h exec --no-startup-id i3lock && systemctl hibernate, mode "default"
+	# bindsym h exec --no-startup-id i3lock && systemctl hibernate, mode "default"
 	bindsym r exec --no-startup-id systemctl reboot, mode "default"
 	bindsym Ctrl+s exec --no-startup-id systemctl poweroff -i, mode "default"
 	bindsym Return mode "default"
