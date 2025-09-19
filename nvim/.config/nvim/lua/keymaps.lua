@@ -66,3 +66,7 @@ vim.keymap.set('n', '<leader>td', function()
     print 'Diagnostic underline enabled'
   end
 end, { desc = '[d]iagnostic underline' })
+
+-- tabnext and tabprevious
+vim.keymap.set('n', '[t', '<cmd>tabprevious<cr>', { desc = 'Go to previous tab' })
+vim.keymap.set('n', ']t', '<cmd>tabnext<cr>', { desc = 'Go to next tab' })
