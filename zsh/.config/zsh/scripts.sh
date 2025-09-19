@@ -1,4 +1,4 @@
-# git bc-cherry-pick improved
+# git bc-cherry-pick
 gbcp() {
   local branch="${1:-}"
   git bc-show-eligible ${branch:+"$branch"} |
@@ -7,58 +7,51 @@ gbcp() {
     xargs git bc-cherry-pick
 }
 
-# git worktree add - add an existing remote branch
-# gwa() {
-#   if ! git rev-parse --git-dir >/dev/null 2>&1; then
-#     echo "This is NOT a Git repository."
-#     return 1
-#   fi
-#
-#   local -r branch="$1"
-#   if [ -z "$branch" ]; then
-#     echo "Usage: gwa <branch>"
-#     return 1
-#   fi
-#
-#   if ! $(git rev-parse --is-bare-repository); then
-#     cd "$(git rev-parse --show-toplevel)"
-#     cd ..
-#   fi
-#
-#   git fetch --prune
-#   git worktree add --track -b "$branch" "../$branch" "origin/$branch"
-#   cd "$branch"
-# }
+# git branch upstream
+gbu() {
+  local branch
+  branch=$(git symbolic-ref --short HEAD)
+  git branch --set-upstream-to=origin/$branch $branch
+}
 
-# git worktree add - create a new branch
-# gwab() {
-#   if ! git rev-parse --git-dir >/dev/null 2>&1; then
-#     echo "This is NOT a Git repository."
-#     return 1
-#   fi
-#
-#   local -r new_branch="$1"
-#   if [ -z "$new_branch" ]; then
-#     echo "Usage: gwab <branch>"
-#     return 1
-#   fi
-#
-#   local -r curr_branch=$(git branch --show-current)
-#
-#   if ! $(git rev-parse --is-bare-repository); then
-#     cd "$(git rev-parse --git-common-dir)"
-#   fi
-#
-#   git worktree add -b "$new_branch" "../$new_branch" "$curr_branch"
-#   cd "$new_branch"
-# }
+# git worktree fix 1
+gwtf1() {
+  # Explicitly sets the remote origin fetch so we can fetch remote branches
+  git config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
+}
+
+# git worktree fix 2
+gwtf2() {
+  ## Allow each worktree to maintain its own config
+  git config extensions.worktreeConfig true
+}
+
+# git worktree fix 3
+gwtf3() {
+  ## has to be true in bare repo and fails in worktree
+  git config --worktree core.bare "${1:-false}"
+}
+
+# git worktree hooks clear
+gwhc() {
+  git config --worktree --unset core.hooksPath
+}
+
+# git worktree hooks set
+gwhs() {
+  git config --worktree core.hooksPath "$(git rev-parse --git-dir)/hooks"
+}
+
+# feh fix
+fehf() {
+  feh --no-fehbg --bg-fill $HOME/Pictures/ubuntu-wallpaper-d.png
+}
 
 # rush update with git worktree hooks fix
 rugw() {
-  git config --unset core.hooksPath
+  git config --worktree --unset core.hooksPath
   rush update
-  rush lint-format-staged
-  git config core.hooksPath "$(git rev-parse --git-dir)/hooks"
+  git config --worktree core.hooksPath "$(git rev-parse --git-dir)/hooks"
 }
 
 # remove a user-specified IP from the known_hosts file
@@ -71,4 +64,14 @@ sshr() {
 
   ssh-keygen -f "$HOME/.ssh/known_hosts" -R "$ip"
   echo "IP $ip removed from known_hosts file."
+}
+
+title() {
+  local title="$1"
+  if [ -z "$title" ]; then
+    echo "Usage: title <new-title>"
+    return 1
+  fi
+
+  echo -e "\e]2;$title"
 }
