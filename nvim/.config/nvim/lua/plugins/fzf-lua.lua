@@ -74,11 +74,25 @@ return {
       desc = '[R]esume',
     },
     {
+      '<leader>fw',
+      function()
+        require('fzf-lua').grep_cword()
+      end,
+      desc = '[w]ord',
+    },
+    {
       '<leader>dd',
       function()
         require('fzf-lua').diagnostics_document { sort = true }
       end,
       desc = '[d]iagnostics',
+    },
+    {
+      'grd',
+      function()
+        require('fzf-lua').lsp_definitions()
+      end,
+      desc = 'LSP Definitions',
     },
     {
       'grr',
