@@ -7,6 +7,10 @@
   date = relative
 [core]
   editor = nvim
+[fetch]
+  prune = true
+[init]
+  defaultBranch = main
 [log]
   abbrevCommit = true
 [pull]
