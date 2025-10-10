@@ -240,7 +240,7 @@ bindsym $mod+z exec "setxkbmap -layout us,ru -option 'grp:alt_space_toggle' -opt
 exec --no-startup-id dunst
 
 # feh - wallpaper
-exec --no-startup-id feh --no-fehbg --bg-fill $HOME/Pictures/ubuntu-wallpaper-d.png
+# exec --no-startup-id feh --no-fehbg --bg-fill $HOME/Pictures/ubuntu-wallpaper-d.png
 
 # flameshot - screenshots
 bindsym Print exec flameshot gui
