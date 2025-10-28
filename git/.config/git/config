@@ -1,8 +1,28 @@
 [alias]
+  amend = commit --amend
+	br = branch
+  branches = branch -a
+  branches-local = branch
+  branches-remote = branch -r
+  c = !sh -c 'git commit -m \""$(git rev-parse --symbolic-full-name --abbrev-ref HEAD): ${0} ${*}"\"'
+	ci = commit
+	co = checkout
+  create-branch = checkout -b
+  create-pull-request = !sh -c 'stash pull-request $0 #@'
   discard = checkout --
+  log-graph = log --oneline --graph --decorate
+  log-recent = log --graph --branches --remotes --tags  --format=format:'%Cgreen%h %Creset• %<(75,trunc)%s (%cN, %ar) %Cred%d' --date-order
+  merge-ff = merge --ff-only
   nevermind = !git reset --hard HEAD && git clean -d -f
+  precommit = diff --cached -w --word-diff=color --word-diff-regex='[^[:space:]<>]+'
+  prestage = diff -w --word-diff=color
+  remotes = remote -v
+	st = status
+  stashes = stash list
+  tags = tag
   uncommit = reset --mixed HEAD~
   unstage = reset -q HEAD --
+  untrack = rm -r --cached
 [blame]
   date = relative
 [core]
