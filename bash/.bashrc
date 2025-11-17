@@ -19,7 +19,6 @@ if [ -f ~/.bash_aliases ]; then
   . ~/.bash_aliases
 fi
 
-
 # bright git helpers
 export PATH=${PATH}:${HOME}/work/git-helpers/bin
 
@@ -28,6 +27,9 @@ source ~/fzf-git.sh/fzf-git.sh
 
 # add ~/.local/bin to PATH
 export PATH="$HOME/.local/bin:$PATH"
+
+# initialize pyenv
+eval "$(pyenv init - bash)"
 
 # add pyenv-virtualenv to the shell (needed for JupyterLab)
 eval "$(pyenv virtualenv-init -)"
