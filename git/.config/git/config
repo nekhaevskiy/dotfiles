@@ -27,6 +27,7 @@
   date = relative
 [core]
   editor = nvim
+	excludesFile = ~/.gitignore_global
 [fetch]
   prune = true
 [init]
