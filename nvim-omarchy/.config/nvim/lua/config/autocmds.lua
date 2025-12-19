@@ -14,3 +14,6 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.opt_local.conceallevel = 0
   end,
 })
+
+-- disable LazyVim's built-in spell+wrap for markdown/gitcommit
+vim.api.nvim_del_augroup_by_name("lazyvim_wrap_spell")
