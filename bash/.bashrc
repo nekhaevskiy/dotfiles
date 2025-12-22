@@ -70,3 +70,9 @@ sshr() {
 	ssh-keygen -f "$HOME/.ssh/known_hosts" -R "$ip"
 	echo "IP $ip removed from known_hosts file."
 }
+
+# Set terminal title to current directory only (no username@hostname)
+set_terminal_title() {
+  echo -ne "\033]0;${PWD/#$HOME/\~}\007"
+}
+PROMPT_COMMAND="${PROMPT_COMMAND};set_terminal_title"
