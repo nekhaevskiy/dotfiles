@@ -3,7 +3,14 @@ return {
   dependencies = { "nvim-tree/nvim-web-devicons" },
   config = function()
     local fzf = require("fzf-lua")
-    fzf.setup({})
+    fzf.setup({
+      winopts = {
+        preview = {
+          layout = "vertical",
+          vertical = "down:50%",
+        },
+      },
+    })
 
     vim.keymap.set("n", "<leader>ff", fzf.files, { desc = "Find files" })
     vim.keymap.set("n", "<leader>fg", fzf.live_grep, { desc = "Live grep" })
