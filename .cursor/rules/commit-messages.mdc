@@ -1,0 +1,28 @@
+---
+alwaysApply: true
+---
+
+# Git Commit Message Style
+
+**Format:** `<component>: <description>`
+
+**Rules:**
+- Lowercase component prefix (e.g., `ghostty`, `nvim`, `hypr`)
+- Start description with lowercase verb (add, switch, set, remove, etc.)
+- No period at end of subject
+- Optional: add blank line + bullet points for complex changes
+
+**Examples:**
+
+Simple:
+
+ghostty: add OneDark theme with darker background and larger font
+
+With details:
+
+nvim: add complete IDE setup with LSP, completion, and tooling
+
+- Add core config (options, keymaps)
+- Setup LSP with pyright, ts_ls, lua_ls
+- Add blink.cmp for completion
+- Configure GitHub Copilot
