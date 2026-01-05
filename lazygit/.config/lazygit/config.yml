@@ -1,3 +1,9 @@
+customCommands:
+  - key: '<enter>'
+    context: 'localBranches'
+    command: 'git checkout {{ .SelectedLocalBranch.Name }}'
+    description: 'Checkout branch'
+
 gui:
   theme:
     selectedLineBgColor:
