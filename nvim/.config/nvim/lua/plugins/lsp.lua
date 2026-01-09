@@ -23,6 +23,7 @@ return {
         "pyright",    -- Python
         "ts_ls",      -- TypeScript/JavaScript
         "lua_ls",     -- Lua
+        "jsonls",     -- JSON
       },
       automatic_installation = true,
     })
@@ -172,10 +173,28 @@ return {
       },
     }
 
+    -- JSON (jsonls)
+    vim.lsp.config.jsonls = {
+      default_config = {
+        cmd = { "vscode-json-language-server", "--stdio" },
+        filetypes = { "json", "jsonc" },
+        root_markers = { ".git" },
+        single_file_support = true,
+      },
+      on_attach = on_attach,
+      capabilities = capabilities,
+      settings = {
+        json = {
+          validate = { enable = true },
+        },
+      },
+    }
+
     -- Enable the language servers
     vim.lsp.enable("pyright")
     vim.lsp.enable("ts_ls")
     vim.lsp.enable("lua_ls")
+    vim.lsp.enable("jsonls")
   end,
 }
 
