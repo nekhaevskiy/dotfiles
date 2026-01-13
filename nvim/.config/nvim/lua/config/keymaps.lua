@@ -56,9 +56,26 @@ keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Scroll up and center" })
 keymap.set("n", "n", "nzzzv", { desc = "Next search result (centered)" })
 keymap.set("n", "N", "Nzzzv", { desc = "Previous search result (centered)" })
 
--- Diagnostic keymaps (will be useful with LSP)
-keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic" })
-keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next diagnostic" })
+-- Diagnostic keymaps
+keymap.set("n", "[d", function() vim.diagnostic.jump({ count = -1 }) end, { desc = "Go to previous diagnostic" })
+keymap.set("n", "]d", function() vim.diagnostic.jump({ count = 1 }) end, { desc = "Go to next diagnostic" })
 keymap.set("n", "<leader>d", vim.diagnostic.open_float, { desc = "Show diagnostic" })
 keymap.set("n", "<leader>dl", vim.diagnostic.setloclist, { desc = "Diagnostic list" })
 
+-- Copy diagnostic message to clipboard
+keymap.set("n", "<leader>dy", function()
+	local diagnostics = vim.diagnostic.get(0, { lnum = vim.fn.line(".") - 1 })
+	if #diagnostics == 0 then
+		vim.notify("No diagnostic at cursor", vim.log.levels.WARN)
+		return
+	end
+
+	local messages = {}
+	for _, diag in ipairs(diagnostics) do
+		table.insert(messages, diag.message)
+	end
+
+	local text = table.concat(messages, "\n")
+	vim.fn.setreg("+", text)
+	vim.notify("Diagnostic copied to clipboard", vim.log.levels.INFO)
+end, { desc = "Copy diagnostic to clipboard" })
