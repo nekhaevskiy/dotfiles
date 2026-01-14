@@ -1,21 +1,102 @@
 {
-	"schemaVersion": "0.1.0",
-	"name": "Default",
-	"behavior": "create",
-	"noteContentFormat": "{{content}}",
-	"properties": [
-		{
-			"name": "created",
-			"value": "{{date|date:\\\"YYYY-MM-DD HH:mm\\\"}}",
-			"type": "date"
-		},
-		{
-			"name": "source",
-			"value": "{{url}}",
-			"type": "text"
-		}
-	],
-	"triggers": [],
-	"noteNameFormat": "{{title}}",
-	"path": "0 Inbox"
+  "general_settings": {
+    "betaFeatures": false,
+    "legacyMode": false,
+    "openBehavior": "popup",
+    "saveBehavior": "addToObsidian",
+    "showMoreActionsButton": false,
+    "silentOpen": false
+  },
+  "highlighter_settings": {
+    "alwaysShowHighlights": false,
+    "highlightBehavior": "no-highlights",
+    "highlighterEnabled": true
+  },
+  "interpreter_settings": {
+    "defaultPromptContext": "",
+    "interpreterAutoRun": false,
+    "interpreterEnabled": false,
+    "interpreterModel": "",
+    "models": [],
+    "providers": []
+  },
+  "migrationVersion": 1,
+  "property_types": [
+    {
+      "defaultValue": "{{title}}",
+      "name": "title",
+      "type": "text"
+    },
+    {
+      "defaultValue": "{{url}}",
+      "name": "source",
+      "type": "text"
+    },
+    {
+      "defaultValue": "{{author|split:\", \"|wikilink|join}}",
+      "name": "author",
+      "type": "multitext"
+    },
+    {
+      "defaultValue": "{{published}}",
+      "name": "published",
+      "type": "date"
+    },
+    {
+      "defaultValue": "{{date}}",
+      "name": "created",
+      "type": "date"
+    },
+    {
+      "defaultValue": "{{description}}",
+      "name": "description",
+      "type": "text"
+    },
+    {
+      "defaultValue": "clippings",
+      "name": "tags",
+      "type": "multitext"
+    }
+  ],
+  "reader_settings": {
+    "fontSize": 1.5,
+    "lineHeight": 1.6,
+    "maxWidth": 38,
+    "theme": "default",
+    "themeMode": "auto"
+  },
+  "stats": {
+    "addToObsidian": 19,
+    "copyToClipboard": 0,
+    "saveFile": 0,
+    "share": 0
+  },
+  "template_1761564115531zl5r27an6": {
+    "id": "1761564115531zl5r27an6",
+    "name": "Default",
+    "behavior": "create",
+    "noteNameFormat": "{{title}}",
+    "path": "0 Inbox",
+    "noteContentFormat": "\n# {{title}}\n\n{{url}}",
+    "context": "",
+    "properties": [
+      {
+        "id": "17615641155319bjj2smj0",
+        "name": "created",
+        "value": "{{date|date:\\\"YYYY-MM-DD HH:mm\\\"}}",
+        "type": "date"
+      },
+      {
+        "id": "1761564115531b0p7gytqg",
+        "name": "source",
+        "value": "{{url}}",
+        "type": "text"
+      }
+    ],
+    "triggers": []
+  },
+  "template_list": [
+    "1761564115531zl5r27an6"
+  ],
+  "vaults": []
 }
