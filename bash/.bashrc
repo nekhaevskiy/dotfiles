@@ -76,3 +76,13 @@ set_terminal_title() {
   echo -ne "\033]0;${PWD/#$HOME/\~}\007"
 }
 PROMPT_COMMAND="${PROMPT_COMMAND};set_terminal_title"
+
+# yazi wrapper - changes directory on quit
+yazi() {
+  local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+  command yazi "$@" --cwd-file="$tmp"
+  if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+    builtin cd -- "$cwd"
+  fi
+  rm -f -- "$tmp"
+}
