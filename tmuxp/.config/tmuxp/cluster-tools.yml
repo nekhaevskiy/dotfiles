@@ -1,6 +1,0 @@
-session_name: cluster-tools
-start_directory: $HOME/work/cluster-tools
-
-windows:
-  - panes:
-      -

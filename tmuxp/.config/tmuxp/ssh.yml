@@ -1,8 +1,0 @@
-session_name: ssh
-start_directory: $HOME
-
-windows:
-  - layout: tiled
-    panes:
-      - krusty
-      - 

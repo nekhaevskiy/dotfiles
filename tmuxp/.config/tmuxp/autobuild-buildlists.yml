@@ -1,6 +1,0 @@
-session_name: autobuild-buildlists
-start_directory: $HOME/work/autobuild-buildlists
-
-windows:
-  - panes:
-      -

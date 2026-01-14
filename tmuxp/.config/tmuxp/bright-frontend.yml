@@ -1,8 +1,0 @@
-session_name: bright-frontend
-start_directory: $HOME/work/bright-frontend
-
-windows:
-  - layout: tiled
-    panes:
-      -
-      -

@@ -1,6 +1,0 @@
-session_name: cmdaemon
-start_directory: $HOME/work/cmdaemon
-
-windows:
-  - panes:
-      - 
