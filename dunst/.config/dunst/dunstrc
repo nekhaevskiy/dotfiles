@@ -1,5 +1,0 @@
-[global]
-  # Display notifications on a specific monitor (numbering starts from 0)
-  monitor = 0
-  follow = keyboard
-  font = Monospace 10
