@@ -29,6 +29,18 @@ mouse-scroll-multiplier = 0.95
 keybind = ctrl+shift+c=copy_to_clipboard
 keybind = ctrl+shift+v=paste_from_clipboard
 
+# Scrolling
+keybind = shift+page_up=scroll_page_up
+keybind = shift+page_down=scroll_page_down
+keybind = shift+up=scroll_page_lines:-1
+keybind = shift+down=scroll_page_lines:1
+keybind = shift+home=scroll_to_top
+keybind = shift+end=scroll_to_bottom
+keybind = ctrl+shift+u=scroll_page_up
+keybind = ctrl+shift+d=scroll_page_down
+keybind = ctrl+shift+y=scroll_page_lines:-1
+keybind = ctrl+shift+e=scroll_page_lines:1
+
 # Splits
 keybind = ctrl+shift+slash=new_split:right
 keybind = ctrl+shift+minus=new_split:down
