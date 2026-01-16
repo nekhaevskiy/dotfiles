@@ -60,7 +60,38 @@ keymap.set("n", "N", "Nzzzv", { desc = "Previous search result (centered)" })
 keymap.set("n", "[d", function() vim.diagnostic.jump({ count = -1 }) end, { desc = "Go to previous diagnostic" })
 keymap.set("n", "]d", function() vim.diagnostic.jump({ count = 1 }) end, { desc = "Go to next diagnostic" })
 keymap.set("n", "<leader>d", vim.diagnostic.open_float, { desc = "Show diagnostic" })
-keymap.set("n", "<leader>dl", vim.diagnostic.setloclist, { desc = "Diagnostic list" })
+keymap.set("n", "<leader>dl", function()
+	-- Get diagnostics for current buffer
+	local diagnostics = vim.diagnostic.get(0)
+
+	-- Format diagnostics with source prefix
+	local items = {}
+	for _, diag in ipairs(diagnostics) do
+		local source = diag.source or "unknown"
+		-- Clean up source names for better readability
+		if source == "typescript" or source == "ts_ls" then
+			source = "[TS]"
+		elseif source == "eslint" then
+			source = "[ESLint]"
+		else
+			source = "[" .. source .. "]"
+		end
+
+		table.insert(items, {
+			bufnr = diag.bufnr,
+			lnum = diag.lnum + 1,
+			col = diag.col + 1,
+			text = source .. " " .. diag.message,
+			type = diag.severity == vim.diagnostic.severity.ERROR and "E" or
+			       diag.severity == vim.diagnostic.severity.WARN and "W" or
+			       diag.severity == vim.diagnostic.severity.INFO and "I" or "H",
+		})
+	end
+
+	-- Set location list with formatted items
+	vim.fn.setloclist(0, items, "r")
+	vim.cmd("lopen")
+end, { desc = "Diagnostic list" })
 
 -- Copy diagnostic message to clipboard
 keymap.set("n", "<leader>dy", function()
