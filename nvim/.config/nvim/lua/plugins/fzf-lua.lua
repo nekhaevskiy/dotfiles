@@ -10,6 +10,11 @@ return {
 					vertical = "down:50%",
 				},
 			},
+			keymap = {
+				fzf = {
+					["ctrl-x"] = "abort",
+				},
+			},
 		})
 
 		vim.keymap.set("n", "<leader>fb", fzf.buffers, { desc = "Find buffers" })
@@ -17,6 +22,6 @@ return {
 		vim.keymap.set("n", "<leader>fg", fzf.git_status, { desc = "Git changed files" })
 		vim.keymap.set("n", "<leader>fh", fzf.help_tags, { desc = "Help tags" })
 		vim.keymap.set("n", "<leader>fl", fzf.live_grep, { desc = "Live grep" })
-		vim.keymap.set("n", "<leader>fr", fzf.oldfiles, { desc = "Recent files" })
+		vim.keymap.set("n", "<leader>fo", fzf.oldfiles, { desc = "Oldfiles" })
 	end,
 }
