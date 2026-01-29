@@ -110,3 +110,13 @@ keymap.set("n", "<leader>dy", function()
 	vim.fn.setreg("+", text)
 	vim.notify("Diagnostic copied to clipboard", vim.log.levels.INFO)
 end, { desc = "Copy diagnostic to clipboard" })
+
+-- Toggle wrap
+keymap.set("n", "<leader>tw", function()
+	vim.wo.wrap = not vim.wo.wrap
+	vim.notify("Wrap " .. (vim.wo.wrap and "enabled" or "disabled"), vim.log.levels.INFO)
+end, { desc = "Toggle wrap" })
+
+-- Lazy plugin manager
+keymap.set("n", "<leader>l", "<cmd>Lazy<CR>", { desc = "Open Lazy" })
+keymap.set("n", "<leader>ls", "<cmd>Lazy sync<CR>", { desc = "Lazy sync" })
