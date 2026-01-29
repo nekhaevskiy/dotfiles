@@ -8,6 +8,7 @@ return {
 			preset = "default",
 			["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
 			["<C-e>"] = { "hide" },
+			["<CR>"] = { "accept", "fallback" },
 			["<C-y>"] = { "select_and_accept" },
 
 			["<Up>"] = { "select_prev", "fallback" },
@@ -17,6 +18,8 @@ return {
 
 			["<C-b>"] = { "scroll_documentation_up", "fallback" },
 			["<C-f>"] = { "scroll_documentation_down", "fallback" },
+
+			["gK"] = { "show_signature" },
 		},
 
 		appearance = {
@@ -62,7 +65,11 @@ return {
 		},
 
 		signature = {
-			enabled = true,
+			enabled = false,
+			trigger = {
+				enabled = false,
+				show_on_insert_on_trigger_character = false,
+			},
 			window = {
 				border = "rounded",
 			},
