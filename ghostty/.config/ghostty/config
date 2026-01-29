@@ -55,3 +55,4 @@ keybind = ctrl+shift+alt+l=resize_split:right,10
 keybind = ctrl+shift+alt+k=resize_split:up,10
 keybind = ctrl+shift+alt+j=resize_split:down,10
 keybind = ctrl+shift+r=reload_config
+keybind = shift+enter=text:\x1b\r
