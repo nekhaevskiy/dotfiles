@@ -4,6 +4,13 @@ customCommands:
     command: 'git checkout {{ .SelectedLocalBranch.Name }}'
     description: 'Checkout branch'
 
+keybinding:
+  universal:
+    scrollUpMain-alt1: '<s-up>'
+    scrollDownMain-alt1: '<s-down>'
+    scrollUpMain-alt2: 'K'
+    scrollDownMain-alt2: 'J'
+
 gui:
   theme:
     selectedLineBgColor:
