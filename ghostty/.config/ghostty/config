@@ -42,7 +42,7 @@ keybind = ctrl+shift+y=scroll_page_lines:-1
 keybind = ctrl+shift+e=scroll_page_lines:1
 
 # Splits
-keybind = ctrl+shift+slash=new_split:right
+keybind = ctrl+shift+backslash=new_split:right
 keybind = ctrl+shift+minus=new_split:down
 keybind = ctrl+shift+h=goto_split:left
 keybind = ctrl+shift+j=goto_split:down
