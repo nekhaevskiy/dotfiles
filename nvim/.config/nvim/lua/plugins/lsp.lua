@@ -33,15 +33,15 @@ return {
       local opts = { buffer = bufnr, silent = true }
 
       -- Go to definition/declaration
-      vim.keymap.set("n", "gd", vim.lsp.buf.definition, vim.tbl_extend("force", opts, { desc = "Go to definition" }))
+      vim.keymap.set("n", "gd", function() require("fzf-lua").lsp_definitions() end, vim.tbl_extend("force", opts, { desc = "Go to definition" }))
       vim.keymap.set("n", "gD", vim.lsp.buf.declaration, vim.tbl_extend("force", opts, { desc = "Go to declaration" }))
       
       -- References and implementations
       vim.keymap.set("n", "gr", function() require("fzf-lua").lsp_references() end, vim.tbl_extend("force", opts, { desc = "Show references" }))
-      vim.keymap.set("n", "gi", vim.lsp.buf.implementation, vim.tbl_extend("force", opts, { desc = "Go to implementation" }))
-      
+      vim.keymap.set("n", "gi", function() require("fzf-lua").lsp_implementations() end, vim.tbl_extend("force", opts, { desc = "Go to implementation" }))
+
       -- Type definitions
-      vim.keymap.set("n", "gy", vim.lsp.buf.type_definition, vim.tbl_extend("force", opts, { desc = "Go to type definition" }))
+      vim.keymap.set("n", "gy", function() require("fzf-lua").lsp_typedefs() end, vim.tbl_extend("force", opts, { desc = "Go to type definition" }))
       
       -- Hover and signature help
       vim.keymap.set("n", "K", vim.lsp.buf.hover, vim.tbl_extend("force", opts, { desc = "Hover documentation" }))

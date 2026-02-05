@@ -2,8 +2,12 @@ return {
 	"saghen/blink.cmp",
 	lazy = false,
 	version = "v0.*",
+	dependencies = { "L3MON4D3/LuaSnip" },
 
 	opts = {
+		snippets = {
+			preset = "luasnip",
+		},
 		keymap = {
 			preset = "default",
 			["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
@@ -28,7 +32,7 @@ return {
 		},
 
 		sources = {
-			default = { "lsp", "path", "buffer" },
+			default = { "lsp", "path", "snippets", "buffer" },
 			providers = {
 				buffer = {
 					name = "Buffer",
