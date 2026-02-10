@@ -10,9 +10,18 @@ return {
 					vertical = "down:50%",
 				},
 			},
+			fzf_opts = {
+				["--cycle"] = true,
+			},
 			keymap = {
 				fzf = {
 					["ctrl-x"] = "abort",
+					["alt-j"] = "preview-down",
+					["alt-k"] = "preview-up",
+				},
+				builtin = {
+					["<M-j>"] = "preview-down",
+					["<M-k>"] = "preview-up",
 				},
 			},
 		})
