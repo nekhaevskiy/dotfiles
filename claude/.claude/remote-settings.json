@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "ask": [
+      "Bash"
+    ],
+    "disableBypassPermissionsMode": "disable"
+  },
+  "sandbox": {
+    "enabled": false
+  }
+}
