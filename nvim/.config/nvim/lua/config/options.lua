@@ -73,5 +73,5 @@ opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 opt.foldlevel = 99 -- Start with all folds open
 opt.foldlevelstart = 99
 opt.foldenable = true
-opt.foldcolumn = "1" -- Show fold column on the left
+opt.foldcolumn = "0" -- No fold column
 
