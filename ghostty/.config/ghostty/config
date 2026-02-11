@@ -56,3 +56,17 @@ keybind = ctrl+shift+alt+k=resize_split:up,10
 keybind = ctrl+shift+alt+j=resize_split:down,10
 keybind = ctrl+shift+r=reload_config
 keybind = shift+enter=text:\x1b\r
+
+# Tabs
+keybind = ctrl+shift+t=new_tab
+keybind = ctrl+shift+1=goto_tab:1
+keybind = ctrl+shift+2=goto_tab:2
+keybind = ctrl+shift+3=goto_tab:3
+keybind = ctrl+shift+4=goto_tab:4
+keybind = ctrl+shift+5=goto_tab:5
+keybind = ctrl+shift+6=goto_tab:6
+keybind = ctrl+shift+7=goto_tab:7
+keybind = ctrl+shift+8=goto_tab:8
+keybind = ctrl+shift+9=goto_tab:9
+keybind = ctrl+shift+left_bracket=previous_tab
+keybind = ctrl+shift+right_bracket=next_tab
