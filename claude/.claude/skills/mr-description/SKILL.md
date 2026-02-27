@@ -3,6 +3,7 @@ name: mr-description
 description: Generate a GitLab merge request description by comparing current branch with a base branch. Compare with main by default, or specify an alternative branch. Use when preparing MR descriptions or understanding what changed between branches.
 argument-hint: '[base-branch]'
 disable-model-invocation: true
+version: 2.0.0
 ---
 
 Generate a GitLab merge request description for the current branch by comparing against a base branch.
@@ -20,17 +21,30 @@ The base branch is available as `$ARGUMENTS` or defaults to `main` if not provid
 
 Follow these steps to generate the MR description:
 
-1. **Extract Jira ticket from branch name**
-   - Parse the current git branch name to find the ticket ID in `BCM-XXXXX` format
-   - This will be used in both the "Tracked by" header and "Closes" footer
+### 1. Extract Jira ticket from branch name
 
-2. **Analyze git commits and file changes**
-   - Compare current branch with the base branch using git commands
-   - Read commit messages to understand what changed
-   - Analyze file changes (added, modified, deleted files)
-   - Look for patterns and the overall theme of changes
+- Parse the current git branch name to find the ticket ID in `BCM-XXXXX` format
+- This will be used in both the "Tracked by" header and "Closes" footer
 
-3. **Generate MR description following the exact structure below**
+### 2. Analyze git commits and file changes
+
+- Run `git log [base-branch]...HEAD --oneline` to understand the commit history.
+- Run `git diff [base-branch]...HEAD --stat` to see the scope of changes.
+
+**Diff reading strategy for large changesets:**
+
+- **Split diffs by directory/app**: Run separate `git diff [base-branch]...HEAD -- <path>` commands per top-level directory (e.g. `apps/foo/`, `packages/bar/`). This avoids truncation on large diffs.
+- **Prioritize source over tests**: Read implementation files first to understand the design, then read tests to verify coverage.
+- **Use parallel tool calls**: When reading diffs for independent directories, fetch them in parallel.
+- **Inspect full files when needed**: If a diff is hard to understand in isolation, use the Read tool to view the full file for context.
+
+### 3. Check .reference/ for planning context
+
+- Look for `.reference/` files in the repository root that relate to the current branch or ticket.
+- Planning docs, architecture decisions, and phase summaries can inform the "Considerations and implementation" section.
+- Do NOT quote or reference internal planning terminology (phase numbers, task IDs) in the output — describe actual changes.
+
+### 4. Generate MR description following the exact structure below
 
 ## MR Description Template
 
@@ -53,7 +67,7 @@ _What technical details should the team pay particular attention to? What unexpe
 
 ### Test(s) added
 
-_Why did you add tests around the areas you did? If none, please mention why_
+_List specific test files and what they cover._
 
 ### Screenshots
 
@@ -78,6 +92,7 @@ Closes BCM-XXXXX
 - Explain **edge cases handled** during implementation
 - Document **unexpected issues encountered** and how they were resolved
 - Call out areas that need particular attention during review
+- Draw on `.reference/` planning docs for context if available
 
 ### How to test
 
@@ -87,9 +102,16 @@ Closes BCM-XXXXX
 
 ### Test(s) added
 
-- Explain **what tests were added** and **why those areas were chosen**
-- If no tests were added, explain why
-  - Examples: "Refactor only, existing tests cover this", "Visual changes only, tested manually"
+List specific test files that were added or modified, with a brief description of what each covers:
+
+```
+- `BundleFS.test.ts` — ZIP/YAML bundle detection, build-config.xml conflict checks
+- `Migrate.test.ts` — Default application, partial config merging, version routing
+- `ConfigureRemoteModal.test.tsx` — Form validation, DHCP/static toggle, API integration
+```
+
+If no tests were added, explain why:
+- Examples: "Refactor only, existing tests cover this", "Visual changes only, tested manually"
 
 ### Screenshots
 
@@ -115,6 +137,15 @@ Tracked by BCM-12345
 ...
 ```
 ````
+
+## Save the description
+
+After presenting the description to the user, automatically save it to `.reference/` in the repository root:
+
+- Filename format: `YYYY-MM-DD-mr-description-<short-description>.md`
+- The `<short-description>` should be a kebab-case summary derived from the branch name or the MR content.
+- Include the branch name, date, and the full MR description in the saved file.
+- Do NOT commit the file — just write it to disk.
 
 ## Notes
 

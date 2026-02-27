@@ -1,5 +1,17 @@
 {
+  "attribution": {
+    "commit": "",
+    "pr": ""
+  },
   "permissions": {
-    "defaultMode": "default"
-  }
+    "allow": [
+      "Bash(find *)",
+      "Bash(git branch *)",
+      "Bash(git diff *)",
+      "Bash(git log *)",
+      "Bash(ls *)"
+    ],
+    "ask": ["Bash(rm *)", "WebFetch"]
+  },
+  "model": "opus"
 }
