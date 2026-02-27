@@ -1,2 +1,22 @@
 .DS_Store
 .zcompdump
+
+# Sandbox placeholder files
+/.bash_profile
+/.bashrc
+/.profile
+/.zprofile
+/.zshrc
+/.gitconfig
+/.gitmodules
+/.mcp.json
+/.ripgreprc
+/HEAD
+/config
+/hooks
+/objects
+/refs
+/.idea
+/.vscode
+/.claude/commands
+/.claude/skills
