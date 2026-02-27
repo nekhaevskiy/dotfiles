@@ -2,3 +2,13 @@
 on = "<Enter>"
 run = "plugin smart-enter"
 desc = "Enter directory or open file"
+
+[[mgr.prepend_keymap]]
+on = "<PageDown>"
+run = "seek 1"
+desc = "Scroll preview down"
+
+[[mgr.prepend_keymap]]
+on = "<PageUp>"
+run = "seek -1"
+desc = "Scroll preview up"

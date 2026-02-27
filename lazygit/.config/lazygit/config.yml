@@ -1,15 +1,22 @@
 customCommands:
-  - key: '<enter>'
-    context: 'localBranches'
-    command: 'git checkout {{ .SelectedLocalBranch.Name }}'
-    description: 'Checkout branch'
+  - key: "<enter>"
+    context: "localBranches"
+    command: "git checkout {{ .SelectedLocalBranch.Name }}"
+    description: "Checkout branch"
+  # - key: 'd'
+  #   context: 'files'
+  #   command: 'true'
+  #   output: 'none'
+  #   description: 'Disabled: discard changes'
 
 keybinding:
+  files:
+    viewResetOptions: "<disabled>"
   universal:
-    scrollUpMain-alt1: '<s-up>'
-    scrollDownMain-alt1: '<s-down>'
-    scrollUpMain-alt2: 'K'
-    scrollDownMain-alt2: 'J'
+    scrollUpMain-alt1: "<s-up>"
+    scrollDownMain-alt1: "<s-down>"
+    scrollUpMain-alt2: "<pgup>"
+    scrollDownMain-alt2: "<pgdown>"
 
 gui:
   theme:

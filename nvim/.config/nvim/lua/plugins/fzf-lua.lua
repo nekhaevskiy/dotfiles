@@ -16,12 +16,12 @@ return {
 			keymap = {
 				fzf = {
 					["ctrl-x"] = "abort",
-					["alt-j"] = "preview-down",
-					["alt-k"] = "preview-up",
+					["page-down"] = "preview-down",
+					["page-up"] = "preview-up",
 				},
 				builtin = {
-					["<M-j>"] = "preview-down",
-					["<M-k>"] = "preview-up",
+					["<PageDown>"] = "preview-down",
+					["<PageUp>"] = "preview-up",
 				},
 			},
 		})
