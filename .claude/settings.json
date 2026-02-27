@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(find *)",
+      "Bash(git branch *)",
+      "Bash(git diff *)",
+      "Bash(git log *)",
+      "Bash(ls *)",
+      "WebSearch",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:lazy.folke.io)"
+    ],
+    "ask": ["Bash(rm *)", "WebFetch", "Bash(git add *)", "Bash(git commit *)"],
+    "defaultMode": "default"
+  }
+}
