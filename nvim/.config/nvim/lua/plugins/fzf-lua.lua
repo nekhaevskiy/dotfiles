@@ -16,6 +16,7 @@ return {
 			keymap = {
 				fzf = {
 					["ctrl-x"] = "abort",
+					["enter"] = "accept",
 					["page-down"] = "preview-down",
 					["page-up"] = "preview-up",
 				},

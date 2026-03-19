@@ -67,6 +67,14 @@ opt.mouse = "a"
 -- Performance
 opt.lazyredraw = false
 
+-- Disable diagnostics for .env files
+vim.api.nvim_create_autocmd("BufReadPost", {
+  pattern = "*.env,*.env.*,.env,",
+  callback = function(args)
+    vim.diagnostic.enable(false, { bufnr = args.buf })
+  end,
+})
+
 -- Folding (using treesitter)
 opt.foldmethod = "expr"
 opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
