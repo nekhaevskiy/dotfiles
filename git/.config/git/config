@@ -4,7 +4,6 @@
   branches = branch -a
   branches-local = branch
   branches-remote = branch -r
-  c = !sh -c 'git commit -m \""$(git rev-parse --symbolic-full-name --abbrev-ref HEAD): ${0} ${*}"\"'
 	ci = commit
 	co = checkout
   create-branch = checkout -b
