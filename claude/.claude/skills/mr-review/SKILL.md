@@ -1,7 +1,7 @@
 ---
 name: mr-review
 description: Perform a detailed code review by comparing current branch with a base branch. Compare with main by default, or specify an alternative branch. Use when the user asks to "review my changes", "review this MR", "review this merge request", "review this PR", "review this pull request", "review the diff", or "code review".
-argument-hint: '[base-branch]'
+argument-hint: "[base-branch]"
 disable-model-invocation: true
 version: 2.0.0
 ---
@@ -58,7 +58,7 @@ If something is unclear about the intent of the change, explicitly call that out
 
 ## 3. Save the review
 
-After presenting the review to the user, automatically save it to `.reference/` in the repository root:
+After presenting the review to the user, automatically save it to `reference/` in the repository root:
 
 - Filename format: `YYYY-MM-DD-mr-review-<short-description>.md`
 - The `<short-description>` should be a kebab-case summary derived from the branch name or the review content (e.g. `config-parser`, `session-management`, `auth-refactor`).

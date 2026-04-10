@@ -1,7 +1,7 @@
 ---
 name: mr-description
 description: Generate a GitLab merge request description by comparing current branch with a base branch. Compare with main by default, or specify an alternative branch. Use when preparing MR descriptions or understanding what changed between branches.
-argument-hint: '[base-branch]'
+argument-hint: "[base-branch]"
 disable-model-invocation: true
 version: 2.0.0
 ---
@@ -38,9 +38,9 @@ Follow these steps to generate the MR description:
 - **Use parallel tool calls**: When reading diffs for independent directories, fetch them in parallel.
 - **Inspect full files when needed**: If a diff is hard to understand in isolation, use the Read tool to view the full file for context.
 
-### 3. Check .reference/ for planning context
+### 3. Check reference/ for planning context
 
-- Look for `.reference/` files in the repository root that relate to the current branch or ticket.
+- Look for `reference/` files in the repository root that relate to the current branch or ticket.
 - Planning docs, architecture decisions, and phase summaries can inform the "Considerations and implementation" section.
 - Do NOT quote or reference internal planning terminology (phase numbers, task IDs) in the output — describe actual changes.
 
@@ -92,13 +92,12 @@ Closes BCM-XXXXX
 - Explain **edge cases handled** during implementation
 - Document **unexpected issues encountered** and how they were resolved
 - Call out areas that need particular attention during review
-- Draw on `.reference/` planning docs for context if available
+- Draw on `reference/` planning docs for context if available
 
 ### How to test
 
-- Provide **numbered step-by-step instructions**
-- Make it easy for reviewers to verify the changes
-- Include setup steps if needed (e.g., "Start dev server with `rushx start`")
+- This project has a GitLab CI pipeline that runs build, tests, and lint. For non-visual changes, "Green pipeline" is sufficient.
+- For visual or interactive changes, add manual testing steps (e.g., "Start dev server with `rushx start`", navigate to a specific page, verify behavior).
 
 ### Test(s) added
 
@@ -111,6 +110,7 @@ List specific test files that were added or modified, with a brief description o
 ```
 
 If no tests were added, explain why:
+
 - Examples: "Refactor only, existing tests cover this", "Visual changes only, tested manually"
 
 ### Screenshots
@@ -140,7 +140,7 @@ Tracked by BCM-12345
 
 ## Save the description
 
-After presenting the description to the user, automatically save it to `.reference/` in the repository root:
+After presenting the description to the user, automatically save it to `reference/` in the repository root:
 
 - Filename format: `YYYY-MM-DD-mr-description-<short-description>.md`
 - The `<short-description>` should be a kebab-case summary derived from the branch name or the MR content.
