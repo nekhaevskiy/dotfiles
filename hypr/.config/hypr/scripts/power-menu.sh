@@ -9,6 +9,6 @@ menu() {
 case $(menu "System" "󰌾  Lock\n󰒲  Suspend\n󰜉  Restart\n󰐥  Shutdown") in
   *Lock*) omarchy-lock-screen ;;
   *Suspend*) systemctl suspend ;;
-  *Restart*) omarchy-cmd-reboot ;;
-  *Shutdown*) omarchy-cmd-shutdown ;;
+  *Restart*) omarchy-system-reboot ;;
+  *Shutdown*) omarchy-system-shutdown ;;
 esac
