@@ -23,6 +23,9 @@ shell-integration-features = no-cursor,ssh-env
 # Slowdown mouse scrolling
 mouse-scroll-multiplier = 0.95
 
+# Disable default fullscreen toggle
+keybind = ctrl+enter=unbind
+
 # Clipboard
 keybind = ctrl+shift+c=copy_to_clipboard
 keybind = ctrl+shift+v=paste_from_clipboard
@@ -68,3 +71,6 @@ keybind = ctrl+shift+8=goto_tab:8
 keybind = ctrl+shift+9=goto_tab:9
 keybind = ctrl+shift+left_bracket=previous_tab
 keybind = ctrl+shift+right_bracket=next_tab
+
+# Fix general slowness on hyprland (https://github.com/ghostty-org/ghostty/discussions/3224)
+async-backend = epoll
