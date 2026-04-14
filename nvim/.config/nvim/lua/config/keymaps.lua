@@ -88,6 +88,13 @@ keymap.set("n", "<leader>tw", function()
 	vim.notify("Wrap " .. (vim.wo.wrap and "enabled" or "disabled"), vim.log.levels.INFO)
 end, { desc = "Toggle wrap" })
 
+-- Copy relative path to clipboard
+keymap.set("n", "<leader>yp", function()
+	local path = vim.fn.fnamemodify(vim.fn.expand("%"), ":.")
+	vim.fn.setreg("+", path)
+	vim.notify("Copied: " .. path, vim.log.levels.INFO)
+end, { desc = "Copy relative path to clipboard" })
+
 -- Lazy plugin manager
 keymap.set("n", "<leader>l", "<cmd>Lazy<CR>", { desc = "Open Lazy" })
 keymap.set("n", "<leader>ls", "<cmd>Lazy sync<CR>", { desc = "Lazy sync" })
