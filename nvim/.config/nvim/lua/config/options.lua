@@ -1,6 +1,9 @@
 -- Editor options and settings
 local opt = vim.opt
 
+-- Ensure treesitter parser install directory is in runtimepath
+opt.runtimepath:append(vim.fn.stdpath("data") .. "/site")
+
 -- Line numbers
 opt.number = true
 opt.relativenumber = true
