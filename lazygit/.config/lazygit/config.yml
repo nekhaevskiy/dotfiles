@@ -1,8 +1,8 @@
 customCommands:
-  - key: "<enter>"
-    context: "localBranches"
-    command: "git checkout {{ .SelectedLocalBranch.Name }}"
-    description: "Checkout branch"
+  # - key: "<enter>"
+  #   context: "localBranches"
+  #   command: "git checkout {{ .SelectedLocalBranch.Name }}"
+  #   description: "Checkout branch"
   # - key: 'd'
   #   context: 'files'
   #   command: 'true'
