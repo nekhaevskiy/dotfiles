@@ -59,6 +59,11 @@ cipl() {
 	echo "$CLUSTER_IP"
 }
 
+# ssh wrapper to pass TERM and Ghostty env vars (replaces ghostty ssh-env)
+ssh() {
+  TERM=xterm-256color command ssh -o SendEnv="COLORTERM TERM_PROGRAM TERM_PROGRAM_VERSION" "$@"
+}
+
 # remove a user-specified IP from the known_hosts file
 sshr() {
 	local ip="$1"
