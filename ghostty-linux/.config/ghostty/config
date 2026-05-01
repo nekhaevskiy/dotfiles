@@ -71,6 +71,8 @@ keybind = ctrl+shift+8=goto_tab:8
 keybind = ctrl+shift+9=goto_tab:9
 keybind = ctrl+shift+left_bracket=previous_tab
 keybind = ctrl+shift+right_bracket=next_tab
+keybind = alt+h=previous_tab
+keybind = alt+l=next_tab
 
 # Fix general slowness on hyprland (https://github.com/ghostty-org/ghostty/discussions/3224)
 async-backend = epoll
