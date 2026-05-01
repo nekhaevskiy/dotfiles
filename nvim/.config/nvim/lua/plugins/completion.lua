@@ -34,16 +34,7 @@ return {
 		},
 
 		sources = {
-			default = { "lsp", "path", "snippets", "buffer" },
-			providers = {
-				buffer = {
-					name = "Buffer",
-					module = "blink.cmp.sources.buffer",
-					opts = {
-						max_items = 5,
-					},
-				},
-			},
+			default = { "lsp", "path", "snippets" },
 		},
 
 		completion = {
