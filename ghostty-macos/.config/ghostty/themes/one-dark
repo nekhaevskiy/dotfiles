@@ -1,7 +1,7 @@
 # Atom One Dark Theme for Ghostty
-# Brighter macOS variant for better readability.
+# macOS variant with a darker background and readable foreground.
 
-palette = 0=#1f2329
+palette = 0=#111318
 palette = 1=#e06c75
 palette = 2=#98c379
 palette = 3=#e5c07b
@@ -17,7 +17,7 @@ palette = 12=#61afef
 palette = 13=#c678dd
 palette = 14=#56b6c2
 palette = 15=#ffffff
-background = #1f2329
+background = #111318
 foreground = #d7dae0
 cursor-color = #d7dae0
 selection-background = #3e4451
