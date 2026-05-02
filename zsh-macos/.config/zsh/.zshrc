@@ -12,7 +12,6 @@ KEYTIMEOUT=100
 
 # options
 setopt autocd nomatch
-# unsetopt beep extendedglob notify
 
 bindkey '^P' up-line-or-search
 bindkey '^N' down-line-or-search
@@ -24,19 +23,7 @@ bindkey '^N' down-line-or-search
 source "$ZDOTDIR/aliases"
 
 # Neovim switcher
-alias nvim-lazy="NVIM_APPNAME=LazyVim nvim"
-
-################
-# Autocomplete #
-################
-
-# zstyle :compinstall filename "$ZDOTDIR/.zshrc"
-
-# autoload -Uz compinit
-# compinit -d "$HOME/.zcompdump"
-
-# autocomplete hidden files
-# _comp_options+=(globdots)
+# alias nvim-lazy="NVIM_APPNAME=LazyVim nvim"
 
 ##########
 # Bright #
@@ -81,9 +68,10 @@ eval "$(pyenv virtualenv-init -)"
 eval "$(starship init zsh)"
 
 # zoxide
-eval "$(zoxide init zsh)"
+eval "$(zoxide init zsh --cmd cd)"
 
 # zsh-autosuggestions
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=8"
 source "/opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
 bindkey '^y' autosuggest-accept # use <C-y> keybinding to accept autosuggestion
 

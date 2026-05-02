@@ -71,5 +71,5 @@ bindkey '^y' autosuggest-accept
 # zsh-syntax-highlighting (must be last)
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-# add ~/.local/bin to PATH
+# Claude
 export PATH="$HOME/.local/bin:$PATH"
