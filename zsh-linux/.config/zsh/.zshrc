@@ -47,10 +47,10 @@ FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 # source "$HOME/fzf-git.sh/fzf-git.sh"
 # source "$ZDOTDIR/yn-fzf-git.sh"
 
-# mise
-if command -v mise &> /dev/null; then
-  eval "$(mise activate zsh)"
-fi
+# nvm
+export NVM_DIR="$HOME/.nvm"                                                                                                                                                                
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm                                                                                                                         
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion  
 
 # pyenv (needed for JupyterLab)
 export PYENV_ROOT="$HOME/.pyenv"
