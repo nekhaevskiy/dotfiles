@@ -1,7 +1,3 @@
 {
-  "attribution": {
-    "commit": "",
-    "pr": ""
-  },
-  "model": "opus"
+  "theme": "dark"
 }

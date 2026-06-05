@@ -1,4 +1,6 @@
 {
-  "keyMappings": "# Insert your preferred key mappings here.\nunmap B\nunmap F\nunmap H\nunmap L\nmap B goBack\nmap F goForward\nmap H previousTab\nmap L nextTab",
-  "settingsVersion": "2.3.1"
+  "exclusionRules": [],
+  "grabBackFocus": true,
+  "newTabDestination": "browserNewTabPage",
+  "settingsVersion": "2.4.2"
 }
