@@ -44,8 +44,8 @@ FZF_DEFAULT_COMMAND="rg --files --hidden --glob '!.git'"
 FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 # fzf-git
-source "$HOME/fzf-git.sh/fzf-git.sh"
-source "$ZDOTDIR/yn-fzf-git.sh"
+# source "$HOME/fzf-git.sh/fzf-git.sh"
+# source "$ZDOTDIR/yn-fzf-git.sh"
 
 # mise
 if command -v mise &> /dev/null; then
@@ -65,11 +65,11 @@ eval "$(starship init zsh)"
 eval "$(zoxide init zsh --cmd cd)"
 
 # zsh-autosuggestions
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 bindkey '^y' autosuggest-accept
 
 # zsh-syntax-highlighting (must be last)
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Claude
 export PATH="$HOME/.local/bin:$PATH"
