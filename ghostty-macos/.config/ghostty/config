@@ -1,6 +1,9 @@
 # Theme
 theme = one-dark
 
+# macOS
+macos-option-as-alt = true
+
 # Window
 window-padding-x = 4
 window-padding-y = 4
