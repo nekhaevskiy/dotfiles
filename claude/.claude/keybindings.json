@@ -3,6 +3,13 @@
   "$docs": "https://code.claude.com/docs/en/keybindings",
   "bindings": [
     {
+      "context": "Scroll",
+      "bindings": {
+        "pageup": "scroll:lineUp",
+        "pagedown": "scroll:lineDown"
+      }
+    },
+    {
       "context": "Autocomplete",
       "bindings": {
         "ctrl+j": "autocomplete:next",
