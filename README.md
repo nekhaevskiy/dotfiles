@@ -74,6 +74,16 @@ bash ~/dotfiles/gnome-terminal/setup.sh
 
 Requires [JetBrains Mono Nerd Font](https://www.nerdfonts.com/) to be installed first.
 
+## macOS Terminal
+
+Terminal.app settings are not file-based and can't be managed with Stow. Apply them with:
+
+```bash
+bash ~/dotfiles/macos-terminal/setup.sh
+```
+
+Requires [JetBrains Mono Nerd Font](https://www.nerdfonts.com/) to be installed first.
+
 ## Yazi
 
 After stowing, install plugins with:

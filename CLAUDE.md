@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Repository Overview
 
-This is a dotfiles repository managing configurations for 28+ tools and applications using GNU Stow for symlink management. Each tool is organized as an independent stow package following the XDG Base Directory specification.
+This is a dotfiles repository managing configurations for 15+ tools and applications using GNU Stow for symlink management. Each tool is organized as an independent stow package following the XDG Base Directory specification.
 
 ## Common Commands
 
@@ -17,8 +17,8 @@ stow <package-name>
 
 # Examples:
 stow nvim
-stow ghostty
-stow hypr
+stow git
+stow zsh-macos   # or zsh-linux on Ubuntu
 
 # Remove a package (removes symlinks)
 stow -D <package-name>
@@ -34,14 +34,14 @@ Standard git commands apply. Follow the commit message style guide:
 **Format:** `<component>: <description>`
 
 **Rules:**
-- Lowercase component prefix (e.g., `ghostty`, `nvim`, `hypr`)
+- Lowercase component prefix (e.g., `nvim`, `git`, `zsh-macos`)
 - Start description with lowercase verb (add, switch, set, remove, etc.)
 - No period at end of subject
 - Optional: add blank line + bullet points for complex changes
 
 **Examples:**
 ```
-ghostty: add OneDark theme with darker background and larger font
+macos-terminal: add OneDark theme with darker background and larger font
 
 nvim: add complete IDE setup with LSP, completion, and tooling
 
@@ -69,12 +69,12 @@ Each directory at the root (except `.git`, `.cursor`) represents a stow package 
 
 **Primary tools with complex configurations:**
 - `nvim/` - Neovim with Lazy.nvim plugin manager, LSP, completion, Copilot
-- `hypr/` - Hyprland Wayland compositor with modular configuration
 - `bash/` - Shell configuration
-- `ghostty/` - Primary terminal emulator
+- `zsh-macos/` / `zsh-linux/` - Platform-specific shell configuration
 - `lazygit/` - TUI git client
+- `macos-terminal/` / `gnome-terminal/` - Native terminal setup (not stow-managed, see README)
 
-**Theme:** OneDark is used consistently across tools (ghostty, alacritty, lazygit, yazi, nvim)
+**Theme:** OneDark is used consistently across tools (macos-terminal, gnome-terminal, lazygit, yazi, nvim)
 
 ## Architecture Patterns
 
@@ -91,26 +91,7 @@ When modifying nvim config:
 - Core settings go in `lua/config/options.lua` or `lua/config/keymaps.lua`
 - LSP configurations in `lua/plugins/lsp.lua`
 
-### 2. Hyprland Configuration (hypr/.config/hypr/)
-
-Layered modular approach:
-- `hyprland.conf` - Main entry point
-- Sources system defaults from `~/.local/share/omarchy/default/hypr/*`
-- Sources theme overrides from `~/.config/omarchy/current/theme/*`
-- Sources user configs from `~/.config/hypr/*.conf`
-
-Modular files:
-- `looknfeel.conf` - Visual settings (gaps, borders, blur, animations)
-- `keybinds.conf` - Keyboard shortcuts
-- `input.conf` - Input devices, keyboard layouts (US + Russian)
-- `windowrules.conf` - Window-specific rules
-- `monitors.conf` - Display configuration
-
-When modifying hypr config:
-- Edit specific `.conf` files rather than monolithic config
-- NVIDIA-specific settings already configured (see hyprland.conf)
-
-### 3. Git Configuration (git/.config/git/)
+### 2. Git Configuration (git/.config/git/)
 
 Extensive custom aliases for common workflows. Key aliases include:
 - Branch management: `co`, `cob`, `db`
@@ -133,5 +114,3 @@ Extensive custom aliases for common workflows. Key aliases include:
    - Add config files to `.config/[tool-name]/`
    - Stow the package
    - Commit with format: `<package>: add initial configuration`
-
-4. **Multi-layout Support:** Keyboard configuration supports US + Russian layouts with Alt+Space switching (see hypr/input.conf)
