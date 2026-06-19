@@ -20,13 +20,25 @@ cips() {
 
   echo "$1" >"$HOME/work/cluster-ip"
   export CLUSTER_IP="$1"
-  echo "$CLUSTER_IP" | wl-copy
+  if command -v wl-copy &>/dev/null; then
+    echo "$CLUSTER_IP" | wl-copy
+  elif command -v xclip &>/dev/null; then
+    echo "$CLUSTER_IP" | xclip -selection clipboard
+  elif command -v xsel &>/dev/null; then
+    echo "$CLUSTER_IP" | xsel --clipboard --input
+  fi
   echo "Cluster IP saved."
 }
 
 # cluster IP load
 cipl() {
   export CLUSTER_IP=$(cat "$HOME/work/cluster-ip")
-  echo "$CLUSTER_IP" | wl-copy
+  if command -v wl-copy &>/dev/null; then
+    echo "$CLUSTER_IP" | wl-copy
+  elif command -v xclip &>/dev/null; then
+    echo "$CLUSTER_IP" | xclip -selection clipboard
+  elif command -v xsel &>/dev/null; then
+    echo "$CLUSTER_IP" | xsel --clipboard --input
+  fi
   echo "$CLUSTER_IP"
 }
