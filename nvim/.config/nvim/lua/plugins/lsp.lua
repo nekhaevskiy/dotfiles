@@ -37,7 +37,7 @@ return {
       vim.keymap.set("n", "gD", vim.lsp.buf.declaration, vim.tbl_extend("force", opts, { desc = "Go to declaration" }))
       
       -- References and implementations
-      vim.keymap.set("n", "gr", function() require("fzf-lua").lsp_references() end, vim.tbl_extend("force", opts, { desc = "Show references" }))
+      vim.keymap.set("n", "grr", function() require("fzf-lua").lsp_references() end, vim.tbl_extend("force", opts, { desc = "Show references" }))
       vim.keymap.set("n", "gi", function() require("fzf-lua").lsp_implementations() end, vim.tbl_extend("force", opts, { desc = "Go to implementation" }))
 
       -- Type definitions
@@ -51,6 +51,10 @@ return {
       vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, vim.tbl_extend("force", opts, { desc = "Code action" }))
       vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, vim.tbl_extend("force", opts, { desc = "Rename symbol" }))
       
+      -- Symbols
+      vim.keymap.set("n", "<leader>ss", function() require("fzf-lua").lsp_document_symbols() end, vim.tbl_extend("force", opts, { desc = "Symbols in file" }))
+      vim.keymap.set("n", "<leader>sS", function() require("fzf-lua").lsp_live_workspace_symbols() end, vim.tbl_extend("force", opts, { desc = "Symbols in workspace" }))
+
       -- Workspace
       vim.keymap.set("n", "<leader>wa", vim.lsp.buf.add_workspace_folder, vim.tbl_extend("force", opts, { desc = "Add workspace folder" }))
       vim.keymap.set("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder, vim.tbl_extend("force", opts, { desc = "Remove workspace folder" }))
