@@ -71,5 +71,9 @@ bindkey '^y' autosuggest-accept
 # zsh-syntax-highlighting (must be last)
 source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
+# Bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
 # Claude
 export PATH="$HOME/.local/bin:$PATH"
