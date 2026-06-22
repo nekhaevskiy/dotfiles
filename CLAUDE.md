@@ -4,113 +4,67 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Repository Overview
 
-This is a dotfiles repository managing configurations for 15+ tools and applications using GNU Stow for symlink management. Each tool is organized as an independent stow package following the XDG Base Directory specification.
+Dotfiles managed with GNU Stow. Each top-level directory is a stow package that mirrors the home directory structure (e.g. `nvim/.config/nvim/` maps to `~/.config/nvim/`).
 
 ## Common Commands
 
-### Installing/Managing Configurations
-
 ```bash
-# Install a specific package (creates symlinks)
-cd ~/dotfiles
-stow <package-name>
+# Apply a package (creates symlinks)
+stow <package>
 
-# Examples:
-stow nvim
-stow git
-stow zsh-macos   # or zsh-linux on Ubuntu
+# Reapply after changes
+stow -R <package>
 
-# Remove a package (removes symlinks)
-stow -D <package-name>
+# Remove a package
+stow -D <package>
 
-# Restow (useful after config changes)
-stow -R <package-name>
+# After modifying shell config
+source ~/.config/zsh/.zshrc   # or open a new terminal
 ```
 
-### Git Workflow
-
-Standard git commands apply. Follow the commit message style guide:
-
-**Format:** `<component>: <description>`
-
-**Rules:**
-- Lowercase component prefix (e.g., `nvim`, `git`, `zsh-macos`)
-- Start description with lowercase verb (add, switch, set, remove, etc.)
-- No period at end of subject
-- Optional: add blank line + bullet points for complex changes
-
-**Examples:**
-```
-macos-terminal: add OneDark theme with darker background and larger font
-
-nvim: add complete IDE setup with LSP, completion, and tooling
-
-- Add core config (options, keymaps)
-- Setup LSP with pyright, ts_ls, lua_ls
-- Add blink.cmp for completion
-- Configure GitHub Copilot
+Two packages are **not stow-managed** and require their own setup scripts:
+```bash
+bash ~/dotfiles/gnome-terminal/setup.sh   # Ubuntu
+bash ~/dotfiles/macos-terminal/setup.sh   # macOS
 ```
 
-## Repository Structure
-
-```
-dotfiles/
-├── README.md
-├── .cursor/rules/commit-messages.mdc
-└── [stow-packages]/
-    └── .config/
-        └── [app-name]/
-            └── [config files]
+After stowing yazi, install plugins:
+```bash
+yazi.ya pkg install   # snap install uses yazi.ya, not ya
 ```
 
-Each directory at the root (except `.git`, `.cursor`) represents a stow package that mirrors the home directory structure.
+## Commit Message Format
 
-## Key Configured Tools
+`<component>: <description>` — lowercase component (matches the stow package name), lowercase verb to start description, no trailing period.
 
-**Primary tools with complex configurations:**
-- `nvim/` - Neovim with Lazy.nvim plugin manager, LSP, completion, Copilot
-- `bash/` - Shell configuration
-- `zsh-macos/` / `zsh-linux/` - Platform-specific shell configuration
-- `lazygit/` - TUI git client
-- `macos-terminal/` / `gnome-terminal/` - Native terminal setup (not stow-managed, see README)
+```
+nvim: add formatting on save for Python
+zsh-linux: add bun to PATH
+```
 
-**Theme:** OneDark is used consistently across tools (macos-terminal, gnome-terminal, lazygit, yazi, nvim)
+## Neovim Architecture
 
-## Architecture Patterns
+`nvim/.config/nvim/` uses Lazy.nvim with a flat plugin-per-file layout:
 
-### 1. Neovim Configuration (nvim/.config/nvim/)
+- `lua/config/` — `options.lua`, `keymaps.lua`, `lazy.lua` (bootstrap + plugin loader)
+- `lua/plugins/` — one file per feature; all files are auto-imported via `{ import = "plugins" }`
 
-Modular Lua-based setup with Lazy.nvim:
-- `lua/config/` - Core settings (options, keymaps, lazy.lua)
-- `lua/plugins/` - Feature-specific plugin files
-  - Each plugin in separate file (lsp.lua, copilot.lua, completion.lua, etc.)
-  - Plugin specs use lazy loading where appropriate
+**Key plugins and their roles:**
+- `lsp.lua` — Mason + mason-lspconfig; auto-installs `pyright`, `ts_ls`, `lua_ls`, `jsonls`
+- `fzf-lua.lua` — primary fuzzy finder; used by LSP keymaps for references, symbols, diagnostics
+- `yazi.lua` — file manager on `<leader>e` (replaced nvim-tree)
+- `completion.lua`, `formatting.lua`, `linting.lua` — editing pipeline
+- `copilot.lua` — GitHub Copilot
 
-When modifying nvim config:
-- Add new plugins as separate files in `lua/plugins/`
-- Core settings go in `lua/config/options.lua` or `lua/config/keymaps.lua`
-- LSP configurations in `lua/plugins/lsp.lua`
+**Adding a new plugin:** create a new file in `lua/plugins/` returning a Lazy spec. It is picked up automatically.
 
-### 2. Git Configuration (git/.config/git/)
+**LSP keymaps** (set on `LspAttach` in `lsp.lua`): `gd` definition, `grr` references (fzf-lua), `gi` implementation, `<leader>ss` document symbols, `<leader>sS` workspace symbols, `<leader>ca` code action, `<leader>rn` rename.
 
-Extensive custom aliases for common workflows. Key aliases include:
-- Branch management: `co`, `cob`, `db`
-- Viewing: `st`, `lg`, `last`
-- Staging: `aa`, `unstage`
-- Commit helpers with branch-aware templates
+## Theme
 
-## Notes for Working in This Repository
+OneDark is used across all tools — nvim (`onedark.lua`), gnome-terminal, macos-terminal, lazygit, yazi. Keep new tool configs consistent with this theme.
 
-1. **No Build System:** This is a pure configuration repository. No compilation or build steps required.
+## Platform Notes
 
-2. **Testing Changes:** After modifying a config:
-   - Restow the package: `stow -R <package>`
-   - Restart the affected application
-   - For shell configs: `source ~/.bashrc` or open new terminal
-
-3. **Adding New Tools:**
-   - Create new directory at root (package name)
-   - Mirror home directory structure inside it
-   - Add config files to `.config/[tool-name]/`
-   - Stow the package
-   - Commit with format: `<package>: add initial configuration`
+- `zsh-linux/` and `zsh-macos/` are mutually exclusive; stow only the one matching the OS
+- Ubuntu dependencies (zsh, stow, ripgrep, fzf, starship, zoxide, lazygit, nvim, zellij, yazi) are documented in `README.md`
