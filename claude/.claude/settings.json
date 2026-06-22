@@ -1,3 +1,54 @@
 {
-  "theme": "dark"
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "advisorModel": "opus",
+  "attribution": {
+    "commit": "",
+    "pr": ""
+  },
+  "autoCompactEnabled": true,
+  "editorMode": "vim",
+  "effortLevel": "high",
+  "enabledPlugins": {
+    "bcm-support@bcm-support": true,
+    "ponytail@ponytail": true
+  },
+  "extraKnownMarketplaces": {
+    "bcm-support": {
+      "source": {
+        "source": "git",
+        "url": "https://gitlab-master.nvidia.com/dchirikov/bcm-support.git"
+      }
+    },
+    "ponytail": {
+      "source": {
+        "source": "github",
+        "repo": "DietrichGebert/ponytail"
+      }
+    }
+  },
+  "model": "sonnet",
+  "permissions": {
+    "allow": [
+      "Bash(find *)",
+      "Bash(git branch *)",
+      "Bash(git diff *)",
+      "Bash(git log *)",
+      "Bash(glab mr list *)",
+      "Bash(ls *)",
+      "mcp__MaaS-GitLab__gitlab_get_merge_request",
+      "mcp__MaaS-GitLab__gitlab_list_merge_requests",
+      "WebSearch",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "WebFetch(domain:github.com)"
+    ],
+    "ask": ["Bash(git commit *)", "Bash(glab mr update *)", "Bash(rm *)"],
+    "defaultMode": "default",
+    "deny": ["Bash(git push *)"]
+  },
+  "sandbox": {
+    "enabled": true,
+    "autoAllowBashIfSandboxed": true
+  },
+  "theme": "dark",
+  "verbose": true
 }
