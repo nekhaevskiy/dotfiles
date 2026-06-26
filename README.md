@@ -93,3 +93,28 @@ yazi.ya pkg install
 ```
 
 > Note: yazi is installed via snap, so the package manager CLI is `yazi.ya` instead of `ya`.
+
+## Bin (smart-copy / smart-paste)
+
+The `bin` package provides `smart-copy` and `smart-paste` — clipboard scripts that send `Ctrl+Shift+C/V` in terminals and `Ctrl+C/V` everywhere else.
+
+Install dependencies:
+
+```bash
+sudo apt install xdotool x11-utils x11-xserver-utils
+```
+
+After stowing, wire them up in GNOME Settings → Keyboard → Custom Shortcuts:
+
+| Name | Command | Shortcut |
+|------|---------|----------|
+| Smart Copy | `smart-copy` | Super+C |
+| Smart Paste | `smart-paste` | Super+V |
+
+Also disable the GNOME Activities overlay key to prevent Super from stealing focus:
+
+```bash
+gsettings set org.gnome.mutter overlay-key ''
+```
+
+> X11 only. Scripts hardcode `DISPLAY=:1` — adjust if your display number differs.

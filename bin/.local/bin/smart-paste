@@ -1,0 +1,17 @@
+#!/bin/bash
+# Super+V paste: Ctrl+Shift+V in terminals, Ctrl+V everywhere else.
+# Bound to a GNOME shortcut, so it fires while Super+V is still held. We must
+# (1) stop autorepeat so the held V doesn't type a literal "v", and (2) release
+# the trigger keys so the app sees a clean Ctrl+V, not Super+Ctrl+V.
+# No --window on xdotool: that uses XSendEvent, which VTE/browsers ignore;
+# without it xdotool uses XTEST (real events) which every app accepts.
+export DISPLAY=:1
+cls=$(xprop -id "$(xdotool getactivewindow)" WM_CLASS 2>/dev/null | tr '[:upper:]' '[:lower:]')
+case "$cls" in
+    *terminal*|*alacritty*|*kitty*) key=ctrl+shift+v ;;
+    *)                              key=ctrl+v ;;
+esac
+xset r off
+trap 'xset r on' EXIT
+xdotool keyup super v
+xdotool key --clearmodifiers "$key"

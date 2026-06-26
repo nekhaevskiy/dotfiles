@@ -1,0 +1,13 @@
+#!/bin/bash
+# Super+C copy: Ctrl+Shift+C in terminals, Ctrl+C everywhere else.
+# See smart-paste for why we disable autorepeat / release the trigger keys / skip --window.
+export DISPLAY=:1
+cls=$(xprop -id "$(xdotool getactivewindow)" WM_CLASS 2>/dev/null | tr '[:upper:]' '[:lower:]')
+case "$cls" in
+    *terminal*|*alacritty*|*kitty*) key=ctrl+shift+c ;;
+    *)                              key=ctrl+c ;;
+esac
+xset r off
+trap 'xset r on' EXIT
+xdotool keyup super c
+xdotool key --clearmodifiers "$key"
