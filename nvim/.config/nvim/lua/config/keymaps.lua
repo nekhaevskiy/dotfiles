@@ -95,6 +95,13 @@ keymap.set("n", "<leader>yp", function()
 	vim.notify("Copied: " .. path, vim.log.levels.INFO)
 end, { desc = "Copy relative path to clipboard" })
 
+-- Copy absolute path to clipboard
+keymap.set("n", "<leader>yP", function()
+	local path = vim.fn.expand("%:p")
+	vim.fn.setreg("+", path)
+	vim.notify("Copied: " .. path, vim.log.levels.INFO)
+end, { desc = "Copy absolute path to clipboard" })
+
 -- Lazy plugin manager
 keymap.set("n", "<leader>l", "<cmd>Lazy<CR>", { desc = "Open Lazy" })
 keymap.set("n", "<leader>ls", "<cmd>Lazy sync<CR>", { desc = "Lazy sync" })

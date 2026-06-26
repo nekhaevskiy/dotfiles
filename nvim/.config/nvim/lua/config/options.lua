@@ -48,7 +48,7 @@ opt.backup = false
 
 -- Update time (for better performance with plugins like gitsigns)
 opt.updatetime = 250
-opt.timeoutlen = 300
+opt.timeoutlen = 700
 
 -- Completion
 opt.completeopt = "menu,menuone,noselect"

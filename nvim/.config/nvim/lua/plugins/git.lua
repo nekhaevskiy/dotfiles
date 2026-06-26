@@ -70,7 +70,7 @@ return {
           end
 
           -- Navigation
-          map("n", "]h", function()
+          map("n", "]g", function()
             if vim.wo.diff then
               return "]c"
             end
@@ -80,7 +80,7 @@ return {
             return "<Ignore>"
           end, { expr = true, desc = "Next hunk" })
 
-          map("n", "[h", function()
+          map("n", "[g", function()
             if vim.wo.diff then
               return "[c"
             end
