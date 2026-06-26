@@ -1,6 +1,7 @@
 {
   "exclusionRules": [],
   "grabBackFocus": true,
+  "keyMappings": "# Insert your preferred key mappings here.\nunmap J\nunmap K\nunmap W\nmap <A-h> scrollLeft\nmap <A-j> nextTab\nmap <A-k> previousTab\nmap <A-l> scrollRight",
   "newTabDestination": "browserNewTabPage",
   "settingsVersion": "2.4.2"
 }
