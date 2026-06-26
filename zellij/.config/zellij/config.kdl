@@ -134,6 +134,12 @@ keybinds clear-defaults=true {
         }
     }
     shared_except "locked" {
+        bind "Alt a" {
+            LaunchOrFocusPlugin "session-manager" {
+                floating true
+                move_to_focused_tab true
+            }
+        }
         bind "Alt left" { MoveFocusOrTab "left"; }
         bind "Alt down" { MoveFocus "down"; }
         bind "Alt up" { MoveFocus "up"; }
@@ -150,7 +156,7 @@ keybinds clear-defaults=true {
         bind "Alt j" { MoveFocus "down"; }
         bind "Alt k" { MoveFocus "up"; }
         bind "Alt l" { MoveFocusOrTab "right"; }
-        bind "Alt n" { NewPane; }
+        bind "Alt n" { NewTab; }
         bind "Alt o" { MoveTab "right"; }
         bind "Alt Shift p" { ToggleGroupMarking; }
         bind "Alt q" { Quit; }
@@ -165,7 +171,7 @@ keybinds clear-defaults=true {
         bind "Alt b" { SwitchToMode "tmux"; }
     }
     shared_except "locked" "scroll" "search" {
-        bind "Alt c" { SwitchToMode "scroll"; }
+        bind "Alt f" { SwitchToMode "scroll"; }
     }
     shared_except "locked" "tab" {
         bind "Alt t" { SwitchToMode "tab"; }
