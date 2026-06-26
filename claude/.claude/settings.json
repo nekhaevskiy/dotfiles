@@ -1,16 +1,63 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
-  "advisorModel": "opus",
   "attribution": {
     "commit": "",
     "pr": ""
   },
-  "autoCompactEnabled": true,
-  "editorMode": "vim",
-  "effortLevel": "high",
+  "permissions": {
+    "allow": [
+      "Bash(find *)",
+      "Bash(git add *)",
+      "Bash(git branch *)",
+      "Bash(git diff *)",
+      "Bash(git log *)",
+      "Bash(glab mr list *)",
+      "Bash(glab mr view *)",
+      "Bash(ls *)",
+      "Bash(rush lint *)",
+      "Bash(rush test:unit *)",
+      "mcp__MaaS-GitLab__gitlab_get_job_log_paginated",
+      "mcp__MaaS-GitLab__gitlab_get_merge_request",
+      "mcp__MaaS-GitLab__gitlab_get_merge_request_diffs",
+      "mcp__MaaS-GitLab__gitlab_get_pipeline_tree",
+      "mcp__MaaS-GitLab__gitlab_list_merge_requests",
+      "mcp__MaaS-GitLab__gitlab_list_pipelines_jobs",
+      "mcp__MaaS-Jira__jira_get_editmeta",
+      "mcp__MaaS-Jira__jira_get_issue",
+      "mcp__MaaS-Jira__jira_search",
+      "mcp__plugin_playwright_playwright__browser_click",
+      "mcp__plugin_playwright_playwright__browser_handle_dialog",
+      "mcp__plugin_playwright_playwright__browser_navigate",
+      "mcp__plugin_playwright_playwright__browser_snapshot",
+      "mcp__plugin_playwright_playwright__browser_take_screenshot",
+      "WebSearch",
+      "WebFetch(domain:jenkins.bcm.nvidia.com)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:raw.githubusercontent.com)"
+    ],
+    "deny": [
+      "Bash(git push *)"
+    ],
+    "ask": [
+      "Bash(git commit *)",
+      "Bash(glab mr update *)",
+      "Bash(rm *)",
+      "mcp__MaaS-Jira__jira_create_issue"
+    ],
+    "defaultMode": "default"
+  },
+  "model": "opus",
+  "worktree": {
+    "baseRef": "head"
+  },
   "enabledPlugins": {
     "bcm-support@bcm-support": true,
-    "ponytail@ponytail": true
+    "ponytail@ponytail": true,
+    "skill-creator@claude-plugins-official": true,
+    "code-review@claude-plugins-official": false,
+    "context7@claude-plugins-official": true,
+    "superpowers@claude-plugins-official": true,
+    "playwright@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {
     "bcm-support": {
@@ -26,29 +73,27 @@
       }
     }
   },
-  "model": "sonnet",
-  "permissions": {
-    "allow": [
-      "Bash(find *)",
-      "Bash(git branch *)",
-      "Bash(git diff *)",
-      "Bash(git log *)",
-      "Bash(glab mr list *)",
-      "Bash(ls *)",
-      "mcp__MaaS-GitLab__gitlab_get_merge_request",
-      "mcp__MaaS-GitLab__gitlab_list_merge_requests",
-      "WebSearch",
-      "WebFetch(domain:raw.githubusercontent.com)",
-      "WebFetch(domain:github.com)"
-    ],
-    "ask": ["Bash(git commit *)", "Bash(glab mr update *)", "Bash(rm *)"],
-    "defaultMode": "default",
-    "deny": ["Bash(git push *)"]
-  },
   "sandbox": {
     "enabled": true,
     "autoAllowBashIfSandboxed": true
   },
+  "effortLevel": "high",
+  "advisorModel": "opus",
   "theme": "dark",
-  "verbose": true
+  "editorMode": "normal",
+  "verbose": true,
+  "autoCompactEnabled": true,
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "copy-last-claude-block 2>/dev/null || true",
+            "async": true
+          }
+        ]
+      }
+    ]
+  }
 }
