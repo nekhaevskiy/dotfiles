@@ -2,3 +2,4 @@
 .zcompdump
 hypr/.config/hypr/shaders
 .playwright-mcp/
+claude/.claude/skills/*-workspace/
